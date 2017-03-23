@@ -9,15 +9,21 @@
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
     <?=$this->Html->css('vendor/slick')?>
     <!--Main-css-->
-    <?=$this->Html->css('main2');?> 
+    <?=$this->Html->css('main');?> 
     <?=$this->Html->script('spymaster')?>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
             integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
             
     <?=$this->Html->script('fontawesome')?>
+    <?=$this->Html->script('main');?>  
+    <?=$this->Html->script('crosssell');?>  
     <?=$this->Html->script('vendor/slick.min');?>
-    
+    <?php
+        echo $this->fetch('meta');
+        echo $this->fetch('css');
+        echo $this->fetch('script');
+    ?>
     <link rel="shortcut icon" type="image/x-icon"
           href="img/icon.png"/>
     <script>
@@ -39,8 +45,8 @@
     </script>
 </head>
 <body class='home_page'>
-    <?= $this->element('header_default') ?>
+    <?= $this->element('header') ?>
     <?= $this->fetch('content') ?>
-    <?= $this->element('footer_default') ?>
+    <?= $this->fetch('footer') ?>
 </body>
 </html>
