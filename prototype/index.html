@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <link href='../cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css' rel='stylesheet' type='text/css'>
+    <!-- Roboto Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=vietnamese'
+          rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+    <script src='../tracking.edumall.vn/client-api/js/spymaster.js' type='text/javascript'></script>
+    <!-- Font Awesome -->
+    <script src='../use.fontawesome.com/218530d9c5.js'></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="../staticedm.r.worldssl.net/assets/favicon_edumall-2f059641813f828cefe30f745a861647b78acca2618e34332e65e88adbc53c98.png"/>
+    <title>Edumall</title>
+    <script>
+        if (window.location.hash && window.location.hash == '#_=_') {
+            if (window.history && history.pushState) {
+                window.history.pushState("", document.title, window.location.pathname);
+            } else {
+                // Prevent scrolling by storing the page's current scroll offset
+                var scroll = {
+                    top: document.body.scrollTop,
+                    left: document.body.scrollLeft
+                };
+                window.location.hash = '';
+                // Restore the scroll offset, should be flicker free
+                document.body.scrollTop = scroll.top;
+                document.body.scrollLeft = scroll.left;
+            }
+        }
+    </script>
+<body class='home_page'></body>
+<!-- My CSS -->
+<link rel="stylesheet" media="all"
+      href="../staticedm.r.worldssl.net/assets/ab_testing-9a9d1b1c5bb684eec711d9fb945fd87d83b06362ec3966fc78b3ca9390a9d8a7.css"/>
+<script src="../staticedm.r.worldssl.net/assets/ab_testing-b3069cb09c4f07a80b1028b172c15582d10269739732c8dbe5ec00af54c89e78.js"></script>
+<header class='container-fluid' id='header'>
+    <div class='row'>
+        <nav class='navbar navbar-default top-menu'>
+            <div class='container-special clearfix'>
+                <div class='container-fluid'>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class='row'>
+                        <div class='navbar-header'>
+                            <button aria-expanded='false' class='navbar-toggle collapsed' data-target='#navbar-collapse'
+                                    data-toggle='collapse' type='button'>
+                                <span class='sr-only'>Toggle navigation</span>
+                                <span class='icon-bar'></span>
+                                <span class='icon-bar'></span>
+                                <span class='icon-bar'></span>
+                            </button>
+                            <a class='navbar-brand' href='courses.html'>
+                                <img style="height: 55px;margin-top: -20px;"
+                                     src="../staticedm.r.worldssl.net/assets/logo_new_year-a8a262e9a54ec76566e703a22f94c46f73750aeed77996d599c276c712feedd5.png"
+                                     alt="Logo new year a8a262e9a54ec76566e703a22f94c46f73750aeed77996d599c276c712feedd5"/>
+                            </a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class='collapse navbar-collapse' id='navbar-collapse'></div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+        </nav>
+        <div class='carousel slide carousel-banner' data-ride='carousel'>
+            <!-- Wrapper for slides -->
+            <div class='carousel-inner' role='listbox'>
+                <div class='item one active'>
+                    <div class='carousel-caption hidden-xs target'>
+                        <div class='container container-carousel animated fadeInUp'>
+                            <h3 class='title-des'>Dễ học, dễ ứng dụng ngay</h3>
+
+                            <div class='row description-carousel'>
+                                <div class='col-sm-6 align-right'>
+                                    <p><i aria-hidden='true' class='fa fa-check-square-o'></i>Ví dụ cụ thể, minh họa
+                                        sinh động
+                                    </p>
+                                </div>
+                                <div class='col-sm-6 align-left'>
+                                    <p><i aria-hidden='true' class='fa fa-paper-plane'></i>Kho bài tập đa dạng, áp dụng
+                                        thực tế ngay
+                                    </p>
+                                </div>
+                            </div>
+                            <a class='button' href='courses.html'>Khám phá Edumall</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='item two'>
+                    <div class='carousel-caption hidden-xs target'>
+                        <div class='container container-carousel animated fadeInUp'>
+                            <h3 class='title-des'>
+                                Sẵn sàng học mọi kỹ năng để làm chủ tương lai
+                            </h3>
+
+                            <div class='row description-carousel'>
+                                <div class='col-sm-4 align-right'>
+                                    <p><i aria-hidden='true' class='fa fa-database'></i>500+ Khóa học
+                                    </p>
+                                </div>
+                                <div class='col-sm-4'>
+                                    <p><i aria-hidden='true' class='fa fa-users'></i>200+ Giảng viên
+                                    </p>
+                                </div>
+                                <div class='col-sm-4 align-left'>
+                                    <p><i aria-hidden='true' class='fa fa-graduation-cap'></i>250,000 Học viên
+                                    </p>
+                                </div>
+                            </div>
+                            <a class='button' href='courses.html'>Khám phá Edumall</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='item three'>
+                    <div class='carousel-caption hidden-xs target'>
+                        <div class='container container-carousel animated fadeInUp'>
+                            <h3 class='title-des'>
+                                Trải nghiệm học tập không giới hạn asdasds
+                            </h3>
+
+                            <div class='row description-carousel'>
+                                <div class='col-sm-6 align-right'>
+                                    <p><i aria-hidden='true' class='fa fa-laptop'></i>Máy tính, internet
+                                    </p>
+                                </div>
+                                <div class='col-sm-6 align-left'>
+                                    <p><i aria-hidden='true' class='fa fa-map-marker'></i>Bất kì nơi nào
+                                    </p>
+                                </div>
+                            </div>
+                            <a class='button' href='courses.html'>Khám phá Edumall</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class='left carousel-control' data-slide='prev' href='.html' role='button'>
+                <i aria-hidden='true' class='fa fa-angle-left'></i>
+            </a>
+            <a class='right carousel-control' data-slide='next' href='.html' role='button'>
+                <i aria-hidden='true' class='fa fa-angle-right'></i>
+            </a>
+        </div>
+        <div class='navigation'>
+            <div class='container container-carousel'>
+                <nav class='navbar navbar-default main-navbar'>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class='navbar-collapse'>
+                        <ul class='nav navbar-nav list-category'>
+                            <li class='dropdown'>
+                                <a aria-expanded='false' aria-haspopup='true' class='dropdown-toggle'
+                                   data-toggle='dropdown' href='#' role='button'>
+<span class='icon-bar'>
+<i aria-hidden='true' class='fa fa-bars'></i>
+</span>
+                                    <span class='hidden-sm hidden-xs'>Chủ đề khóa học</span>
+<span class='icon-down hidden-sm hidden-xs'>
+<i aria-hidden='true' class='fa fa-angle-down'></i>
+</span>
+                                </a>
+                                <ul class='dropdown-menu dropdown-content'>
+                                    <li>
+                                        <div class='row speical-row'>
+                                            <div class='col-sm-6 col-md-4 object'>
+                                                <h5>Các khóa học nổi bật</h5>
+
+                                                <p>
+                                                    <a href='courses.html'>Sắp bắt đầu</a>
+                                                </p>
+
+                                                <p>
+                                                    <a href='courses.html'>Mới nhất</a>
+                                                </p>
+
+                                                <p>
+                                                    <a href='courses.html'>Được xem nhiều nhất</a>
+                                                </p>
+
+                                                <p>
+                                                    <a href='courses.html'>Được đánh giá cao nhất</a>
+                                                </p>
+
+                                                <p class='button-all'>
+                                                    <a href='courses.html'>Khám phá ngay</a>
+                                                </p>
+                                            </div>
+                                            <div class='col-sm-6 col-md-8 topic'>
+                                                <div class='row'>
+                                                    <h5>Chủ đề</h5>
+
+                                                    <div class='col-md-6'>
+                                                        <p>
+                                                            <a href='cong-nghe-thong-tin.html'>Công nghệ thông tin</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='kinh-doanh-lam-giau.html'>Doanh nghiệp và khởi
+                                                                nghiệp</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='ung-dung-van-phong.html'>Ứng dụng văn phòng</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='marketing.html'>Marketing</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='thiet-ke.html'>Thiết kế</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class='col-md-6 last-group'>
+                                                        <p>
+                                                            <a href='ky-nang-mem.html'>Phát triển cá nhân</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='nuoi-day-con.html'>Nuôi dạy con</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='tieng-anh-nghe-thuat.html'>Ngoại ngữ</a>
+                                                        </p>
+
+                                                        <p>
+                                                            <a href='chu-de-khac.html'>Chủ đề khác</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form action='https://edumall.vn/search' class='wp-page navbar-form navbar-right form-search'
+                              id='atc-search' method='GET'>
+                            <div class='form-group'>
+                                <input autocomplete='off' class='form-control' id='books-search-txt' name='q'
+                                       placeholder='Tìm kiếm...' search_api='//edumall.vn/auto_complete' type='text'>
+                            </div>
+                            <button class='btn btn-default' type='submit'>
+                                <i aria-hidden='true' class='fa fa-search'></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+        </div>
+        <!-- END NAVIGATION -->
+    </div>
+</header>
+<!-- END HEADER -->
+<main class='container-fluid' id='main'>
+    <div class='row'>
+        <section class='module-banner'>
+            <div class='banner'>
+                <div class='banner_crosssell' id='header'></div>
+            </div>
+        </section>
+        <section class='module-1'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-md-6 category first'>
+                        <a href='courses5c81.html?es_template=CNTT'>
+                            <h5>Người lớn</h5>
+                            <img src="../staticedm.r.worldssl.net/assets/abtesting/homepage/v1/icon-1-88010053da1193e5ae678b4d0a00d2fbe7cef4a84873b1a613d59742c499d210.png"
+                                 alt="Icon 1 88010053da1193e5ae678b4d0a00d2fbe7cef4a84873b1a613d59742c499d210"/>
+                        </a>
+                    </div>
+                    <div class='col-md-6 category first'>
+                        <a href='courses5c81.html?es_template=CNTT'>
+                            <h5>Trẻ em</h5>
+                            <img src="../staticedm.r.worldssl.net/assets/abtesting/homepage/v1/icon-1-88010053da1193e5ae678b4d0a00d2fbe7cef4a84873b1a613d59742c499d210.png"
+                                 alt="Icon 1 88010053da1193e5ae678b4d0a00d2fbe7cef4a84873b1a613d59742c499d210"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END MODULE-1 -->
+        <section class='module-2'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.html'>
+                                <img src="../d1nzpkv5wwh1xf.cloudfront.net/320/kelley-57bfb0d3ce4b1438274ba1fd/20160917-anhnt01/anhtn01-noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.html"
+                                     alt="Anhtn01 noi thoa thich 8 tieng moi ngay ma khong lo mat giong"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.html'>
+                                        <h5>Nói thoả thích 8 tiếng mỗi ngày mà không lo mất giọng</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/trannamanh.html'>Trần Nam Anh</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(33)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+549000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/guitar-dem-hat-trong-30-ngay.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/guitar-dem-hat-trong-30-ngay.png"
+                                     alt="Guitar dem hat trong 30 ngay"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/guitar-dem-hat-trong-30-ngay.html'>
+                                        <h5>Guitar đệm hát trong 30 ngày</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/nguyenthuonghien2.html'>Nguyễn Thượng Hiển</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(413)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+699000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/tuyet-chieu-ban-hang-so-mot.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/tuyet-chieu-ban-hang-so-mot.png"
+                                     alt="Tuyet chieu ban hang so mot"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/tuyet-chieu-ban-hang-so-mot.html'>
+                                        <h5>36 Tuyệt chiêu để trở thành người bán hàng số một</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/nguyenvinhcuong.html'>Nguyễn Vĩnh Cường</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(24)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+449000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/lam-chu-excel-2010-trong-4-gio.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/course_image_tunt_230x130.png"
+                                     alt="Course image tunt 230x130"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/lam-chu-excel-2010-trong-4-gio.html'>
+                                        <h5>Làm chủ Excel 2010 trong 4 giờ</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/tund.html'>Nguyễn Danh Tú</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(230)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+599000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/lap-trinh-web-cho-nguoi-moi-bat-dau.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/lap-trinh-web-cho-nguoi-moi-bat-dau.png"
+                                     alt="Lap trinh web cho nguoi moi bat dau"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/lap-trinh-web-cho-nguoi-moi-bat-dau.html'>
+                                        <h5>Làm Website &amp; Landing Page bán hàng, PR, quảng cáo, truyền thông,
+                                            marketing trong 3 tuần</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/thangph.html'>Phạm Hùng Thắng</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(10)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+699000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/thanh-thao-photoshop-trong-vong-7-ngay.html'>
+                                <img src="../d1nzpkv5wwh1xf.cloudfront.net/320/kelley-57bfb0d3ce4b1438274ba1fd/20160917-huypq01_cl22_1-3_final/huypq01-thanh-thao-photoshop-trong-vong-7-ngay.html"
+                                     alt="Huypq01 thanh thao photoshop trong vong 7 ngay"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/thanh-thao-photoshop-trong-vong-7-ngay.html'>
+                                        <h5>Thành thạo photoshop trong 7 ngày</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/huypq.html'>Phạm Quang Huy</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(84)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+599000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/10-buoc-de-lam-seo.html'>
+                                <img src="../d1nzpkv5wwh1xf.cloudfront.net/320/kelley-57bfb0d3ce4b1438274ba1fd/20160917-/hoangvm02-10-buoc-de-lam-seo.html"
+                                     alt="Hoangvm02 10 buoc de lam seo"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/10-buoc-de-lam-seo.html'>
+                                        <h5>SEO website top 10 dễ dàng</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/hoangvm2.html'>Vương Mạnh Hoàng</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(21)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+699000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/dung-phim-chuyen-nghiep-voi-adobe-premiere.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/dung-phim-chuyen-nghiep-voi-adobe-premiere.png"
+                                     alt="Dung phim chuyen nghiep voi adobe premiere"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/dung-phim-chuyen-nghiep-voi-adobe-premiere.html'>
+                                        <h5>Dựng video chuyên nghiệp với Adobe Premiere</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/trieudinhnam.html'>Triệu Đình Nam</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(51)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+499000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/ts-le-tham-duong-lanh-dao-la-mot-nghe-phai-hoc.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/ts-le-tham-duong-lanh-dao-la-mot-nghe-phai-hoc.png"
+                                     alt="Ts le tham duong lanh dao la mot nghe phai hoc"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/ts-le-tham-duong-lanh-dao-la-mot-nghe-phai-hoc.html'>
+                                        <h5>TS. Lê Thẩm Dương: Lãnh đạo là một nghề phải học</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/lethamduong.html'>Lê Thẩm Dương</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(67)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+499000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/yoga-truc-tuyen-khoe-dep-ngay-tai-nha.html'>
+                                <img src="../d1nzpkv5wwh1xf.cloudfront.net/320/kelley-57bfb0d3ce4b1438274ba1fd/20160917-hieunyoga1lan-11807/hieun01-yoga-truc-tuyen-khoe-dep-ngay-tai-nha.html"
+                                     alt="Hieun01 yoga truc tuyen khoe dep ngay tai nha"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/yoga-truc-tuyen-khoe-dep-ngay-tai-nha.html'>
+                                        <h5>Yoga trực tuyến - khỏe đẹp ngay tại nhà</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/hieun22222222.html'>Nguyễn Hiếu</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(85)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+699000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/tuyet-chieu-nuoi-day-con-thanh-tai.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/tuyet-chieu-nuoi-day-con-thanh-tai.jpg"
+                                     alt="Tuyet chieu nuoi day con thanh tai"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/tuyet-chieu-nuoi-day-con-thanh-tai.html'>
+                                        <h5>Tuyệt chiêu nuôi dạy con thành tài</h5>
+                                    </a>
+                                    <a class='teacher-link' href='#'>Đào Ngọc Cường</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(0)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+599000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm-6 col-md-3'>
+                        <div class='thumbnail block-content'>
+                            <a href='course/the-hien-cam-xuc.html'>
+                                <img src="../staticedm.r.worldssl.net/uploads/images/courses/course_image_1.jpg"
+                                     alt="Course image 1"/>
+                            </a>
+
+                            <div class='caption'>
+                                <div class='block-course'>
+                                    <a href='course/the-hien-cam-xuc.html'>
+                                        <h5>Tiếng Anh giao tiếp: Tự tin bộc lộ cảm xúc của bản thân bằng Tiếng Anh</h5>
+                                    </a>
+                                    <a class='teacher-link' href='users/topicanative.html'>Topica Native</a>
+                                </div>
+                                <p></p>
+
+                                <div class='row'>
+                                    <div class='col-xs-10'>
+                                        <p class='vote pull-left'>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='rated fa fa-star'></i>
+                                            <i aria-hidden='true' class='fa fa-star'></i>
+
+                                        <p class='rating pull-left' style='margin-left: 5px;'>(24)</p>
+                                        </p>
+                                    </div>
+                                    <div class='col-xs-2 no-padding'></div>
+                                </div>
+                                <p class='price-like clearfix'>
+<span class='price'>
+349000
+<sup>đ</sup>
+</span>
+<span class='like'>
+<i aria-hidden='true' class='fa fa-heart-o'></i>
+</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='show-time'>
+                    <a href='courses.html'>Và rất nhiều khóa học hấp dẫn khác</a>
+                </div>
+            </div>
+        </section>
+        <!-- END MODULE-2 -->
+        <section class='module-5'>
+            <div class='container'>
+                <div class='row'>
+                    <div class='col-md-8 col-md-offset-2'>
+                        <h5>Subscribe để nhận những thông tin mới nhất từ Edumall.vn</h5>
+
+                        <form class='navbar-form navbar-left form-subscribe' role='search'>
+                            <div class='form-group'>
+                                <input class='form-control' placeholder='Email của bạn' type='text'>
+                            </div>
+                            <button class='btn btn-default' type='submit'>Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END MODULE-5 -->
+    </div>
+</main>
+<!-- END MAIN -->
+<footer class='container-fluid' id='footer'>
+    <div class='row'>
+        <div class='container'>
+            <div class='top-footer'>
+                <div class='row'>
+                    <div class='col-sm-3 block-footer'>
+                        <a href='http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=22565'>
+                            <img src="../staticedm.r.worldssl.net/assets/abtesting/homepage/v1/logo-bottom-min-4e883642b1864266b665f5046f164e00cd1b1fdc4b3c1edeae02de3ebb6f0c70.png"
+                                 alt="Logo bottom min 4e883642b1864266b665f5046f164e00cd1b1fdc4b3c1edeae02de3ebb6f0c70"/>
+                        </a>
+                    </div>
+                    <div class='col-sm-3 block-footer'>
+                        <ul class='footer-link'>
+                            <li>
+                                <a href='about.html'>Giới thiệu về Edumall</a>
+                            </li>
+                            <li>
+                                <a href='faq.html'>Câu hỏi thường gặp</a>
+                            </li>
+                            <li>
+                                <a href='terms.html'>Điều khoản sử dụng</a>
+                            </li>
+                            <li>
+                                <a class='tuyenthay'
+                                   href='http://tuyendunggiangvien.edumall.vn/?utm_source=edumall&amp;utm_pos=welcome_foot'
+                                   target='_blank'>Hợp tác giảng dạy</a>
+                            </li>
+                            <li>
+                                <a href='mobile.html'>Mobile App</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='col-sm-3 block-footer contact'>
+                        <p>
+                            <i aria-hidden='true' class='fa fa-phone'></i>
+                            <span>1800.6816 (Miễn phí)</span>
+                        </p>
+
+                        <p>(7h00 - 22h00 các ngày trong tuần)</p>
+
+                        <p>
+                            <i aria-hidden='true' class='fa fa-envelope'></i>
+                            <span>cskh@edumall.vn</span>
+                        </p>
+                    </div>
+                    <div class='col-sm-3 block-footer social'>
+                        <p>
+                            <a href='https://www.facebook.com/Edumall.vn'>
+                                <i aria-hidden='true' class='fa fa-facebook-square'></i>
+                            </a>
+                            <a href='https://www.youtube.com/channel/UCB_VcFxP7DeZR8Xfpqf9x5A'>
+                                <i aria-hidden='true' class='fa fa-youtube-square'></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='bot-footer'>
+                <p>© 2016 Edumall. All rights reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src='../cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js' type='text/javascript'></script>
+<script>
+    $(document).ready(function () {
+        var list_nav = $('.featured-courses-sm .list ul');
+        var course_nav = $('#courses_swipe');
+        list_nav.slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 1,
+            centerMode: false,
+            variableWidth: true,
+            swipe: false
+        });
+        course_nav.slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 1,
+            centerMode: false,
+            arrows: true,
+            adaptiveHeight: true
+        });
+
+        swipeDetect(document.getElementById('detect_swipe'), function (dir) {
+            if (dir == 'left') {
+                list_nav.find('.slick-next').trigger('click');
+                course_nav.find('.slick-next').trigger('click');
+            } else if (dir == 'right') {
+                list_nav.find('.slick-prev').trigger('click');
+                course_nav.find('.slick-prev').trigger('click');
+            }
+        });
+
+        course_nav.on('swipe', function (event, slick, direction) {
+            if (direction == 'left') {
+                list_nav.find('.slick-next').trigger('click');
+            } else {
+                list_nav.find('.slick-prev').trigger('click');
+            }
+        });
+
+        $('.featured-courses-sm .courses a').unbind('click');
+    });
+</script>
+<noscript id='asyncronize-font'>
+    <link href='../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'
+          type='text/css'>
+</noscript>
+<script>
+    var loadAsyncronizeFont = function () {
+        var addFontNode = document.getElementById("asyncronize-font");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addFontNode.textContent;
+        document.body.appendChild(replacement)
+        addFontNode.parentElement.removeChild(addFontNode);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+            webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(function () {
+        window.setTimeout(loadAsyncronizeFont, 0);
+    });
+    else window.addEventListener('load', loadAsyncronizeFont);
+</script>
+</head>
+
+<!-- Mirrored from edumall.vn/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Mar 2017 02:43:50 GMT -->
+</html>
