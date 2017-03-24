@@ -38,8 +38,26 @@
         <div class='header-col header-col-mid'>
             <div class='hd-brand'>
                 <div class='logo'>
-                <?=$this->Html->image('logo2.png', ['alt' => 'Edumall Logo', 'class' => "logo-medium"])?>
-                <?=$this->Html->image('logo2.png', ['alt' => 'Logo small', 'class' => "logo-small"])?>
+                <?=$this->Html->image('logo.png', ['alt' => 'Logo', 'class' => "logo-medium", "style" => "height: 55px;"])?>
+                </div>
+            </div>
+        </div>
+        <div class='header-col text-right header-col-right'>
+            <div class='hd-user'>
+                <div>
+                    <div class='btn-group cart-notification-dropdown hidden-xs hidden-sm'>
+                        <div aria-expanded='false' class='dropdown-toggle cart-dropdown-button' data-toggle='dropdown' type='button'>
+                            <div class='cart-notification'>
+                                <div class='cart-notification-button'>
+                                    <?=$this->Html->image('shopping-cart-header.png');?>
+                                </div>
+                            </div>
+                        </div>
+                        <div aria-labelledby='dropdownNotification' class='dropdown-menu cart-dropdown-notification'>
+                            <h4 class='emty-carts-notice'>Bạn chưa có khoá học nào trong giỏ</h4>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

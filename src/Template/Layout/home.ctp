@@ -24,8 +24,7 @@
         echo $this->fetch('css');
         echo $this->fetch('script');
     ?>
-    <link rel="shortcut icon" type="image/x-icon"
-          href="img/icon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
     <script>
         if (window.location.hash && window.location.hash == '#_=_') {
             if (window.history && history.pushState) {

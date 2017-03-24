@@ -9,7 +9,7 @@
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
     <?=$this->Html->css('vendor/slick')?>
     <!--Main-css-->
-    <?=$this->Html->css('main2');?> 
+    <?=$this->Html->css('main2');?>
     <?=$this->Html->script('spymaster')?>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -18,8 +18,7 @@
     <?=$this->Html->script('fontawesome')?>
     <?=$this->Html->script('vendor/slick.min');?>
     
-    <link rel="shortcut icon" type="image/x-icon"
-          href="img/icon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
     <script>
         if (window.location.hash && window.location.hash == '#_=_') {
             if (window.history && history.pushState) {
@@ -38,7 +37,7 @@
         }
     </script>
 </head>
-<body class='home_page'>
+<body class='courses_page home_page'>
     <?= $this->element('header_default') ?>
     <?= $this->fetch('content') ?>
     <?= $this->element('footer_default') ?>

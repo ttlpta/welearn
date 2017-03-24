@@ -9,13 +9,13 @@
             <div class='container'>
                 <div class='row'>
                     <div class='col-md-6 category first'>
-                        <a href='courses5c81.html?es_template=CNTT'>
+                        <a href='/khoa-hoc-danh-cho-nguoi-lon'>
                             <h5>Người lớn</h5>
                             <?=$this->Html->image('cntt.png', ['alt' => 'Người lớn'])?>
                         </a>
                     </div>
                     <div class='col-md-6 category first'>
-                        <a href='courses5c81.html?es_template=CNTT'>
+                        <a href='/khoa-hoc-danh-cho-tre-em'>
                             <h5>Trẻ em</h5>
                             <?=$this->Html->image('cntt.png', ['alt' => 'Trẻ em'])?>
                         </a>
@@ -29,13 +29,13 @@
                 <div class='row'>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('anhtn01-noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.png', ['alt' => 'Anhtn01 noi thoa thich 8 tieng moi ngay ma khong lo mat giong'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Nói thoả thích 8 tiếng mỗi ngày mà không lo mất giọng</h5>
                                     </a>
                                     <a class='teacher-link' href='users/trannamanh.html'>Trần Nam Anh</a>
@@ -70,13 +70,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/guitar-dem-hat-trong-30-ngay.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('guitar-dem-hat-trong-30-ngay.png', ['alt' => 'Guitar dem hat trong 30 ngay'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/guitar-dem-hat-trong-30-ngay.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Guitar đệm hát trong 30 ngày</h5>
                                     </a>
                                     <a class='teacher-link' href='users/nguyenthuonghien2.html'>Nguyễn Thượng Hiển</a>
@@ -111,13 +111,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/tuyet-chieu-ban-hang-so-mot.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/tuyet-chieu-ban-hang-so-mot.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>36 Tuyệt chiêu để trở thành người bán hàng số một</h5>
                                     </a>
                                     <a class='teacher-link' href='users/nguyenvinhcuong.html'>Nguyễn Vĩnh Cường</a>
@@ -152,12 +152,12 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/lam-chu-excel-2010-trong-4-gio.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/lam-chu-excel-2010-trong-4-gio.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Làm chủ Excel 2010 trong 4 giờ</h5>
                                     </a>
                                     <a class='teacher-link' href='users/tund.html'>Nguyễn Danh Tú</a>
@@ -194,13 +194,13 @@
                 <div class='row'>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/lap-trinh-web-cho-nguoi-moi-bat-dau.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/lap-trinh-web-cho-nguoi-moi-bat-dau.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Làm Website &amp; Landing Page bán hàng, PR, quảng cáo, truyền thông,
                                             marketing trong 3 tuần</h5>
                                     </a>
@@ -236,13 +236,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/thanh-thao-photoshop-trong-vong-7-ngay.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/thanh-thao-photoshop-trong-vong-7-ngay.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Thành thạo photoshop trong 7 ngày</h5>
                                     </a>
                                     <a class='teacher-link' href='users/huypq.html'>Phạm Quang Huy</a>
@@ -277,13 +277,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/10-buoc-de-lam-seo.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/10-buoc-de-lam-seo.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>SEO website top 10 dễ dàng</h5>
                                     </a>
                                     <a class='teacher-link' href='users/hoangvm2.html'>Vương Mạnh Hoàng</a>
@@ -318,13 +318,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/dung-phim-chuyen-nghiep-voi-adobe-premiere.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/dung-phim-chuyen-nghiep-voi-adobe-premiere.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Dựng video chuyên nghiệp với Adobe Premiere</h5>
                                     </a>
                                     <a class='teacher-link' href='users/trieudinhnam.html'>Triệu Đình Nam</a>
@@ -361,13 +361,13 @@
                 <div class='row'>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/ts-le-tham-duong-lanh-dao-la-mot-nghe-phai-hoc.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/ts-le-tham-duong-lanh-dao-la-mot-nghe-phai-hoc.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>TS. Lê Thẩm Dương: Lãnh đạo là một nghề phải học</h5>
                                     </a>
                                     <a class='teacher-link' href='users/lethamduong.html'>Lê Thẩm Dương</a>
@@ -402,13 +402,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/yoga-truc-tuyen-khoe-dep-ngay-tai-nha.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/yoga-truc-tuyen-khoe-dep-ngay-tai-nha.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Yoga trực tuyến - khỏe đẹp ngay tại nhà</h5>
                                     </a>
                                     <a class='teacher-link' href='users/hieun22222222.html'>Nguyễn Hiếu</a>
@@ -443,13 +443,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/tuyet-chieu-nuoi-day-con-thanh-tai.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/tuyet-chieu-nuoi-day-con-thanh-tai.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Tuyệt chiêu nuôi dạy con thành tài</h5>
                                     </a>
                                     <a class='teacher-link' href='#'>Đào Ngọc Cường</a>
@@ -484,13 +484,13 @@
                     </div>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='course/the-hien-cam-xuc.html'>
+                            <a href='/khoa-hoc'>
                                 <?=$this->Html->image('tuyet-chieu-ban-hang-so-mot.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='course/the-hien-cam-xuc.html'>
+                                    <a href='/khoa-hoc'>
                                         <h5>Tiếng Anh giao tiếp: Tự tin bộc lộ cảm xúc của bản thân bằng Tiếng Anh</h5>
                                     </a>
                                     <a class='teacher-link' href='users/topicanative.html'>Topica Native</a>
