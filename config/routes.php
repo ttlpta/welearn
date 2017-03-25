@@ -34,6 +34,12 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
     $routes->fallbacks(DashedRoute::class);
+
+    // Admin 
+    Router::prefix('admin', function ($routes) {
+        
+        $routes->fallbacks(DashedRoute::class);
+    });
 });
 
 Plugin::routes();

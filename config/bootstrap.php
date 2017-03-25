@@ -37,6 +37,8 @@ if (!extension_loaded('mbstring')) {
  * constants
  */
 require __DIR__ . '/paths.php';
+require __DIR__ . '/constants.php';
+require __DIR__ . '/functions.php';
 
 /*
  * Bootstrap CakePHP.
@@ -220,3 +222,5 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+
+Plugin::load('Josegonzalez/Upload');

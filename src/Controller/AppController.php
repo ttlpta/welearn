@@ -27,7 +27,6 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-
     /**
      * Initialization hook method.
      *
@@ -43,13 +42,6 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see http://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
     }
 
     /**
@@ -65,5 +57,19 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    protected function _renameImage($oldName)
+    {
+        return random_string().$oldName;
+    }
+
+    protected function _isImage($imageName){
+        if(!$imageName)
+            return false;
+
+        $ext = substr(strtolower(strrchr($imageName, '.')), 1);
+
+        return in_array($ext, array('jpg', 'jpeg', 'gif', 'png'));
     }
 }
