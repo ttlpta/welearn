@@ -1,0 +1,29 @@
+msgid "Actions"
+msgstr "Hành động"
+
+msgid "View"
+msgstr "Chi tiết"
+
+msgid "Edit"
+msgstr "Sửa"
+
+msgid "Delete"
+msgstr "Xóa"
+
+msgid "first"
+msgstr "Trang đầu"
+
+msgid "previous"
+msgstr "Trang trước"
+
+msgid "next"
+msgstr "Trang tiếp"
+
+msgid "last"
+msgstr "Trang cuối"
+
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr "Trang {{page}} của {{pages}} trang, {{current}} trong tất cả {{count}} trang"
+
+msgid "Are you sure you want to delete # {0}"
+msgstr "Bạn có chắc muốn xóa # {0}"

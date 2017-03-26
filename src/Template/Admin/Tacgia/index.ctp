@@ -23,7 +23,7 @@
             <?php foreach ($tacgia as $tacgium): ?>
             <tr>
                 <td><?= h($tacgium->ten) ?></td>
-                <td><img src="<?='http://localhost/welearn/'.DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgium->anh?>"/></td>
+                <td><img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgium->anh?>"/></td>
                 <td><?= h($tacgium->created) ?></td>
                 <td><?= h($tacgium->updated) ?></td>
                 <td class="actions">

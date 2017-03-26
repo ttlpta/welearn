@@ -31,6 +31,6 @@
 </div>
 <?= $this->Html->script('initckEditor.js') ?>
 <script>
-    initSample();
+    initCkEditor();
 </script>
 

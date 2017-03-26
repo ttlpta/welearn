@@ -39,7 +39,6 @@ class AdminController extends AppController
     public function initialize()
     {
         parent::initialize();
-
         $this->loadComponent('Auth', [
             'authenticate' => [
                 'Form' => [

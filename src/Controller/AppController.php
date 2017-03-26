@@ -16,7 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-
+use Cake\I18n\I18n;
 /**
  * Application Controller
  *
@@ -39,6 +39,7 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
+        I18n::locale('es_VN');
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');

@@ -12,7 +12,7 @@
             echo $this->Form->control('ten');?>
         <div class="input file">
             <label for="anh">Ảnh</label>
-            <img src="<?='http://localhost/welearn/'.DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgium->anh?>"/>
+            <img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgium->anh?>"/>
             <input type="file" name="anh" id="anh">
         </div>
         <div class="input">
