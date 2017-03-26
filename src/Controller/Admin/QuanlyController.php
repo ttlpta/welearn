@@ -10,8 +10,6 @@ use App\Controller\Admin\AdminController;
  */
 class QuanlyController extends AdminController
 {
-    public $helpers = ['Welearn'];
-
     public function initialize()
     {
         parent::initialize();
