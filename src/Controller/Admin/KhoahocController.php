@@ -11,20 +11,25 @@ use Cake\ORM\TableRegistry;
  */
 class KhoahocController extends AdminController
 {
-
+    private $_tacgiaTbl;
+    public function initialize()
+    {
+        parent::initialize();
+        $this->_tacgiaTbl = TableRegistry::get('Tacgia');
+    }
     /**
      * Index method
      *
      * @return \Cake\Network\Response|null
      */
+
     public function index()
     {
         $khoahocWithIdTacgias = $this->paginate($this->Khoahoc);
         $khoahocWithTenTacgias = [];
         foreach($khoahocWithIdTacgias as $khoahoc){
             $tacgiaIdArr = explode(',', $khoahoc->tacgia);
-            $tacgiaTable = TableRegistry::get('Tacgia');
-            $tacgiaNameArr = $tacgiaTable->find('all',[
+            $tacgiaNameArr =  $this->_tacgiaTbl->find('all',[
                 'conditions' => [
                     'Tacgia.id IN' => $tacgiaIdArr
                 ]
@@ -51,6 +56,15 @@ class KhoahocController extends AdminController
             'contain' => ['Ve']
         ]);
 
+        $tacgiaIdArr = explode(',', $khoahoc->tacgia);
+        $tacgiaNameArr =  $this->_tacgiaTbl->find('all',[
+            'conditions' => [
+                'Tacgia.id IN' => $tacgiaIdArr
+            ]
+        ])->select(['ten'])->extract('ten')->toArray();
+
+        $khoahoc->tacgia = implode(',', $tacgiaNameArr);
+
         $this->set('khoahoc', $khoahoc);
         $this->set('_serialize', ['khoahoc']);
     }
@@ -63,8 +77,7 @@ class KhoahocController extends AdminController
     public function add()
     {
         $khoahoc = $this->Khoahoc->newEntity();
-        $tacgiaTable = TableRegistry::get('Tacgia');
-        $tacgias = $tacgiaTable->find();
+        $tacgias = $this->_getAllTacgia();
         if ($this->request->is('post')) {
             $khoahocData = $this->request->getData();
             if($khoahocData['anh']['name'] && !$this->_isImage($khoahocData['anh']['name'])){
@@ -99,15 +112,25 @@ class KhoahocController extends AdminController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $khoahoc = $this->Khoahoc->patchEntity($khoahoc, $this->request->getData());
-            if ($this->Khoahoc->save($khoahoc)) {
-                $this->Flash->success(__('The khoahoc has been saved.'));
+            $khoahocData = $this->request->getData();
+            if($khoahocData['anh']['name'] && !$this->_isImage($khoahocData['anh']['name'])){
+                $this->Flash->error(__('File upload không phải ảnh'));
+            } else {
+                $khoahocData['anh']['name'] = ($khoahocData['anh']['name'])?
+                    $this->_renameImage($khoahocData['anh']['name']) : $khoahoc->anh;
+                $khoahocData['tacgia'] = implode(',', $khoahocData['tacgia']);
+                $khoahoc = $this->Khoahoc->patchEntity($khoahoc, $khoahocData);
+                if ($this->Khoahoc->save($khoahoc)) {
+                    $this->Flash->success(__('The khoahoc has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The khoahoc could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The khoahoc could not be saved. Please, try again.'));
         }
+        $tacgias = $this->_getAllTacgia();
         $this->set(compact('khoahoc'));
+        $this->set(compact('tacgias'));
         $this->set('_serialize', ['khoahoc']);
     }
 
@@ -129,5 +152,10 @@ class KhoahocController extends AdminController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    private function _getAllTacgia()
+    {
+        return $this->_tacgiaTbl->find();
     }
 }

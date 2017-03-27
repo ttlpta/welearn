@@ -39,7 +39,15 @@ class KhoahocTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
+        $this->addBehavior('Timestamp',[
+            'events' => [
+                'Model.beforeSave' => [
+                    'created' => 'new',
+                    'updated' => 'always',
+                ]
+            ]
+        ]);
+
         $this->addBehavior('Josegonzalez/Upload.Upload', [
             'anh' => [
                 'path' => DIR_UPLOAD_IMAGE_KHOAHOC
@@ -82,7 +90,7 @@ class KhoahocTable extends Table
 
         $validator
             ->requirePresence('anh', 'create')
-            ->notEmpty('anh');
+            ->notEmpty('anh', 'Avatar là b?t bu?c', 'create');
 
         $validator
             ->allowEmpty('video_youtube');
@@ -97,27 +105,5 @@ class KhoahocTable extends Table
             ->notEmpty('trangthai');
 
         return $validator;
-    }
-
-
-    public function findWithTenTacgia(Query $query, array $options)
-    {
-        $khoahocWithIdTacgias = $query->find('all');
-        $khoahocWithTenTacgias = [];
-        foreach($khoahocWithIdTacgias as $khoahoc){
-            $tacgiaIdArr = explode(',', $khoahoc->tacgia);
-            $tacgiaTable = TableRegistry::get('Tacgia');
-            $tacgiaNameArr = $tacgiaTable->find('all',[
-                'conditions' => [
-                    'Tacgia.id IN' => $tacgiaIdArr
-                ]
-            ])->select(['ten'])->extract('ten')->toArray();
-
-            $khoahoc->tacgia = implode(',', $tacgiaNameArr);
-
-            $khoahocWithTenTacgias[] = $khoahoc;
-        }
-
-        return $khoahocWithTenTacgias;
     }
 }

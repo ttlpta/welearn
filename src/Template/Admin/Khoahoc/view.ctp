@@ -5,7 +5,7 @@
 ?>
 <?=$this->element('left-sidebar')?>
 <div class="khoahoc view large-9 medium-8 columns content">
-    <h3><?= h($khoahoc->id) ?></h3>
+    <h3><?= 'Khóa học '.$khoahoc->ten ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Ten') ?></th>
@@ -21,19 +21,17 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Anh') ?></th>
-            <td><?= h($khoahoc->anh) ?></td>
+            <td><img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh?>" style="width: 670px; height: 380px"/></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Video Youtube') ?></th>
-            <td><?= h($khoahoc->video_youtube) ?></td>
+            <td>
+                <?= $khoahoc->video_youtube ?>
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Noidung') ?></th>
-            <td><?= h($khoahoc->noidung) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($khoahoc->id) ?></td>
+            <td><textarea name="noidung" id="editor" readonly="readonly"><?=$khoahoc->noidung?></textarea></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Luotxem') ?></th>
@@ -49,7 +47,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Trangthai') ?></th>
-            <td><?= $khoahoc->trangthai ? __('Yes') : __('No'); ?></td>
+            <td><?= status($khoahoc->trangthai) ?></td>
         </tr>
     </table>
     <div class="related">
@@ -96,3 +94,7 @@
         <?php endif; ?>
     </div>
 </div>
+<?= $this->Html->script('initckEditor.js') ?>
+<script>
+    initCkEditor();
+</script>

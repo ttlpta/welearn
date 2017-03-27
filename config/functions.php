@@ -13,6 +13,11 @@ function status($status)
     return ($status) ? 'Mở' : 'Đóng';
 }
 
+function status_ban($status)
+{
+    return ($status) ? 'Bán' : 'Ngừng bán';
+}
+
 function random_string($length = 10)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

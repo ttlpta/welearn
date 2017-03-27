@@ -81,7 +81,7 @@ class TacgiaTable extends Table
 
         $validator
             ->requirePresence('anh', 'create')
-            ->notEmpty('anh','Avatar l� b?t bu?c', 'create');
+            ->notEmpty('anh','Avatar là bắt buộc', 'create');
 
         $validator
             ->allowEmpty('mieuta');
