@@ -13,8 +13,10 @@
             echo $this->Form->control('khoahoc_id');
             echo $this->Form->control('gia_thuong');
             echo $this->Form->control('gia_khuyenmai');
-            echo $this->Form->control('quyenloi');
-            echo $this->Form->control('soluong');
+        ?>
+        <textarea name="quyenloi" id="editor"><?=$ve->quyenloi?></textarea>
+        <?php
+            // echo $this->Form->control('soluong');
             echo $this->Form->control('diadiem');
             echo $this->Form->control('thoigian');
         ?>
@@ -26,3 +28,7 @@
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+<?= $this->Html->script('initckEditor.js') ?>
+<script>
+    initCkEditor();
+</script>

@@ -18,6 +18,18 @@ function status_ban($status)
     return ($status) ? 'Bán' : 'Ngừng bán';
 }
 
+function status_donhang($status)
+{
+    $statusName = array(
+        0 => 'Chưa gọi điện',
+        1 => 'Chờ thanh toán',
+        2 => 'Đã thanh toán'
+    );
+    
+    return (isset($statusName[$status]) ? $statusName[$status] : 'Status lạ');
+}
+
+
 function random_string($length = 10)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

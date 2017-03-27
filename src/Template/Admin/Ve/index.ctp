@@ -16,7 +16,6 @@
                 <th scope="col"><?= $this->Paginator->sort('khoahoc_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gia_thuong') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gia_khuyenmai') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('soluong') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('diadiem') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('thoigian') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
@@ -30,7 +29,6 @@
                 <td><?= $ve['khoahoc']->ten ?></td>
                 <td><?= $this->Number->format($ve->gia_thuong) ?></td>
                 <td><?= $this->Number->format($ve->gia_khuyenmai) ?></td>
-                <td><?= $this->Number->format($ve->soluong) ?></td>
                 <td><?= h($ve->diadiem) ?></td>
                 <td><?= h($ve->thoigian) ?></td>
                 <td><?= status_ban($ve->trangthai) ?></td>

@@ -5,5 +5,7 @@
         <li><?= $this->Html->link(__('Danh sách tác giả'), ['controller' => 'Tacgia', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Danh sách khóa học'), ['controller' => 'Khoahoc', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('Danh sách vé'), ['controller' => 'Ve', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Danh sách khách hàng'), ['controller' => 'Khachhang', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Danh sách đơn hàng'), ['controller' => 'Donhang', 'action' => 'index']) ?> </li>
     </ul>
 </nav>

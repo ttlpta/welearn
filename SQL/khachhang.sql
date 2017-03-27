@@ -10,32 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-03-27 21:34:00
+Date: 2017-03-27 21:57:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for `ve`
+-- Table structure for `khachhang`
 -- ----------------------------
-DROP TABLE IF EXISTS `ve`;
-CREATE TABLE `ve` (
+DROP TABLE IF EXISTS `khachhang`;
+CREATE TABLE `khachhang` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `danhxung` int(1) NOT NULL,
   `ten` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
-  `khoahoc_id` int(3) NOT NULL,
-  `gia_thuong` int(10) NOT NULL,
-  `gia_khuyenmai` int(10) DEFAULT NULL,
-  `quyenloi` varchar(555) COLLATE utf8_vietnamese_ci DEFAULT NULL,
-  `trangthai` tinyint(1) NOT NULL,
-  `soluong` int(5) DEFAULT NULL,
-  `diadiem` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `thoigian` datetime NOT NULL,
+  `dienthoai` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
+  `email` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
+  `namsinh` varchar(10) COLLATE utf8_vietnamese_ci NOT NULL,
+  `khuvuc` varchar(10) COLLATE utf8_vietnamese_ci NOT NULL,
+  `lydobiet` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `datungthamgia` int(1) NOT NULL,
+  `nguoigioithieu` varchar(155) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `khoahoc` (`khoahoc_id`),
-  CONSTRAINT `khoahoc` FOREIGN KEY (`khoahoc_id`) REFERENCES `khoahoc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- ----------------------------
--- Records of ve
+-- Records of khachhang
 -- ----------------------------

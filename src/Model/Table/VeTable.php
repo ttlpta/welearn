@@ -108,12 +108,7 @@ class VeTable extends Table
 
         $validator
             ->integer('soluong')
-            ->requirePresence('soluong', 'create')
-            ->notEmpty('soluong')
-            ->add('soluong', 'validPositiveNumber', [
-                'rule' => array($this, 'isValidPositiveNumber'),
-                'message' => __('Mời số lượng nhập số dương'),
-            ]);
+            ->allowEmpty('soluong');
 
         $validator
             ->requirePresence('diadiem', 'create')

@@ -4,62 +4,66 @@
   */
 ?>
 <?=$this->element('left-sidebar')?>
-<div class="ve view large-9 medium-8 columns content">
-    <h3>Vé <?= h($ve->ten) ?></h3>
+<div class="khachhang view large-9 medium-8 columns content">
+    <h3><?= h($khachhang->id) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Ten') ?></th>
-            <td><?= h($ve->ten) ?></td>
+            <td><?= h($khachhang->ten) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Quyenloi') ?></th>
-            <td><?= h($ve->quyenloi) ?></td>
+            <th scope="row"><?= __('Dienthoai') ?></th>
+            <td><?= h($khachhang->dienthoai) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Diadiem') ?></th>
-            <td><?= h($ve->diadiem) ?></td>
+            <th scope="row"><?= __('Email') ?></th>
+            <td><?= h($khachhang->email) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Khoahoc') ?></th>
-            <td><?= $this->Html->link(
-                    $ve['khoahoc']->ten,
-                    'admin/khoahoc/view/'.$ve->khoahoc_id,
-                    ['target' => '_blank']
-                ); ?>
-            </td>
+            <th scope="row"><?= __('Namsinh') ?></th>
+            <td><?= h($khachhang->namsinh) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Gia Thuong') ?></th>
-            <td><?= $this->Number->format($ve->gia_thuong) ?></td>
+            <th scope="row"><?= __('Khuvuc') ?></th>
+            <td><?= h($khachhang->khuvuc) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Gia Khuyenmai') ?></th>
-            <td><?= $this->Number->format($ve->gia_khuyenmai) ?></td>
+            <th scope="row"><?= __('Lydobiet') ?></th>
+            <td><?= h($khachhang->lydobiet) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Trangthai') ?></th>
-            <td><?= status_ban($ve->trangthai) ?></td>
+            <th scope="row"><?= __('Nguoigioithieu') ?></th>
+            <td><?= h($khachhang->nguoigioithieu) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Thoigian') ?></th>
-            <td><?= h($ve->thoigian) ?></td>
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($khachhang->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Danhxung') ?></th>
+            <td><?= $this->Number->format($khachhang->danhxung) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Datungthamgia') ?></th>
+            <td><?= $this->Number->format($khachhang->datungthamgia) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($ve->created) ?></td>
+            <td><?= h($khachhang->created) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Updated') ?></th>
-            <td><?= h($ve->updated) ?></td>
+            <td><?= h($khachhang->updated) ?></td>
         </tr>
     </table>
     <div class="related">
         <h4><?= __('Related Donhang') ?></h4>
-        <?php if (!empty($ve->donhang)): ?>
+        <?php if (!empty($khachhang->donhang)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Khachhang Id') ?></th>
+                <th scope="col"><?= __('Ve Id') ?></th>
                 <th scope="col"><?= __('Soluong') ?></th>
                 <th scope="col"><?= __('Note') ?></th>
                 <th scope="col"><?= __('Trangthai') ?></th>
@@ -67,7 +71,7 @@
                 <th scope="col"><?= __('Updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($ve->donhang as $donhang): ?>
+            <?php foreach ($khachhang->donhang as $donhang): ?>
             <tr>
                 <td><?= h($donhang->id) ?></td>
                 <td><?= h($donhang->khachhang_id) ?></td>
@@ -89,7 +93,7 @@
     </div>
     <div class="related">
         <h4><?= __('Related Giohang') ?></h4>
-        <?php if (!empty($ve->giohang)): ?>
+        <?php if (!empty($khachhang->giohang)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
@@ -100,7 +104,7 @@
                 <th scope="col"><?= __('Updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($ve->giohang as $giohang): ?>
+            <?php foreach ($khachhang->giohang as $giohang): ?>
             <tr>
                 <td><?= h($giohang->id) ?></td>
                 <td><?= h($giohang->khachhang_id) ?></td>

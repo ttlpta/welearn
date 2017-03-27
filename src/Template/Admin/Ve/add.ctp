@@ -16,7 +16,7 @@
         ?>
         <textarea name="quyenloi" id="editor"></textarea>
         <?php
-            echo $this->Form->control('soluong');
+            // echo $this->Form->control('soluong');
             echo $this->Form->control('diadiem');
             echo $this->Form->control('thoigian');
         ?>
