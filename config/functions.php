@@ -62,3 +62,8 @@ function random_string($length = 10)
     }
     return $randomString;
 }
+
+function theloai_khoahoc($theloai)
+{
+    return ($theloai) ? 'Người lớn' : 'Trẻ em';
+}

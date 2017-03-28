@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : local-connection
+Source Server         : localhost
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : welearn
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-03-27 11:40:08
+Date: 2017-03-28 21:27:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,12 +28,13 @@ CREATE TABLE `khoahoc` (
   `video_youtube` varchar(555) COLLATE utf8_vietnamese_ci NOT NULL,
   `noidung` varchar(755) COLLATE utf8_vietnamese_ci NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
+  `theloai` int(1) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- ----------------------------
 -- Records of khoahoc
 -- ----------------------------
-INSERT INTO `khoahoc` VALUES ('1', 'test  23', 'aaa', '12', '1', 'T6dPrJJr5wTulips.jpg', '<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe src=\"https://www.youtube.com/embed/p_bVoKkPU1Q?ecver=2\" width=\"640\" height=\"360\" frameborder=\"0\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>', '<p>dddd</p>\r\n', '1', '2017-03-27 03:00:03', '2017-03-27 04:36:37');
+INSERT INTO `khoahoc` VALUES ('1', 'test  23', 'aaa', '12', '1', 'T6dPrJJr5wTulips.jpg', '<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe src=\"https://www.youtube.com/embed/p_bVoKkPU1Q?ecver=2\" width=\"640\" height=\"360\" frameborder=\"0\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>', '<p>dddd</p>\r\n', '1', '0', '2017-03-27 03:00:03', '2017-03-27 04:36:37');

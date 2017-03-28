@@ -9,6 +9,23 @@
     <?=$this->Html->link(
         'Thêm quản lý',
         ['prefix' => 'admin', 'controller' => 'Quanly', 'action' => 'add'])?>
+
+    <?= $this->Form->create($quanly, ['type' => 'file']) ?>
+    <fieldset>
+        <legend><?= __('Tìm Kiếm quản lý') ?></legend>
+        <?php
+            echo $this->Form->control('username');
+        ?>
+        <div class="input required">
+            <label for="role">Role</label>
+            <select name="role" required="required">
+                <option value="1" selected="selected">Quản lý</option>
+                <option value="2">Nhân viên</option>    
+            </select>
+        </div>
+    </fieldset>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

@@ -23,7 +23,7 @@
             <th scope="row"><?= __('Khoahoc') ?></th>
             <td><?= $this->Html->link(
                     $ve['khoahoc']->ten,
-                    'admin/khoahoc/view/'.$ve->khoahoc_id,
+                    '/admin/khoahoc/view/'.$ve->khoahoc_id,
                     ['target' => '_blank']
                 ); ?>
             </td>

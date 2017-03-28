@@ -14,6 +14,7 @@ use Cake\ORM\TableRegistry;
  * @property string $tacgia
  * @property string $anh
  * @property string $video_youtube
+ * @property int $theloai
  * @property string $noidung
  * @property bool $trangthai
  * @property \Cake\I18n\Time $created

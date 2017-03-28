@@ -2,7 +2,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AdminController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Donhang Controller
  *
@@ -22,7 +22,6 @@ class DonhangController extends AdminController
             'contain' => ['Khachhang', 'Ve']
         ];
         $donhang = $this->paginate($this->Donhang);
-
         $this->set(compact('donhang'));
         $this->set('_serialize', ['donhang']);
     }
@@ -39,7 +38,9 @@ class DonhangController extends AdminController
         $donhang = $this->Donhang->get($id, [
             'contain' => ['Khachhang', 'Ve']
         ]);
-
+        $khoahocTbl = TableRegistry::get('Khoahoc');
+        $khoahoc = $khoahocTbl->find()->select(['id', 'ten'])->where(['id' => $donhang->ve->khoahoc_id])->first();
+        $this->set('khoahoc', $khoahoc);
         $this->set('donhang', $donhang);
         $this->set('_serialize', ['donhang']);
     }

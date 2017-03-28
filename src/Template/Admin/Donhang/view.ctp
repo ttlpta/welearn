@@ -7,16 +7,24 @@
 <div class="donhang view large-9 medium-8 columns content">
     <h3><?= h('Thông tin chi tiết đơn hàng') ?></h3>
     <?=$this->Html->link(
-        'Sửa đơn hàng',
+        'Cập nhật trạng thái đơn hàng',
         ['prefix' => 'admin', 'controller' => 'Donhang', 'action' => 'edit', $donhang->id])?>
     <table class="vertical-table">
         <tr>
+            <th scope="row">Khóa học</th>
+            <td><?=$this->Html->link($khoahoc->ten, ['controller' => 'Khoahoc', 'action' => 'view', $khoahoc->id],['target' => '_blank'])?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Khachhang') ?></th>
-            <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->ten, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id]) : '' ?></td>
+            <td><?= $donhang->has('khachhang') ? $this->Html->link(danhxung_khachhang($donhang->khachhang->danhxung).'. '.$donhang->khachhang->ten, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id],['target' => '_blank']) : '' ?></td>
+        </tr>
+        <tr>
+            <th scope="row">Số điện thoại</th>
+            <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->dienthoai, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id], ['target' => '_blank']) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Ve') ?></th>
-            <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id]) : '' ?></td>
+            <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id], ['target' => '_blank']) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Note') ?></th>

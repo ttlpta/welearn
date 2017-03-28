@@ -13,25 +13,31 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('khachhang_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khachhang_sdt') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khachhang_email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('ve_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('soluong') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('note') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($donhang as $donhang): ?>
             <tr>
-                <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->ten, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id]) : '' ?></td>
-                <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id, ]) : '' ?></td>
+                <td>
+                <?= $donhang->has('khachhang') ? 
+                    $this->Html->link(
+                    danhxung_khachhang($donhang->khachhang->danhxung).'. '.$donhang->khachhang->ten, 
+                    ['controller' => 'Khachhang', 'action' => 'view', 
+                    $donhang->khachhang->id], ['target' => '_blank']) : '' ?>
+                </td>
+                <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->dienthoai, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id], ['target' => '_blank']) : '' ?></td>
+                <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->email, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id], ['target' => '_blank']) : '' ?></td>
+                <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id ], ['target' => '_blank']) : '' ?></td>
                 <td><?= $this->Number->format($donhang->soluong) ?></td>
-                <td><?= h($donhang->note) ?></td>
                 <td><?= status_donhang($donhang->trangthai) ?></td>
                 <td><?= h($donhang->created) ?></td>
-                <td><?= h($donhang->updated) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $donhang->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $donhang->id]) ?>

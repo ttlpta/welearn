@@ -16,6 +16,7 @@
                 <th scope="col"><?= $this->Paginator->sort('luotxem') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('tacgia') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('theloai') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -28,6 +29,7 @@
                 <td><?= $this->Number->format($khoahoc->luotxem) ?></td>
                 <td><?= h($khoahoc->tacgia) ?></td>
                 <td><?= status($khoahoc->trangthai) ?></td>
+                <td><?= theloai_khoahoc($khoahoc->theloai) ?></td>
                 <td><?= h($khoahoc->created) ?></td>
                 <td><?= h($khoahoc->updated) ?></td>
                 <td class="actions">

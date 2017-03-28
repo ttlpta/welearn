@@ -89,8 +89,12 @@ class KhoahocTable extends Table
             ->notEmpty('tacgia');
 
         $validator
+            ->requirePresence('theloai', 'create')
+            ->notEmpty('theloai');
+
+        $validator
             ->requirePresence('anh', 'create')
-            ->notEmpty('anh', 'Avatar l� b?t bu?c', 'create');
+            ->notEmpty('anh', 'Avatar là bắt buộc', 'create');
 
         $validator
             ->allowEmpty('video_youtube');
