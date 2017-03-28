@@ -12,8 +12,8 @@
             echo $this->Form->control('khachhang_id', ['options' => $khachhang]);
             echo $this->Form->control('ve_id', ['options' => $ve]);
             echo $this->Form->control('soluong');
-            echo $this->Form->control('note');
-            echo $this->Form->control('trangthai');
+            echo $this->Form->control('note', ['type' => 'textarea']);
+            echo $this->Form->control('trangthai', ['options' => ['Chưa gọi điện', 'Chờ thanh toán', 'Đã thanh toán']]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

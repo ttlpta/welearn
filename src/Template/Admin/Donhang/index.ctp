@@ -26,7 +26,7 @@
             <?php foreach ($donhang as $donhang): ?>
             <tr>
                 <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->ten, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id]) : '' ?></td>
-                <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id]) : '' ?></td>
+                <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id, ]) : '' ?></td>
                 <td><?= $this->Number->format($donhang->soluong) ?></td>
                 <td><?= h($donhang->note) ?></td>
                 <td><?= status_donhang($donhang->trangthai) ?></td>

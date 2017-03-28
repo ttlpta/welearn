@@ -11,14 +11,8 @@
         <?php
             echo $this->Form->control('username');
             echo $this->Form->control('password');
+            echo $this->Form->control('role', ['options' => [1 => "Quản lý", 2 => 'Nhân viên']]);
         ?>
-        <div class="input required">
-            <label for="role">Role</label>
-            <select name="role" required="required">
-                <option value="1" selected="selected">Quản lý</option>
-                <option value="2">Nhân viên</option>    
-            </select>
-        </div>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

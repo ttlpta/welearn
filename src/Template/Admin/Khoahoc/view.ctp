@@ -55,14 +55,10 @@
         <?php if (!empty($khoahoc->ve)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Ten') ?></th>
-                <th scope="col"><?= __('Khoahoc Id') ?></th>
                 <th scope="col"><?= __('Gia Thuong') ?></th>
                 <th scope="col"><?= __('Gia Khuyenmai') ?></th>
-                <th scope="col"><?= __('Quyenloi') ?></th>
                 <th scope="col"><?= __('Trangthai') ?></th>
-                <th scope="col"><?= __('Soluong') ?></th>
                 <th scope="col"><?= __('Diadiem') ?></th>
                 <th scope="col"><?= __('Thoigian') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
@@ -71,14 +67,10 @@
             </tr>
             <?php foreach ($khoahoc->ve as $ve): ?>
             <tr>
-                <td><?= h($ve->id) ?></td>
                 <td><?= h($ve->ten) ?></td>
-                <td><?= h($ve->khoahoc_id) ?></td>
                 <td><?= h($ve->gia_thuong) ?></td>
                 <td><?= h($ve->gia_khuyenmai) ?></td>
-                <td><?= h($ve->quyenloi) ?></td>
-                <td><?= h($ve->trangthai) ?></td>
-                <td><?= h($ve->soluong) ?></td>
+                <td><?= status_ban($ve->trangthai) ?></td>
                 <td><?= h($ve->diadiem) ?></td>
                 <td><?= h($ve->thoigian) ?></td>
                 <td><?= h($ve->created) ?></td>

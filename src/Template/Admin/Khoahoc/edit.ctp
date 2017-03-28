@@ -31,13 +31,7 @@
             <label for="mieuta">Nội dung</label>
             <textarea name="noidung" id="editor" ><?=$khoahoc->noidung?></textarea>
         </div>
-        <div class="input required">
-            <label for="trangthai">Trạng thái</label>
-            <select name="trangthai" required="required">
-                <option value="0">Đóng</option>
-                <option value="1" selected="selected">Mở</option>
-            </select>
-        </div>
+        <?=$this->Form->control('luotxem', ['options' => ['Đóng', 'Mở']])?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

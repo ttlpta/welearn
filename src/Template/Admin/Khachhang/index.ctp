@@ -21,16 +21,14 @@
         <tbody>
             <?php foreach ($khachhang as $khachhang): ?>
             <tr>
-                <td><?= $this->Number->format($khachhang->danhxung) ?></td>
+                <td><?= danhxung_khachhang($khachhang->danhxung) ?></td>
                 <td><?= h($khachhang->ten) ?></td>
                 <td><?= h($khachhang->dienthoai) ?></td>
                 <td><?= h($khachhang->email) ?></td>
-                <td><?= h($khachhang->namsinh) ?></td>
                 <td><?= h($khachhang->khuvuc) ?></td>
                 <td><?= h($khachhang->created) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $khachhang->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $khachhang->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $khachhang->id], ['confirm' => __('Are you sure you want to delete # {0}?', $khachhang->id)]) ?>
                 </td>
             </tr>

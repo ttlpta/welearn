@@ -12,7 +12,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('username') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('role') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -23,7 +22,6 @@
         <tbody>
             <?php foreach ($quanly as $quanly): ?>
             <tr>
-                <td><?= $this->Number->format($quanly->id) ?></td>
                 <td><?= h($quanly->username) ?></td>
                 <td><?= role_quanly_str($quanly->role) ?></td>
                 <td><?= h($quanly->created) ?></td>

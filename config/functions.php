@@ -29,6 +29,28 @@ function status_donhang($status)
     return (isset($statusName[$status]) ? $statusName[$status] : 'Status lạ');
 }
 
+function danhxung_khachhang($danhxung)
+{
+    $danhxungList = array(
+        0 => 'Mr',
+        1 => 'Mrs',
+        2 => 'Ms'
+    );
+
+    return (isset($danhxungList[$danhxung]) ? $danhxungList[$danhxung] : '');
+}
+
+function status_thamgiakhoahoc($status)
+{
+    $statusList = array(
+        0 => 'Chưa từng tham gia',
+        1 => 'Đã từng tham gia',
+    );
+
+    return (isset($statusList[$status]) ? $statusList[$status] : '');
+}
+
+
 
 function random_string($length = 10)
 {

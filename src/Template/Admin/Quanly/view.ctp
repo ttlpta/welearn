@@ -11,10 +11,6 @@
             <td><?= h($quanly->username) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($quanly->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Role') ?></th>
             <td><?= role_quanly_str($quanly->role) ?></td>
         </tr>

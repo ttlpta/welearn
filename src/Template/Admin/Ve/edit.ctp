@@ -16,14 +16,10 @@
         ?>
         <textarea name="quyenloi" id="editor"><?=$ve->quyenloi?></textarea>
         <?php
-            // echo $this->Form->control('soluong');
             echo $this->Form->control('diadiem');
             echo $this->Form->control('thoigian');
+            echo $this->Form->control('trangthai', ['options' => ['Ngừng bán', 'Bán']]);
         ?>
-        <select name="trangthai">
-            <option value="0">Ngừng bán</option>
-            <option value="1">Bán</option>
-        </select>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
