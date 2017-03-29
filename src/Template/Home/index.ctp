@@ -9,13 +9,13 @@
             <div class='container'>
                 <div class='row'>
                     <div class='col-md-6 category first'>
-                        <a href='/khoa-hoc-danh-cho-nguoi-lon'>
+                        <a href='<?=$this->Url->build('/', true)?>khoa-hoc-danh-cho-nguoi-lon'>
                             <h5>Người lớn</h5>
                             <?=$this->Html->image('cntt.png', ['alt' => 'Người lớn'])?>
                         </a>
                     </div>
                     <div class='col-md-6 category first'>
-                        <a href='/khoa-hoc-danh-cho-tre-em'>
+                        <a href='<?=$this->Url->build('/', true)?>khoa-hoc-danh-cho-tre-em'>
                             <h5>Trẻ em</h5>
                             <?=$this->Html->image('cntt.png', ['alt' => 'Trẻ em'])?>
                         </a>

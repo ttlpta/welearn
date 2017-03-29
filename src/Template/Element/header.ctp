@@ -28,7 +28,7 @@
         <div class='carousel slide carousel-banner' data-ride='carousel'>
             <!-- Wrapper for slides -->
             <div class='carousel-inner' role='listbox'>
-                <div class='item one active' style="background-image: url(http://welearn.local/webroot/img/banner-home-1.png);">
+                <div class='item one active' style="background-image: url(<?=$this->Url->build('/', true)?>webroot/img/banner-home-1.png);">
                     <div class='carousel-caption hidden-xs target'>
                         <div class='container container-carousel animated fadeInUp'>
                             <h3 class='title-des'>Dễ học, dễ ứng dụng ngay</h3>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='item two' style="background-image: url(http://welearn.local/webroot/img/banner-home-2.png);">
+                <div class='item two' style="background-image: url(<?=$this->Url->build('/', true)?>webroot/img/banner-home-2.png);">
                     <div class='carousel-caption hidden-xs target'>
                         <div class='container container-carousel animated fadeInUp'>
                             <h3 class='title-des'>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='item three' style="background-image: url(http://welearn.local/webroot/img/banner-home-3.png);">
+                <div class='item three' style="background-image: url(<?=$this->Url->build('/', true)?>webroot/img/banner-home-3.png);">
                     <div class='carousel-caption hidden-xs target'>
                         <div class='container container-carousel animated fadeInUp'>
                             <h3 class='title-des'>
