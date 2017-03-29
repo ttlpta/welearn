@@ -2,7 +2,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Ve Controller
  *
@@ -18,10 +18,31 @@ class VeController extends AdminController
      */
     public function index()
     {
+
+        if ($this->request->is('post')) {
+            $search = [
+                'Ve.ten LIKE' =>  ($this->request->getData('ten')) ? '%'.$this->request->getData('ten').'%' : '',
+                'khoahoc_id' =>  $this->request->getData('khoahoc_id'),
+                'diadiem LIKE' =>  ($this->request->getData('diadiem')) ? '%'.$this->request->getData('diadiem').'%' : '',
+                'Ve.trangthai' =>  $this->request->getData('trangthai')
+            ];
+
+            $query = $this->Ve->find('all')->where($this->_preparedDataToSearch($search));
+        } else {
+            $query = $this->Ve;
+        }
+
         $this->paginate = [
             'contain' => ['Khoahoc']
         ];
-        $ve = $this->paginate($this->Ve);
+        $ve = $this->paginate($query);
+        $khoahocs = $this->Ve->Khoahoc->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($khoahoc) {
+                return $khoahoc->ten;
+            }
+        ]);
+        $this->set(compact('khoahocs'));
         $this->set(compact('ve'));
         $this->set('_serialize', ['ve']);
     }

@@ -5,10 +5,46 @@
 ?>
 <?=$this->element('left-sidebar')?>
 <div class="donhang index large-9 medium-8 columns content">
+    <form method="post">
+        <fieldset>
+            <legend><?= __('Tìm kiếm đơn hàng') ?></legend>
+            <div class="input">
+                <label for="ten">Tên khách hàng</label>
+                <input type="text" name="ten" id="ten" />
+            </div>
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" />
+            </div>
+            <div class="input">
+                <label for="dienthoai">Số điện thoại</label>
+                <input type="text" name="dienthoai" id="dienthoai" />
+            </div>
+            <div class="input">
+                <label for="ve">Tên vé</label>
+                <input type="text" name="ve" id="ve" />
+            </div>
+            <div class="input">
+                <label for="trangthai">Trạng thai</label>
+                <select name="trangthai">
+                    <option value=""></option>
+                    <option value="0">Chưa gọi điện</option>
+                    <option value="1">Chờ thanh toán</option>
+                    <option value="2">Đã thanh toán</option>
+                </select>
+            </div>
+        </fieldset>
+        <button type="submit">Tìm kiếm</button>
+        <?=$this->Html->link(
+            'Trở lại danh sách đầy đủ',
+            ['prefix' => 'admin', 'controller' => 'Donhang', 'action' => 'index'],
+            ['class' => 'button'])?>
+    </form>
+    <hr>
     <h3><?= __('Donhang') ?></h3>
     <?=$this->Html->link(
         'Thêm đơn hàng',
-        ['prefix' => 'admin', 'controller' => 'Donhang', 'action' => 'add'])?>
+        ['prefix' => 'admin', 'controller' => 'Donhang', 'action' => 'add'], ['class' => 'button'])?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

@@ -25,7 +25,24 @@ class KhoahocController extends AdminController
 
     public function index()
     {
-        $khoahocWithIdTacgias = $this->paginate($this->Khoahoc);
+        if ($this->request->is('post')) {
+            $search = [
+                'ten LIKE' =>  ($this->request->getData('ten')) ? '%'.$this->request->getData('ten').'%' : '',
+                'trangthai' =>  $this->request->getData('trangthai'),
+                'theloai' =>  $this->request->getData('theloai')
+            ];
+
+            if($this->request->getData('tacgia')) {
+                $tacgia = implode(',', $this->request->getData('tacgia'));
+                $searchTacgia = ['OR' => [['tacgia LIKE' => $tacgia], ['tacgia LIKE' =>  '%,'.$tacgia], ['tacgia LIKE' =>  $tacgia.',%'], ['tacgia LIKE' =>  '%,'.$tacgia.',%']]];
+                $query = $this->Khoahoc->find('all')->where($this->_preparedDataToSearch($search + $searchTacgia));
+            } else {
+                $query = $this->Khoahoc->find('all')->where($this->_preparedDataToSearch($search));
+            }
+        } else {
+            $query = $this->Khoahoc;
+        }
+        $khoahocWithIdTacgias = $this->paginate($query);
         $khoahocWithTenTacgias = [];
         foreach($khoahocWithIdTacgias as $khoahoc){
             $tacgiaIdArr = explode(',', $khoahoc->tacgia);
@@ -39,7 +56,8 @@ class KhoahocController extends AdminController
 
             $khoahocWithTenTacgias[] = $khoahoc;
         }
-
+        $tacgias = $this->_getAllTacgia();
+        $this->set(compact('tacgias'));
         $this->set('khoahoc', $khoahocWithTenTacgias);
     }
 
@@ -77,7 +95,7 @@ class KhoahocController extends AdminController
     public function add()
     {
         $khoahoc = $this->Khoahoc->newEntity();
-        $tacgias = $this->_getAllTacgia();
+
         if ($this->request->is('post')) {
             $khoahocData = $this->request->getData();
             if($khoahocData['anh']['name'] && !$this->_isImage($khoahocData['anh']['name'])){
@@ -94,8 +112,9 @@ class KhoahocController extends AdminController
                 $this->Flash->error(__('The khoahoc could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('khoahoc'));
+        $tacgias = $this->_getAllTacgia();
         $this->set(compact('tacgias'));
+        $this->set(compact('khoahoc'));
         $this->set('_serialize', ['khoahoc']);
     }
 

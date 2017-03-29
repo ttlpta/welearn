@@ -5,17 +5,33 @@
 ?>
 <?=$this->element('left-sidebar')?>
 <div class="tacgia index large-10 medium-8 columns content">
+    <form method="post">
+        <fieldset>
+            <legend><?= __('Tìm kiếm tác giả') ?></legend>
+            <div class="input">
+                <label for="ten">Tên tác giả</label>
+                <input type="text" name="ten" id="username">
+            </div>
+        </fieldset>
+        <button type="submit">Tìm kiếm</button>
+        <?=$this->Html->link(
+            'Trở lại danh sách đầy đủ',
+            ['prefix' => 'admin', 'controller' => 'Tacgia', 'action' => 'index'],
+            ['class' => 'button'])?>
+    </form>
+    <hr>
     <h3><?= __('Danh sách tác giả') ?></h3>
     <?=$this->Html->link(
         'Thêm tác giả',
-        ['prefix' => 'admin', 'controller' => 'Tacgia', 'action' => 'add'])?>
+        ['prefix' => 'admin', 'controller' => 'Tacgia', 'action' => 'add'],
+        ['class' => 'button'])?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('Tên') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Ảnh') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Ngày thêm') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Ngày sửa') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ten') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('anh') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>

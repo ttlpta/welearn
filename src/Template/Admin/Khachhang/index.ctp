@@ -5,6 +5,29 @@
 ?>
 <?=$this->element('left-sidebar')?>
 <div class="khachhang index large-9 medium-8 columns content">
+    <form method="post">
+        <fieldset>
+            <legend><?= __('Tìm kiếm khách hàng') ?></legend>
+            <div class="input">
+                <label for="ten">Tên</label>
+                <input type="text" name="ten" id="ten" />
+            </div>
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" />
+            </div>
+            <div class="input">
+                <label for="dienthoai">Số điện thoại</label>
+                <input type="text" name="dienthoai" id="dienthoai" />
+            </div>
+        </fieldset>
+        <button type="submit">Tìm kiếm</button>
+        <?=$this->Html->link(
+            'Trở lại danh sách đầy đủ',
+            ['prefix' => 'admin', 'controller' => 'Khachhang', 'action' => 'index'],
+            ['class' => 'button'])?>
+    </form>
+    <hr>
     <h3><?= __('Khachhang') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>

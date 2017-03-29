@@ -18,8 +18,16 @@ class TacgiaController extends AdminController
      */
     public function index()
     {
-        $tacgia = $this->paginate($this->Tacgia);
 
+        if ($this->request->is('post')) {
+            $search =[
+                'ten LIKE' =>  ($this->request->getData('ten')) ? '%'.$this->request->getData('ten').'%' : '',
+            ];
+            $query = $this->Tacgia->find('all')->where($this->_preparedDataToSearch($search));
+        } else {
+            $query = $this->Tacgia;
+        }
+        $tacgia = $this->paginate($query);
         $this->set(compact('tacgia'));
         $this->set('_serialize', ['tacgia']);
     }

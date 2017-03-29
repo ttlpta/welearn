@@ -61,4 +61,22 @@ class AdminController extends AppController
         ]);
     }
 
+    protected function _renameImage($oldName)
+    {
+        return random_string().$oldName;
+    }
+
+    protected function _isImage($imageName){
+        if(!$imageName)
+            return false;
+
+        $ext = substr(strtolower(strrchr($imageName, '.')), 1);
+
+        return in_array($ext, array('jpg', 'jpeg', 'gif', 'png'));
+    }
+
+    protected function _preparedDataToSearch($data)
+    {
+        return array_filter($data, function($value) { return $value !== ''; });
+    }
 }

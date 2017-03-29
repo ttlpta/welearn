@@ -5,10 +5,50 @@
 ?>
 <?=$this->element('left-sidebar')?>
 <div class="khoahoc index large-9 medium-8 columns content">
+    <form method="post">
+        <fieldset>
+            <legend><?= __('Tìm kiếm khóa học') ?></legend>
+            <div class="input">
+                <label for="ten">Tên</label>
+                <input type="text" name="ten" id="username">
+            </div>
+            <div class="input">
+                <label for="tacgia">Tên tác giả</label>
+                <select data-placeholder="Chọn tác giả" name="tacgia[]" class="chosen-select" multiple tabindex="4">
+                    <?php foreach($tacgias as $tacgia): ?>
+                        <option value="<?=$tacgia->id?>"><?=$tacgia->ten?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="input">
+                <label for="theloai">Thể loại</label>
+                <select name="theloai">
+                    <option value=""></option>
+                    <option value="0">Trẻ em</option>
+                    <option value="1">Người lớn</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="trangthai">Trạng thái</label>
+                <select name="trangthai">
+                    <option value=""></option>
+                    <option value="0">Đóng</option>
+                    <option value="1">Mở</option>
+                </select>
+            </div>
+        </fieldset>
+        <button type="submit">Tìm kiếm</button>
+        <?=$this->Html->link(
+            'Trở lại danh sách đầy đủ',
+            ['prefix' => 'admin', 'controller' => 'Khoahoc', 'action' => 'index'],
+            ['class' => 'button'])?>
+    </form>
+    <hr>
     <h3><?= __('Khoahoc') ?></h3>
     <?=$this->Html->link(
         'Thêm khóa học',
-        ['prefix' => 'admin', 'controller' => 'Khoahoc', 'action' => 'add'])?>
+        ['prefix' => 'admin', 'controller' => 'Khoahoc', 'action' => 'add'],
+        ['class' => 'button'])?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -52,3 +92,6 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+<script>
+    $('.chosen-select').chosen();
+</script>

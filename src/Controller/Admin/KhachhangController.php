@@ -18,7 +18,18 @@ class KhachhangController extends AdminController
      */
     public function index()
     {
-        $khachhang = $this->paginate($this->Khachhang);
+        if ($this->request->is('post')) {
+            $search = [
+                'ten LIKE' =>  ($this->request->getData('ten')) ? '%'.$this->request->getData('ten').'%' : '',
+                'email LIKE' =>  ($this->request->getData('email')) ? '%'.$this->request->getData('email').'%' : '',
+                'dienthoai LIKE' =>  ($this->request->getData('dienthoai')) ? '%'.$this->request->getData('dienthoai').'%' : '',
+            ];
+
+            $query = $this->Khachhang->find('all')->where($this->_preparedDataToSearch($search));
+        } else {
+            $query = $this->Khachhang;
+        }
+        $khachhang = $this->paginate($query);
 
         $this->set(compact('khachhang'));
         $this->set('_serialize', ['khachhang']);

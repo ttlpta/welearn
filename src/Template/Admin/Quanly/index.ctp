@@ -5,27 +5,34 @@
 ?>
 <?=$this->element('left-sidebar')?>
 <div class="quanly index large-9 medium-8 columns content">
+    <form method="post">
+        <fieldset>
+            <legend><?= __('Tìm Kiếm quản lý') ?></legend>
+            <div class="input">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="input">
+                <label for="role">Role</label>
+                <select name="role">
+                    <option value=""></option>
+                    <option value="1">Quản lý</option>
+                    <option value="2">Nhân viên</option>
+                </select>
+            </div>
+        </fieldset>
+        <button type="submit">Tìm kiếm</button>
+        <?=$this->Html->link(
+            'Trở lại danh sách đầy đủ',
+            ['prefix' => 'admin', 'controller' => 'Quanly', 'action' => 'index'],
+            ['class' => 'button'])?>
+    </form>
+    <hr>
     <h3><?= __('Danh sách quản lý') ?></h3>
     <?=$this->Html->link(
         'Thêm quản lý',
-        ['prefix' => 'admin', 'controller' => 'Quanly', 'action' => 'add'])?>
-
-    <?= $this->Form->create($quanly, ['type' => 'file']) ?>
-    <fieldset>
-        <legend><?= __('Tìm Kiếm quản lý') ?></legend>
-        <?php
-            echo $this->Form->control('username');
-        ?>
-        <div class="input required">
-            <label for="role">Role</label>
-            <select name="role" required="required">
-                <option value="1" selected="selected">Quản lý</option>
-                <option value="2">Nhân viên</option>    
-            </select>
-        </div>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+        ['prefix' => 'admin', 'controller' => 'Quanly', 'action' => 'add'],
+        ['class' => 'button'])?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

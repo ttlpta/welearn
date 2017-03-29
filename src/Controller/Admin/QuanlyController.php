@@ -22,7 +22,17 @@ class QuanlyController extends AdminController
      */
     public function index()
     {
-        $quanly = $this->paginate($this->Quanly);
+
+        if ($this->request->is('post')) {
+            $search = [
+                'username LIKE' =>  ($this->request->getData('username')) ? '%'.$this->request->getData('username').'%' : '',
+                'role' =>  $this->request->getData('role')
+            ];
+            $query = $this->Quanly->find('all')->where($this->_preparedDataToSearch($search));
+        } else {
+            $query = $this->Quanly;
+        }
+        $quanly = $this->paginate($query);
 
         $this->set(compact('quanly'));
         $this->set('_serialize', ['quanly']);

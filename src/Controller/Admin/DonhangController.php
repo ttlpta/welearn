@@ -18,10 +18,24 @@ class DonhangController extends AdminController
      */
     public function index()
     {
+        if ($this->request->is('post')) {
+            $search = [
+                'Khachhang.ten LIKE' =>  ($this->request->getData('ten')) ? '%'.$this->request->getData('ten').'%' : '',
+                'Khachhang.email LIKE' =>  ($this->request->getData('email')) ? '%'.$this->request->getData('email').'%' : '',
+                'Khachhang.dienthoai LIKE' =>  ($this->request->getData('dienthoai')) ? '%'.$this->request->getData('dienthoai').'%' : '',
+                'Ve.ten LIKE' =>  ($this->request->getData('ve')) ? '%'.$this->request->getData('ve').'%' : '',
+                'Donhang.trangthai' =>  $this->request->getData('trangthai')
+            ];
+
+            $query = $this->Donhang->find('all')->where($this->_preparedDataToSearch($search));
+        } else {
+            $query = $this->Donhang;
+        }
+
         $this->paginate = [
             'contain' => ['Khachhang', 'Ve']
         ];
-        $donhang = $this->paginate($this->Donhang);
+        $donhang = $this->paginate($query);
         $this->set(compact('donhang'));
         $this->set('_serialize', ['donhang']);
     }
