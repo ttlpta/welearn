@@ -28,7 +28,7 @@
         <div class='carousel slide carousel-banner' data-ride='carousel'>
             <!-- Wrapper for slides -->
             <div class='carousel-inner' role='listbox'>
-                <div class='item one' style="background: url(//static.edumall.vn/assets/abtesting/homepage/v1/banner-home-1-e1b6b4404862124b19c76b7e1632a698053d1f751b2115bade7afb15bbace2a3.png) no-repeat;">
+                <div class='item one active' style="background-image: url(http://welearn.local/webroot/img/banner-home-1.png);">
                     <div class='carousel-caption hidden-xs target'>
                         <div class='container container-carousel animated fadeInUp'>
                             <h3 class='title-des'>Dễ học, dễ ứng dụng ngay</h3>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class='item two active' style="background: url(//static.edumall.vn/assets/abtesting/homepage/v1/banner-home-2-1a78cbf70b547e10ad62cf77784183c642dd8c8d8b1b409d07d8657f4232c9c0.png) no-repeat;">
+                <div class='item two' style="background-image: url(http://welearn.local/webroot/img/banner-home-2.png);">
                     <div class='carousel-caption hidden-xs target'>
                         <div class='container container-carousel animated fadeInUp'>
                             <h3 class='title-des'>
@@ -74,26 +74,29 @@
                         </div>
                     </div>
                 </div>
-                <div class='item three' style="background: url(//static.edumall.vn/assets/abtesting/homepage/v1/banner-home-3-b07cd1c01ff62408ce227f3f5f90d89c28d0a930ffe3fa8d96062926daaaf6ac.png) no-repeat;">
+                <div class='item three' style="background-image: url(http://welearn.local/webroot/img/banner-home-3.png);">
                     <div class='carousel-caption hidden-xs target'>
                         <div class='container container-carousel animated fadeInUp'>
                             <h3 class='title-des'>
-                                Trải nghiệm học tập không giới hạn asdasds
+                                Sẵn sàng học mọi kỹ năng để làm chủ tương lai
                             </h3>
 
                             <div class='row description-carousel'>
-                                <div class='col-sm-6 align-right'>
-                                    <p><i aria-hidden='true' class='fa fa-laptop'></i>Máy tính, internet
+                                <div class='col-sm-4 align-right'>
+                                    <p><i aria-hidden='true' class='fa fa-database'></i>500+ Khóa học
                                     </p>
                                 </div>
-                                <div class='col-sm-6 align-left'>
-                                    <p><i aria-hidden='true' class='fa fa-map-marker'></i>Bất kì nơi nào
+                                <div class='col-sm-4'>
+                                    <p><i aria-hidden='true' class='fa fa-users'></i>200+ Giảng viên
+                                    </p>
+                                </div>
+                                <div class='col-sm-4 align-left'>
+                                    <p><i aria-hidden='true' class='fa fa-graduation-cap'></i>250,000 Học viên
                                     </p>
                                 </div>
                             </div>
                             <a class='button' href='courses.html'>Khám phá BabyLons</a>
                         </div>
-                    </div>
                 </div>
             </div>
             <!-- Controls -->
