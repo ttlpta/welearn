@@ -32,12 +32,12 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/khoa-hoc', ['controller' => 'Course', 'action' => 'detail']);
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/admin/*', ['prefix' => 'admin','controller' => 'Quanly', 'action' => 'index']);
 
     $routes->fallbacks(DashedRoute::class);
 
     // Admin 
     Router::prefix('admin', function ($routes) {
-        
         $routes->fallbacks(DashedRoute::class);
     });
 });
