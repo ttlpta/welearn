@@ -385,10 +385,6 @@
 </div>
 <?= $this->element('Popup/cart');?>
 <?= $this->Html->script('main2'); ?>
-<?= $this->Html->script('crosssell'); ?>
-<script>
-    Crosssell.init({"show_page": 'detail'}, {}, 'https://crosssellads.edumall.vn/api/banner/crosssell');
-</script>
 <script>
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
