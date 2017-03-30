@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  * @property int $soluong
  * @property string $note
  * @property int $trangthai
+ * @property int $khoahoc_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
  *

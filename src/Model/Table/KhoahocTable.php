@@ -110,4 +110,41 @@ class KhoahocTable extends Table
 
         return $validator;
     }
+
+    public function getKhoahocMuaNhieuNhat($type = 1, $limit)
+    {
+        $donHangTbl = TableRegistry::get('Donhang');
+        $query = $donHangTbl->find()->group('khoahoc_id')->select('khoahoc_id');
+        $donhangs = $query->select(['soluong' => $query->func()->sum('soluong')])->order(['soluong' => 'DESC'])->toArray();
+        $khoahocIds = array();
+        foreach($donhangs as $donhang) {
+            $khoahocIds[] = $donhang->khoahoc_id;
+        }
+        $khoahocIdStr = implode(',', $khoahocIds);
+        if($khoahocIds) {
+            $khoahocs = $this->find('all',[
+                'conditions' => [
+                    'id IN' => $khoahocIds,
+                    'theloai' => $type
+                ],
+                'order' => array('FIELD(id, '.$khoahocIdStr.')')
+            ])->limit($limit)->toArray();
+
+            return $khoahocs;
+        }
+
+        return false;
+    }
+
+    public function getKhoahocLuotXemNhieuNhat($type = 1, $limit) {
+        $khoahocs = $this->findByTheloai($type)->order(['luotxem' => 'DESC'])->limit($limit);
+
+        return $khoahocs;
+    }
+
+    public function getKhoahocMoiNhat($type = 1, $limit) {
+        $khoahocs = $this->findByTheloai($type)->order(['created' => 'DESC'])->limit($limit);
+
+        return $khoahocs;
+    }
 }

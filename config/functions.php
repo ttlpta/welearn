@@ -67,3 +67,8 @@ function theloai_khoahoc($theloai)
 {
     return ($theloai) ? 'Người lớn' : 'Trẻ em';
 }
+
+function gia_daydu($gia) {
+
+    return $gia.'000';
+}

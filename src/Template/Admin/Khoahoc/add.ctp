@@ -43,5 +43,5 @@
 <?= $this->Html->script('initckEditor.js') ?>
 <script>
     initCkEditor();
-    $('.chosen-select').chosen();
+    $('.chosen-select').chosen({className: 'test'});
 </script>
