@@ -68,7 +68,10 @@ class DonhangController extends AdminController
     {
         $donhang = $this->Donhang->newEntity();
         if ($this->request->is('post')) {
-            $donhang = $this->Donhang->patchEntity($donhang, $this->request->getData());
+            $requestData = $this->request->getData();
+            $khoahocIdByVe = $this->Donhang->Ve->findById($this->request->getData('ve_id'))->select('khoahoc_id')->first();
+            $requestData['khoahoc_id'] = $khoahocIdByVe->khoahoc_id;
+            $donhang = $this->Donhang->patchEntity($donhang, $requestData);
             if ($this->Donhang->save($donhang)) {
                 $this->Flash->success(__('The donhang has been saved.'));
 
