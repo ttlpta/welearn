@@ -27,11 +27,14 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
-    $routes->connect('/khoa-hoc-danh-cho-nguoi-lon', ['controller' => 'Course', 'action' => 'index', 1]);
-    $routes->connect('/khoa-hoc-danh-cho-tre-em', ['controller' => 'Course', 'action' => 'index', 0]);
-    $routes->connect('/khoa-hoc', ['controller' => 'Course', 'action' => 'detail']);
+    $routes->connect('/tac-ca-khoa-hoc', ['controller' => 'Course', 'action' => 'index']);
+    $routes->connect('/khoa-hoc-danh-cho-nguoi-lon', ['controller' => 'Course', 'action' => 'type', 1]);
+    $routes->connect('/khoa-hoc-danh-cho-tre-em', ['controller' => 'Course', 'action' => 'type', 0]);
+    $routes->connect('/khoa-hoc/*', ['controller' => 'Course', 'action' => 'detail']);
+    $routes->connect('/thanh-toan', ['controller' => 'Checkout', 'action' => 'index']);
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/tacgia/*', ['controller' => 'Author', 'action' => 'detail']);
     $routes->connect('/admin/*', ['prefix' => 'admin','controller' => 'Quanly', 'action' => 'index']);
 
     $routes->fallbacks(DashedRoute::class);

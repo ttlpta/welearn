@@ -35,22 +35,6 @@
                                     </div>
                                 </div>
                             </a>
-
-                            <div class='course-wishlist'>
-                                <a class='wishlist-heart' val='57564015047c9966e84cc85c'>
-                                    <div class='wishlist-heart-icon'>
-                                        <i class='fa fa-heart'></i>
-                                    </div>
-                                    <div class='wishlist-tooltip'>
-                                        <div class='wishlist-tooltip-bg'>
-                                            <i class='fa fa-sort-asc wishlist-tooltip-arrow'></i>
-                                        </div>
-                                        <div class='wishlist-tooltip-inner'>
-                                            <span style='font-size: 12px;'>Quan tâm</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                         <?php endforeach;?>
                     </div>
@@ -86,22 +70,6 @@
                                         </div>
                                     </div>
                                 </a>
-
-                                <div class='course-wishlist'>
-                                    <a class='wishlist-heart' val='57564015047c9966e84cc85c'>
-                                        <div class='wishlist-heart-icon'>
-                                            <i class='fa fa-heart'></i>
-                                        </div>
-                                        <div class='wishlist-tooltip'>
-                                            <div class='wishlist-tooltip-bg'>
-                                                <i class='fa fa-sort-asc wishlist-tooltip-arrow'></i>
-                                            </div>
-                                            <div class='wishlist-tooltip-inner'>
-                                                <span style='font-size: 12px;'>Quan tâm</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -133,22 +101,6 @@
                                 </div>
                             </div>
                         </a>
-
-                        <div class='course-wishlist'>
-                            <a class='wishlist-heart' val='57564015047c9966e84cc85c'>
-                                <div class='wishlist-heart-icon'>
-                                    <i class='fa fa-heart'></i>
-                                </div>
-                                <div class='wishlist-tooltip'>
-                                    <div class='wishlist-tooltip-bg'>
-                                        <i class='fa fa-sort-asc wishlist-tooltip-arrow'></i>
-                                    </div>
-                                    <div class='wishlist-tooltip-inner'>
-                                        <span style='font-size: 12px;'>Quan tâm</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -156,4 +108,3 @@
         </div>
     </main>
 </div>
-<!--$this->Html->script('main3.js')-->

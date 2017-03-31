@@ -37,7 +37,7 @@
         </div>
         <div class='header-col header-col-mid'>
             <div class='hd-brand'>
-                <div class='logo'>
+                <div class='logo' on-lci>
                 <?=$this->Html->image('logo.png', ['alt' => 'Logo', 'class' => "logo-medium", "style" => "height: 55px;"])?>
                 </div>
             </div>

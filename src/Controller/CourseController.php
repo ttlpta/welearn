@@ -21,21 +21,21 @@ class CourseController extends AppController
         $this->_veTbl = TableRegistry::get('Ve');
     }
 
-    public function index($type)
+    public function index()
     {
-        $khoahocBestSellers = $this->_khoahocTbl->getKhoahocMuaNhieuNhat($type, LIMIT_COURSE_EACHPAGE);
+        $khoahocBestSellers = $this->_khoahocTbl->getKhoahocMuaNhieuNhat(LIMIT_COURSE_EACHPAGE);
         $khoahocBestSellersFullData = [];
         foreach($khoahocBestSellers as $khoahoc) {
             $khoahocBestSellersFullData[] = $this->_prepareKhoahocData($khoahoc);
         }
 
-        $khoahocQuantamnhat = $this->_khoahocTbl->getKhoahocLuotXemNhieuNhat($type, LIMIT_COURSE_EACHPAGE);
+        $khoahocQuantamnhat = $this->_khoahocTbl->getKhoahocLuotXemNhieuNhat(LIMIT_COURSE_EACHPAGE);
         $khoahocQuantamnhatFullData = [];
         foreach($khoahocQuantamnhat as $khoahoc) {
             $khoahocQuantamnhatFullData[] = $this->_prepareKhoahocData($khoahoc);
         }
 
-        $khoahocMoinhat = $this->_khoahocTbl->getKhoahocMoiNhat($type, LIMIT_COURSE_EACHPAGE);
+        $khoahocMoinhat = $this->_khoahocTbl->getKhoahocMoiNhat(LIMIT_COURSE_EACHPAGE);
         $khoahocMoinhatFullData = [];
         foreach($khoahocMoinhat as $khoahoc) {
             $khoahocMoinhatFullData[] = $this->_prepareKhoahocData($khoahoc);
@@ -44,6 +44,10 @@ class CourseController extends AppController
         $this->set('khoahocMuaNhieuNhat', $khoahocBestSellersFullData);
         $this->set('khoahocQuantamNhat', $khoahocQuantamnhatFullData);
         $this->set('khoahocMoinhat', $khoahocMoinhatFullData);
+    }
+
+    public function type($type)
+    {
     }
 
     public function detail()

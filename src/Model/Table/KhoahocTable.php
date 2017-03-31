@@ -111,7 +111,7 @@ class KhoahocTable extends Table
         return $validator;
     }
 
-    public function getKhoahocMuaNhieuNhat($type = 1, $limit)
+    public function getKhoahocMuaNhieuNhat($limit, $type = null)
     {
         $donHangTbl = TableRegistry::get('Donhang');
         $query = $donHangTbl->find()->group('khoahoc_id')->select('khoahoc_id');
@@ -122,11 +122,14 @@ class KhoahocTable extends Table
         }
         $khoahocIdStr = implode(',', $khoahocIds);
         if($khoahocIds) {
+            $condition = [
+                'id IN' => $khoahocIds,
+            ];
+            if(!is_null($type)) {
+                $condition = $condition + ['theloai' => $type];
+            }
             $khoahocs = $this->find('all',[
-                'conditions' => [
-                    'id IN' => $khoahocIds,
-                    'theloai' => $type
-                ],
+                'conditions' => $condition,
                 'order' => array('FIELD(id, '.$khoahocIdStr.')')
             ])->limit($limit)->toArray();
 
@@ -136,14 +139,15 @@ class KhoahocTable extends Table
         return false;
     }
 
-    public function getKhoahocLuotXemNhieuNhat($type = 1, $limit) {
-        $khoahocs = $this->findByTheloai($type)->order(['luotxem' => 'DESC'])->limit($limit);
+    public function getKhoahocLuotXemNhieuNhat($limit, $type = null) {
+        $khoahocs = (!is_null($type)) ? $this->findByTheloai($type)->limit($limit) : $this->find('all')->limit($limit);
 
         return $khoahocs;
     }
 
-    public function getKhoahocMoiNhat($type = 1, $limit) {
-        $khoahocs = $this->findByTheloai($type)->order(['created' => 'DESC'])->limit($limit);
+    public function getKhoahocMoiNhat($limit, $type = null) {
+        $khoahocs = (!is_null($type)) ? $this->findByTheloai($type)->order(['created' => 'DESC'])->limit($limit)
+            : $this->find('all')->order(['created' => 'DESC'])->limit($limit);
 
         return $khoahocs;
     }

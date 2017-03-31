@@ -13,7 +13,7 @@
                                 <span class='icon-bar'></span>
                                 <span class='icon-bar'></span>
                             </button>
-                            <a class='navbar-brand' href='courses.html'>
+                            <a class='navbar-brand' href='<?=$this->Url->build('/', true)?>'>
                                 <?=$this->Html->image('logo.png', ['alt' => 'Logo', 'style' => "height: 55px;margin-top: -20px;"])?>
                             </a>
                         </div>
@@ -45,7 +45,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a class='button' href='courses.html'>Khám phá BabyLons</a>
+                            <a class='button' href='<?=$this->Url->build('/', true).'tac-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a class='button' href='courses.html'>Khám phá BabyLons</a>
+                            <a class='button' href='<?=$this->Url->build('/', true).'tac-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a class='button' href='courses.html'>Khám phá BabyLons</a>
+                            <a class='button' href='<?=$this->Url->build('/', true).'tac-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
                         </div>
                 </div>
             </div>
