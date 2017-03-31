@@ -44,7 +44,7 @@
                         <div class='list-course-card'>
                             <?php foreach($khoahocs as $khoahoc): ?>
                             <div class='course-card image-lazier'>
-                                <a href='../course/thanh-thao-autocad-3d-1475221436.html'>
+                                <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                                     <div class='course-info'>
                                         <div class='avatar'>
                                             <img src="<?=$this->Url->build('/'.DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgia->anh, true)?>" />
