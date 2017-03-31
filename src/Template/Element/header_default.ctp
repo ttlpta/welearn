@@ -37,7 +37,7 @@
         </div>
         <div class='header-col header-col-mid'>
             <div class='hd-brand'>
-                <div class='logo' on-lci>
+                <div class='logo' onclick="window.location='<?=$this->Url->build('/', true);?>'">
                 <?=$this->Html->image('logo.png', ['alt' => 'Logo', 'class' => "logo-medium", "style" => "height: 55px;"])?>
                 </div>
             </div>

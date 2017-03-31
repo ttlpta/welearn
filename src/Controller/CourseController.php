@@ -50,9 +50,8 @@ class CourseController extends AppController
     {
     }
 
-    public function detail()
+    public function detail($courseId)
     {
-
     }
 
     private function _prepareKhoahocData($khoahoc) {

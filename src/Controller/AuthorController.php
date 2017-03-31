@@ -16,5 +16,18 @@ class AuthorController extends AppController
 
     public function detail($authorId)
     {
+        $tacgiaTbl = TableRegistry::get('Tacgia');
+        $tacgia = $tacgiaTbl->findById($authorId)->first();
+
+        $khoahocTbl = TableRegistry::get('Khoahoc');
+        $veTbl = TableRegistry::get('Ve');
+        $khoahocs = $khoahocTbl->getKhoahocByTacgiaId($authorId)->toArray();
+        foreach($khoahocs as $khoahoc){
+            $minPriceVe = $veTbl->findByKhoahocId($khoahoc['id'])->order(['gia_thuong' => 'ASC'])->limit(1)->first();
+            $khoahoc['gia'] = ($minPriceVe) ? gia_daydu($minPriceVe->gia_thuong) : 0;
+        }
+
+        $this->set('tacgia', $tacgia);
+        $this->set('khoahocs', $khoahocs);
     }
 }

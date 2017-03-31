@@ -151,4 +151,16 @@ class KhoahocTable extends Table
 
         return $khoahocs;
     }
+
+    public function getKhoahocByTacgiaId($tacgiaId)
+    {
+        if($tacgiaId) {
+            $searchTacgia = ['OR' => [['tacgia LIKE' => $tacgiaId],
+                ['tacgia LIKE' =>  '%,'.$tacgiaId], ['tacgia LIKE' =>  $tacgiaId.',%'], ['tacgia LIKE' =>  '%,'.$tacgiaId.',%']]];
+
+            return $this->find('all')->where($searchTacgia);
+        }
+
+        return false;
+    }
 }
