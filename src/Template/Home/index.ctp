@@ -29,16 +29,16 @@
                     <?php foreach($khoahocMoinhats as $khoahoc):?>
                     <div class='col-sm-6 col-md-3'>
                         <div class='thumbnail block-content'>
-                            <a href='<?=$this->Url->build('/', true).'khoa-hoc/'.$khoahoc->id?>'>
+                            <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                                 <?=$this->Html->image($this->Url->build('/', true).DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh)?>
                             </a>
 
                             <div class='caption'>
                                 <div class='block-course'>
-                                    <a href='/khoa-hoc'>
+                                    <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                                         <h5><?=$khoahoc->ten?></h5>
                                     </a>
-                                    <a class='teacher-link' href='<?=$this->Url->build('/', true).'tacgia/'.$khoahoc->tacgia->id?>'><?=$khoahoc->tacgia->ten?></a>
+                                    <a class='teacher-link' href='<?=$this->Url->build('/tacgia/'.$khoahoc->tacgia->id, true)?>'><?=$khoahoc->tacgia->ten?></a>
 
                                 </div>
                                 <p class='price-like clearfix'>

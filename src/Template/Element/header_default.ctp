@@ -1,4 +1,3 @@
-<div class='banner_crosssell' id='top_header'></div>
 <!-- Header -->
 <header>
     <div class='header-inner rel'>

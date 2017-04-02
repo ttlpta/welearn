@@ -12,6 +12,8 @@ if ( CKEDITOR.env.ie && CKEDITOR.env.version < 9 )
 // unless user specified own height.
 CKEDITOR.config.height = 150;
 CKEDITOR.config.width = 'auto';
+CKEDITOR.config.startupMode = 'source';
+
 
 var initCkEditor = ( function() {
 	var wysiwygareaAvailable = isWysiwygareaAvailable(),

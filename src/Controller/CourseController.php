@@ -52,6 +52,14 @@ class CourseController extends AppController
 
     public function detail($courseId)
     {
+        $course = $this->_khoahocTbl->findById($courseId)->first();
+        $veCollection = $this->_veTbl->findByKhoahocId($courseId);
+        $veReNhat = $veCollection->first();
+        $ves = $veCollection->all();
+        
+        $tacgias =  $this->_tacgiaTbl->getManyTacgiaByIdArr(explode(',', $course->tacgia));
+        
+        $this->set(compact('course', 'ves', 'tacgias', 'veReNhat'));
     }
 
     private function _prepareKhoahocData($khoahoc) {
@@ -59,12 +67,7 @@ class CourseController extends AppController
         $khoahoc->gia = ($minPriceVe) ? gia_daydu($minPriceVe->gia_thuong) : 0;
         $tacgiaIdArr = explode(',', $khoahoc->tacgia);
 
-        $tacgia =  $this->_tacgiaTbl->find('all',[
-            'conditions' => [
-                'Tacgia.id IN' => $tacgiaIdArr,
-            ],
-            'order' => array('FIELD(Tacgia.id, '.$khoahoc->tacgia.')')
-        ])->select(['id', 'ten', 'anh'])->first();
+        $tacgia =  $this->_tacgiaTbl->getManyTacgiaByIdArr($tacgiaIdArr, true);
         $khoahoc->tacgia = $tacgia;
 
         return $khoahoc;
