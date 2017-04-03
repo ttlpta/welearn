@@ -14,6 +14,7 @@
         ?>
         <div class="input">
             <label for="mieuta">Miêu tả</label>
+            <?=$this->element('ckEditorSystax')?>
             <textarea name="mieuta" id="editor" ></textarea>
         </div>
     </fieldset>

@@ -88,4 +88,17 @@ class TacgiaTable extends Table
 
         return $validator;
     }
+
+    public function getManyTacgiaByIdArr($ids, $first = false) 
+    {
+        $idsStr = implode(',', $ids);
+        $tacgias =  $this->find('all',[
+            'conditions' => [
+                'Tacgia.id IN' => $ids,
+            ],
+            'order' => array('FIELD(Tacgia.id, '.$idsStr.')')
+        ])->select(['id', 'ten', 'anh', 'mieuta']);
+        
+        return ($first) ? $tacgias->first() : $tacgias->all();
+    }
 }

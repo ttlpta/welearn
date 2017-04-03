@@ -18,6 +18,7 @@ $(document).ready(function () {
     });
 
     $(".link-text.load-more-instructor-profile").click(function () {
-        $("h5.information-text").css("display", "block"), $(".link-text.load-more-instructor-profile").css("display", "none")
+        $("h5.information-text").css("display", "block");
+        $(".link-text.load-more-instructor-profile").css("display", "none");
     });
 });

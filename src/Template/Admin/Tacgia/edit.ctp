@@ -17,6 +17,7 @@
         </div>
         <div class="input">
             <label for="mieuta">Miêu tả</label>
+            <?=$this->element('ckEditorSystax')?>
             <textarea name="mieuta" id="editor"><?=$tacgium->mieuta?></textarea>
         </div>
     </fieldset>
