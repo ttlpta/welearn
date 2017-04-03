@@ -102,12 +102,31 @@ class CourseController extends AppController
         }
     }
 
-    public function deleteFromCard()
-    {
+    public function del() {
         $this->request->session()->delete('giohang');
         die('bbbbbbbbbb~~~~~');
-//        $this->request->session()->delete('giohang');
-//        $veId = $this->request->getData('ve_id');
+    }
+
+    public function deleteFromCard()
+    {
+        if ($this->request->is('post')) {
+            $veId = $this->request->getData('ve_id');
+            $ve = $this->_veTbl->findById($veId)->first();
+            $gia = ($ve->gia_khuyenmai) ? $ve->gia_khuyenmai : $ve->gia_thuong;
+            if($giohangCu = $this->request->session()->read('giohang')) {
+                foreach($giohangCu['khoahoc'] as $key => $khoahoc) {
+                    if($veId == $khoahoc['ve_id']) {
+                        unset($giohangCu['khoahoc'][$key]);
+                        break;
+                    }
+                }
+                $giohangCu['tong_khoahoc_dadat'] = count($giohangCu['khoahoc']);
+                $giohangCu['tong_tien_khoahoc_dadat'] = $giohangCu['tong_tien_khoahoc_dadat'] - $gia;
+            }
+        }
+        $this->request->session()->write('giohang', $giohangCu);
+        
+        echo json_encode(array('success' => true));die;
     }
     private function _prepareKhoahocData($khoahoc) {
         $minPriceVe = $this->_veTbl->findByKhoahocId($khoahoc->id)->order(['gia_thuong' => 'ASC'])->limit(1)->first();

@@ -63,7 +63,6 @@ $(document).ready(function () {
         var veId = veSelData.data('ve_id');
 
         $.post("xoa-gio-hang", {ve_id: veId}, function(data, status){
-            var dataObj = JSON.parse(data);
             window.location.reload();
         }).fail(function() {
             window.location.reload()

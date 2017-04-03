@@ -22,14 +22,14 @@
                             <div class='cart-notification'>
                                 <div class='cart-notification-button'>
                                     <?=$this->Html->image('shopping-cart-header.png');?>
-                                    <?php if($giohang) {?>
+                                    <?php if($giohang && count($giohang['khoahoc'])) {?>
                                         <span class='badge cart_count'><?=count($giohang['khoahoc'])?></span>
                                     <?php } ?>
 
                                 </div>
                             </div>
                         </div>
-                        <?php if(!$giohang){?>
+                        <?php if(!$giohang || !count($giohang['khoahoc'])){?>
                         <div aria-labelledby='dropdownNotification' class='dropdown-menu cart-dropdown-notification'>
                             <h4 class='emty-carts-notice'>Bạn chưa có khoá học nào trong giỏ</h4>
                         </div>

@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li>
-                    <h3 class='course-price-text no-margin bold' style='margin: 0; padding-top: 10px'>549,000đ</h3>
+                    <h3 class='course-price-text no-margin bold' style='margin: 0; padding-top: 10px'><?= ($veReNhat->gia_khuyenmai) ? gia_daydu(($veReNhat->gia_khuyenmai)) : gia_daydu($veReNhat->gia_thuong)?></h3>
                 </li>
             </ul>
         </div>
