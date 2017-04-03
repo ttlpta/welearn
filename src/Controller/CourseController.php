@@ -71,6 +71,7 @@ class CourseController extends AppController
             $khoahoc = $this->_khoahocTbl->findById($khoahocId)->select(['id', 'ten', 'anh'])->first()->toArray();
             $khoahoc['gia'] = $gia;
             $khoahoc['ve_id'] = $veId;
+            $khoahoc['ve_ten'] = $ve->ten;
             $giohangs = array(
                 'khoahoc' => array($khoahoc), // Cho lần đầu tiên giỏ hàng chưa có j
                 'tong_khoahoc_dadat' => 1,
@@ -101,10 +102,12 @@ class CourseController extends AppController
         }
     }
 
-    public function deleteCard()
+    public function deleteFromCard()
     {
         $this->request->session()->delete('giohang');
         die('bbbbbbbbbb~~~~~');
+//        $this->request->session()->delete('giohang');
+//        $veId = $this->request->getData('ve_id');
     }
     private function _prepareKhoahocData($khoahoc) {
         $minPriceVe = $this->_veTbl->findByKhoahocId($khoahoc->id)->order(['gia_thuong' => 'ASC'])->limit(1)->first();

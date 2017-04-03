@@ -37,6 +37,7 @@ $(document).ready(function () {
             ve_id : veId,
             khoahoc_id : khoahocId
         };
+
         $.post("them-gio-hang", data, function(data, status){
             var dataObj = JSON.parse(data);
             if(dataObj.success) {
@@ -52,6 +53,20 @@ $(document).ready(function () {
 
             $("#cartModal").modal("show")
         }).fail(function() {
+
         });
     });
+
+    $(".remove_course").click(function() {
+        var veIdSelector = $('.ve:checked').val();
+        var veSelData = $('#'+veIdSelector);
+        var veId = veSelData.data('ve_id');
+
+        $.post("xoa-gio-hang", {ve_id: veId}, function(data, status){
+            var dataObj = JSON.parse(data);
+            window.location.reload();
+        }).fail(function() {
+            window.location.reload()
+        });
+    })
 });

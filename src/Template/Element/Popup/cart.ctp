@@ -18,7 +18,6 @@
                     <div class='col-xs-7 course_info'>
                         <h4 class='course_title'><?=$khoahoc->ten?></h4>
                         <div class='remove_course'>
-                            <input class='course_id' type='hidden'>
                             <a>Bỏ chọn khoá học</a>
                         </div>
                     </div>

@@ -58,5 +58,9 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+
+        $giohang = ($this->request->session()->read('giohang')) ? $this->request->session()->read('giohang') : array();
+
+        $this->set(compact('giohang'));
     }
 }

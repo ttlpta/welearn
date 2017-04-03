@@ -70,5 +70,5 @@ function theloai_khoahoc($theloai)
 
 function gia_daydu($gia) {
 
-    return $gia.'000';
+    return ($gia) ? number_format($gia).',000 VND' : 0;
 }

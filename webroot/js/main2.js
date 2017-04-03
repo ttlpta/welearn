@@ -31336,21 +31336,6 @@ $(document).ready(function() {
             }))
         })
     }), $(document).ready(function() {
-        $(".remove_course").click(function() {
-            course_id = $(this).find($(".course_id")).val();
-            var e = "/cart/" + course_id + "/remove_session_course";
-            $.ajax({
-                type: "POST",
-                url: e,
-                success: function(e, t, n) {
-                    window.location.reload()
-                },
-                complete: function(e, t) {
-                    window.location.reload()
-                }
-            })
-        })
-    }), $(document).ready(function() {
         $(".home_page #books-search-txt").focus(function(e) {
             $(".list-category > li.dropdown > .dropdown-menu").css({
                 display: "block"
