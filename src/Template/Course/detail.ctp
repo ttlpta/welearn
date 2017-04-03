@@ -94,7 +94,7 @@
                         <div class='course-player'>
                             <div class='video-container no-controls'>
                                 <iframe allowfullscreen='' frameborder='0' height='100%'
-                                        src='<?=$course->video_youtube?>'
+                                        src='https://www.youtube.com/embed/<?=$course->video_youtube?>?ecver=2'
                                         style='min-height:345px' width='100%'></iframe>
                             </div>
                         </div>
@@ -102,17 +102,22 @@
                             <div class='course-detail-bottom-left'>
                                 <div class='course-price'>
                                     <div class='course-price-text no-margin bold' style="font-size: 20px;word-spacing: 5px;">
-                                        <?php foreach($ves as $ve): ?>
+                                        <?php foreach($ves as $ve):?>
+                                        <input type="radio" name="ve" class="ve" value="<?=$ve->ten?>" <?=($veReNhat->id == $ve->id)? 'checked' : ''?>/>
+                                        <input type="hidden" id="<?=$ve->ten?>"
+                                               data-ve_id="<?=$ve->id?>"
+                                               data-khoahoc_id="<?=$course->id?>"
+                                               data-giathuong="<?=$ve->gia_thuong?>"
+                                               data-giakhuyenmai="<?=$ve->gia_khuyenmai?>" />
                                         <label style="text-transform: uppercase;"><?=$ve->ten?></label>&nbsp;
-                                        <input type="radio" name="ve" class="ve" value="<?=$ve->ten?>" checked/>
-                                        <input type="hidden" id="<?=$ve->ten?>" data-giathuong="<?=$ve->gia_thuong?>" data-giakhuyenmai="<?=$ve->gia_khuyenmai?>" />
+                                        <br />
                                         <?php endforeach?>
                                     </div>
                                 </div>
                                 <div class='course-price'>
                                     <h3 class='course-price-text no-margin bold'>
-                                        <span id="giaChinhThuc">123123</span> VNĐ
-                                        <span class="linethrough"><span id="giaCu">10.480.000</span> VNĐ</span>
+                                        <span id="giaChinhThuc"></span> VNĐ
+                                        <span class="linethrough"><span id="giaCu"></span> VNĐ</span>
                                     </h3>
                                 </div>
                                 <div class='course-purchase'>
@@ -132,7 +137,13 @@
                                 </div>
                             </div>
                             <div class='course-detail-bottom-right'>
-                                <div class='course-wishlist'></div>
+                                <div class='course-wishlist' style="min-height: 300px;"> <h4>Bạn sẽ nhận được : </h4>
+                                    <?php foreach($ves as $ve):?>
+                                        <div class="quyenloi" id="quyenloi-<?=$ve->ten?>">
+                                            <?=$ve->quyenloi?>
+                                        </div>
+                                    <?php endforeach;?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -203,4 +214,4 @@
 </div>
 <?= $this->Html->script('main2'); ?>
 <?= $this->Html->script('custom'); ?>
-<?= $this->element('Popup/cart');?>
+<?= $this->element('Popup/cart', ['khoahoc' => $course]);?>

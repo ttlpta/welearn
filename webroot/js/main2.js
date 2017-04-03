@@ -29580,9 +29580,7 @@ $(document).ready(function() {
             for (i = 5; i < $("h5.information-text").length; i++) $("h5.information-text").eq(i).css("display", "none");
         $(".link-text.load-more-instructor-profile").click(function() {
             $("h5.information-text").css("display", "block"), $(".link-text.load-more-instructor-profile").css("display", "none")
-        }), $(".es_template_detail_url").attr("href", localStorage.getItem("es_template_url")), $(".cart-button").click(function() {
-           $("#cartModal").modal("show")
-        })
+        }), $(".es_template_detail_url").attr("href", localStorage.getItem("es_template_url"))
     }),
     function(e) {
         String.prototype.htmlEncode = function() {

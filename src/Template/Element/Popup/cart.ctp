@@ -13,11 +13,10 @@
             <div class='modal-body'>
                 <div class='row no-margin courses'>
                     <div class='col-xs-3 no-padding course_image'>
-                        <?= $this->Html->image('lap-trinh-web-html---css-tu-dau.png', ['alt' => 'Shopingcart icon']) ?>
+                        <?= $this->Html->image($this->Url->build('/'.DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh, true), ['alt' => 'Shopingcart icon']) ?>
                     </div>
                     <div class='col-xs-7 course_info'>
-                        <h4 class='course_title'></h4>
-                        <h4 class='course_author'></h4>
+                        <h4 class='course_title'><?=$khoahoc->ten?></h4>
                         <div class='remove_course'>
                             <input class='course_id' type='hidden'>
                             <a>Bỏ chọn khoá học</a>
@@ -37,7 +36,7 @@
                     </div>
                     <div class='payment_info col-xs-4 no-padding'>
                         <div class='price row no-margin pull-right'>
-                            <h4 class='total_price-number'>0đ</h4>
+                            <h4 class='total_price-number'></h4>
                             <h4 class='total_price-text'>(Tổng số tiền thanh toán)</h4>
                         </div>
                         <div class='purchase row no-margin'>

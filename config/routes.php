@@ -30,6 +30,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/tac-ca-khoa-hoc', ['controller' => 'Course', 'action' => 'index']);
     $routes->connect('/khoa-hoc-danh-cho-nguoi-lon', ['controller' => 'Course', 'action' => 'type', 1]);
     $routes->connect('/khoa-hoc-danh-cho-tre-em', ['controller' => 'Course', 'action' => 'type', 0]);
+    $routes->connect('/khoa-hoc/them-gio-hang', ['controller' => 'Course', 'action' => 'addToCard', 0]);
     $routes->connect('/khoa-hoc/:id', ['controller' => 'Course', 'action' => 'detail'], ['id' => '\d+', 'pass' => ['id']]);
     $routes->connect('/thanh-toan', ['controller' => 'Checkout', 'action' => 'index']);
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
