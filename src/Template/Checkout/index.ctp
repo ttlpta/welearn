@@ -3,35 +3,44 @@
         <div class='cart_detail_box'>
             <div class='cart_detail_box-left'>
                 <div class='title'>
-                    Mua khoá học không cần đăng ký
-                    <span>hoặc</span>
-                    <a class='btn-login' data-target='#login-modal' data-toggle='modal' href='#'>Đăng nhập</a>
+                    Thông tin khách hàng
                 </div>
                 <div class='information'>
                     <form action='https://edumall.vn/cart/thanh-thao-autocad-3d-1475221436/register_buy_course' id='cart_form' method='post'>
-                        <input class='courses_price' name='course_id' type='hidden' value='57ee17bcce4b14424567226c'>
-                        <input class='courses_price' name='course_name' type='hidden' value='Thành thạo AutoCAD 3D '>
-                        <input class='courses_price' name='course_alias_name' type='hidden' value='thanh-thao-autocad-3d-1475221436'>
-                        <input class='courses_price' name='price' type='hidden' value='599000'>
-                        <input class='courses_price' name='final_price' type='hidden' value='599000'>
-                        <input class='courses_price' name='source_url' type='hidden'>
-                        <input class='courses_price' name='coupon_code' type='hidden'>
+                        <?php if($giohang && $giohang['khoahoc']) { ?>
+                            <?php foreach($giohang['khoahoc'] as $item):?>
+                                <input type="hidden" name="khoahoc_id" value="<?=$item['id']?>"/>
+                                <input type="hidden" name="ve_id" value="<?=$item['ve_id']?>"/>
+                                <input type="hidden" name="soluong" id="soluong-<?=$item['id']?>" value="1"/>
+                                <input type="hidden" name="gia" value="<?=$item['gia']?>"/>
+                            <?php endforeach;?>
+                        <?php } ?>
                         <div class='cart_form_item'>
-                            <input class='form-control name' name='name' pattern='.{6,}' placeholder='Tên đầy đủ' required='required' title='Họ tên không được để trống và lớn hơn 6 ký tự!' type='text' value=''>
+                            <select class='form-control browser-default danhxung' id='select' name='danhxung' required='required'>
+                                <option disabled='' selected='' value=''>Chọn danh xưng</option>
+                                <option value='0'>Mr</option>
+                                <option value='1'>Mrs</option>
+                                <option value='2'>Ms</option>
+                            </select>
+                        </div>
+                        <div class='cart_form_item'>
+                            <input class='form-control name' name='name' placeholder='Tên đầy đủ' required='required' title='Họ tên không được để trống và lớn hơn 6 ký tự!' type='text'>
+                        </div>
+                        <div class='cart_form_item'>
+                            <input class='form-control mobile' name='dienthoai' placeholder='Số điện thoại' required='required' title='Số điện thoại không được để trống và chỉ được nhập chữ số!' type='text'>
                         </div>
                         <div class='cart_form_item'>
                             <input class='form-control email' name='email' placeholder='Email' required='required' title='Email không được để trống!' type='email'>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control mobile' name='mobile' placeholder='Số điện thoại' required='required' title='Số điện thoại không được để trống và chỉ được nhập chữ số!' type='text'>
-                        </div>
-                        <div class='cart_form_item'>
-                            <input class='form-control address' name='address' placeholder='Địa chỉ' required='required' title='Bạn phải nhập địa chỉ!' type='text'>
+                            <input class='form-control address' name='namsinh' placeholder='Năm sinh' required='required' title='Bạn phải nhập năm sinh!' type='text'>
                         </div>
                         <div class='cart_form_item'>
                             <div class='form-group'>
-                                <select class='form-control browser-default city' id='select' name='city' required='required' title='Bạn phải chọn tỉnh/ thành phố!'>
+                                <select class='form-control browser-default city' id='select' name='khuvuc' required='required' title='Bạn phải chọn tỉnh/ thành phố!'>
                                     <option disabled='' selected='' value=''>Chọn Tỉnh / Thành phố</option>
+                                    <option value='Hà Nội'>Hà Nội</option>
+                                    <option value='TP Hồ Chí Minh'>TP Hồ Chí Minh</option>
                                     <option value='An Giang'>An Giang</option>
                                     <option value='Bà Rịa-Vũng Tàu'>Bà Rịa-Vũng Tàu</option>
                                     <option value='Bạc Liêu'>Bạc Liêu</option>
@@ -55,7 +64,6 @@
                                     <option value='Gia Lai'>Gia Lai</option>
                                     <option value='Hà Giang'>Hà Giang</option>
                                     <option value='Hà Nam'>Hà Nam</option>
-                                    <option value='Hà Nội'>Hà Nội</option>
                                     <option value='Hà Tây'>Hà Tây</option>
                                     <option value='Hà Tĩnh'>Hà Tĩnh</option>
                                     <option value='Hải Dương'>Hải Dương</option>
@@ -100,15 +108,19 @@
                             </div>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control district' name='district' placeholder='Quận/huyện' required='required' title='Quận/ huyện không được để trống!' type='text'>
+                            <textarea name="lydobiet" class='form-control' placeholder='Lý do bạn biết đến chúng tôi' required='required'></textarea>
                         </div>
                         <div class='cart_form_item'>
-                            <input name='utm_source' type='hidden'>
-                            <input name='utm_medium' type='hidden'>
-                            <input name='utm_campaign' type='hidden'>
+                            <select class='form-control browser-default' id='select' name='datungthamgia' required='required'>
+                                <option disabled='' selected='' value=''>Bạn đã từng tham gia khóa học của chúng tôi?</option>
+                                <option value='0'>Chưa</option>
+                                <option value='1'>Đã từng tham gia</option>
+                            </select>
+                        </div>
+                        <div class='cart_form_item'>
+                            <input class='form-control address' name='nguoigioithieu' placeholder='Người giới thiệu' required='required' title='Tên người giới thiệu bạn tới chương trình học của chúng tôi' type='text'>
                         </div>
                         <div class='cart_form_submit'>
-                            <input type="hidden" name="authenticity_token" id="authenticity_token" value="+zH+5lmJgEOZMq/LeBAsyB3MU2r82svbAqlrYVDYW+jNy7QTQ4KhOl1Csh2veGfG+5bGrsHtt/S5ykXpy+Z33g==" />
                             <input class='btn btn-success btn-raised btn-lg btn_purchase_cod btn_purchase_cod_organic' type='submit' value='Đặt mua khóa học'>
                         </div>
                     </form>
@@ -117,21 +129,39 @@
             <div class='cart_detail_box-right'>
                 <div class='purchase_information'>
                     <div class='title'>Thông tin thanh toán</div>
-                    <div class='purchase_information_item'>
-                        <div class='action_area'></div>
-                        <div class='course_info no-margin'>
-                            <div class='course_name no-padding'>Thành thạo AutoCAD 3D </div>
-                            <div class='course_price no-padding'>
-                                <span>599,000đ</span>
+                    <?php if($giohang && $giohang['khoahoc']) { ?>
+                        <?php foreach($giohang['khoahoc'] as $item):?>
+                        <div class='purchase_information_item'>
+                            <div class='action_area'></div>
+                            <div class='course_info no-margin'>
+                                <div class='course_name no-padding'><?=$item['ten']?> - Vé <b style="text-transform: uppercase"><?=$item['ve_ten']?></b>
+                                    <input type="hidden" id="total_cost_item-<?=$item['id']?>" class="total_cost_item" value="<?=$item['gia']?>"/>
+                                    <span style="float:right"><b>x</b>
+                                        <input style="max-width: 40px" type="number" class="soluong" data-gia="<?=$item['gia']?>" data-khoahoc_id="<?=$item['id']?>" value="1"/>
+                                    </span>
+                                </div>
+                                <div class='course_price no-padding'>
+                                    <span class="price"><?=gia_daydu($item['gia'])?></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <?php endforeach;?>
+                    <?php } else {?>
+                        <div class='purchase_information_item'>
+                            <div class='action_area'></div>
+                            <div class='course_info no-margin'>
+                                <h4>Bạn chưa có khóa học nào trong giỏ hàng. <a href="../tac-ca-khoa-hoc">Quay lại</a> các khóa học của chúng tôi nào</h4>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class='total_cost no-margin'>
                     <div class='total_cost_text'>Thành tiền</div>
-                    <div class='total_cost_number'>599,000đ</div>
+                    <div class='total_cost_number'><?= ($giohang) ? gia_daydu($giohang['tong_tien_khoahoc_dadat']): 0 ?></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?=$this->Html->script('main2')?>
+<?=$this->Html->script('checkout')?>

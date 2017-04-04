@@ -72,3 +72,8 @@ function gia_daydu($gia) {
 
     return ($gia) ? number_format($gia).',000 VND' : 0;
 }
+
+function format_to_element_id($text){
+
+    return str_replace(' ', '_', $text);
+}

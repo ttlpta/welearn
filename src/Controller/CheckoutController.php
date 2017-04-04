@@ -16,5 +16,8 @@ class CheckoutController extends AppController
 
     public function index()
     {
+        $giohang = ($this->request->session()->read('giohang')) ? $this->request->session()->read('giohang') : [];
+
+        $this->set(compact('giohang'));
     }
 }

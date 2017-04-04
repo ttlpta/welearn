@@ -6,7 +6,7 @@ $(document).ready(function () {
     });
 
     function renderGia($gia) {
-        var veRenhatId = $gia.val();
+        var veRenhatId = format_to_element_id($gia.val());
         var veRenhatSel = $('#'+veRenhatId);
         var veRenhatGiaThuong = veRenhatSel.data('giathuong');
         var veRenhatGiaKhuyenMai = veRenhatSel.data('giakhuyenmai');
@@ -26,12 +26,15 @@ $(document).ready(function () {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+',000';
     }
 
+    function format_to_element_id(x) {
+        return x.replace(/ /g,"_");
+    }
+
     $('.cart-button').click(function(){
-        var veSelectorId = $('.ve:checked').val();
+        var veSelectorId = format_to_element_id($('.ve:checked').val());
         var veRenhatSel = $('#'+veSelectorId);
         var veId = veRenhatSel.data('ve_id');
         var khoahocId = veRenhatSel.data('khoahoc_id');
-        var gia = (veRenhatSel.data('giakhuyenmai')) ? veRenhatSel.data('giakhuyenmai') : veRenhatSel.data('giathuong');
 
         var data = {
             ve_id : veId,
@@ -66,6 +69,27 @@ $(document).ready(function () {
             window.location.reload();
         }).fail(function() {
             window.location.reload()
+        });
+    });
+
+    $(".purchase-submit").click(function() {
+        var veSelectorId = format_to_element_id($('.ve:checked').val());
+        var veRenhatSel = $('#'+veSelectorId);
+        var veId = veRenhatSel.data('ve_id');
+        var khoahocId = veRenhatSel.data('khoahoc_id');
+
+        var data = {
+            ve_id : veId,
+            khoahoc_id : khoahocId
+        };
+
+        $.post("them-gio-hang", data, function(data, status){
+            var dataObj = JSON.parse(data);
+            if(dataObj.success) {
+                window.location = "../thanh-toan";
+            } else {
+                alert('Có lỗi xảy ra, xin mời đặt mua lại một lần nữa');
+            }
         });
     })
 });

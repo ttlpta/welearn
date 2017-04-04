@@ -65,40 +65,47 @@ class CourseController extends AppController
         if ($this->request->is('post')) {
             $veId = $this->request->getData('ve_id');
             $ve = $this->_veTbl->findById($veId)->first();
+            $giohangCu = ($this->request->session()->check('giohang')) ? $this->request->session()->read('giohang') : [];
+
+            if(!$ve) {
+                echo json_encode(array('success' => false, 'tong_tien_khoahoc_dadat' => $giohangCu ? $giohangCu['tong_tien_khoahoc_dadat'] : 0));die;
+            }
+
             $gia = ($ve->gia_khuyenmai) ? $ve->gia_khuyenmai : $ve->gia_thuong;
-
             $khoahocId = $this->request->getData('khoahoc_id');
-            $khoahoc = $this->_khoahocTbl->findById($khoahocId)->select(['id', 'ten', 'anh'])->first()->toArray();
-            $khoahoc['gia'] = $gia;
-            $khoahoc['ve_id'] = $veId;
-            $khoahoc['ve_ten'] = $ve->ten;
-            $giohangs = array(
-                'khoahoc' => array($khoahoc), // Cho lần đầu tiên giỏ hàng chưa có j
-                'tong_khoahoc_dadat' => 1,
-                'tong_tien_khoahoc_dadat' => $gia,
-            );
+            if($khoahoc = $this->_khoahocTbl->findById($khoahocId)->select(['id', 'ten', 'anh'])->first())
+            {
+                $khoahoc = $khoahoc->toArray();
+                $khoahoc['gia'] = $gia;
+                $khoahoc['ve_id'] = $veId;
+                $khoahoc['ve_ten'] = $ve->ten;
+                $giohangs = array(
+                    'khoahoc' => array($khoahoc), // Cho lần đầu tiên giỏ hàng chưa có j
+                    'tong_khoahoc_dadat' => 1,
+                    'tong_tien_khoahoc_dadat' => $gia,
+                );
 
-            $veIdGioHangCu = [];
-            if($this->request->session()->check('giohang')) {
-                $giohangCu = $this->request->session()->read('giohang');
-
-                foreach($giohangCu['khoahoc'] as $khoahoc) {
-                    $veIdGioHangCu[] = $khoahoc['ve_id'];
-                }
-
+                $veIdGioHangCu = [];
+                if($giohangCu) {
+                    foreach($giohangCu['khoahoc'] as $khoahoc) {
+                        $veIdGioHangCu[] = $khoahoc['ve_id'];
+                    }
 
                     $giohangCu['khoahoc'][] = $giohangs['khoahoc'][0];
                     $giohangs['khoahoc'] = $giohangCu['khoahoc'];
                     $giohangs['tong_khoahoc_dadat'] = count($giohangs['khoahoc']);
                     $giohangs['tong_tien_khoahoc_dadat'] = $gia + $giohangCu['tong_tien_khoahoc_dadat'];
+                }
+
+                if(!in_array($veId, $veIdGioHangCu)) {
+                    $this->request->session()->write('giohang', $giohangs);
+                    echo json_encode(array('success' => true, 'data' => $giohangs));die;
+                } else {
+                    echo json_encode(array('success' => false, 'tong_tien_khoahoc_dadat' => $giohangCu ? $giohangCu['tong_tien_khoahoc_dadat'] : 0));die;
+                }
             }
 
-            if(!in_array($veId, $veIdGioHangCu)) {
-                $this->request->session()->write('giohang', $giohangs);
-                echo json_encode(array('success' => true, 'data' => $giohangs));die;
-            } else {
-                echo json_encode(array('success' => false, 'tong_tien_khoahoc_dadat' => (isset($giohangCu) ? $giohangCu['tong_tien_khoahoc_dadat'] : 0)));die;
-            }
+            echo json_encode(array('success' => false, 'tong_tien_khoahoc_dadat' => $giohangCu ? $giohangCu['tong_tien_khoahoc_dadat'] : 0));die;
         }
     }
 

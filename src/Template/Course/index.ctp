@@ -1,5 +1,4 @@
 <div class='container-wrapper' style='overflow: hidden;'>
-<!--    <div class='banner banner_crosssell' id='header'></div>-->
     <main class='home'>
         <div class='container'>
             <div class='row' id='wrapCourseItems'>

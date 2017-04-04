@@ -18,7 +18,7 @@
                     <div class='col-xs-7 course_info'>
                         <h4 class='course_title'><?=$khoahoc->ten?></h4>
                         <div class='remove_course'>
-                            <a>Bỏ chọn khoá học</a>
+                            <a href="javascript:void(0)">Bỏ chọn khoá học</a>
                         </div>
                     </div>
                     <div class='col-xs-2 course_price'></div>

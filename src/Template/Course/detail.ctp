@@ -104,7 +104,7 @@
                                     <div class='course-price-text no-margin bold' style="font-size: 20px;word-spacing: 5px;">
                                         <?php foreach($ves as $ve):?>
                                         <input type="radio" name="ve" class="ve" value="<?=$ve->ten?>" <?=($veReNhat->id == $ve->id)? 'checked' : ''?>/>
-                                        <input type="hidden" id="<?=$ve->ten?>"
+                                        <input type="hidden" id="<?=format_to_element_id($ve->ten)?>"
                                                data-ve_id="<?=$ve->id?>"
                                                data-khoahoc_id="<?=$course->id?>"
                                                data-giathuong="<?=$ve->gia_thuong?>"
@@ -123,7 +123,7 @@
                                 <div class='course-purchase'>
                                     <div class='purchase-submit'>
                                         <a class='btn btn-raised btn-lg buy-button'
-                                           href='../cart/cod/noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.html'>
+                                           href='javascript:void(0)'>
                                             <i class='fa fa-shopping-cart'></i>
                                             Mua khóa học
                                         </a>
