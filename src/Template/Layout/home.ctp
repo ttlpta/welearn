@@ -7,7 +7,6 @@
     <!-- Roboto Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=vietnamese' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
-    <?=$this->Html->css('vendor/slick')?>
     <!--Main-css-->
     <?=$this->Html->css('main');?> 
 

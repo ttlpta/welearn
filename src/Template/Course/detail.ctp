@@ -61,9 +61,11 @@
             <ul class='menu-fixed-right'>
                 <li>
                     <a class='btn btn-raised btn-lg buy-button'
-                       href='../users/sign_in.html?alias_name=noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong&amp;type=learning'
-                       style='padding:5px 15px'>
-                        <i class='fa fa-shopping-cart'></i>
+                       href='javascript:void(0)'
+                       style='padding:5px 15px'
+                       data-ve_id="<?=$veReNhat->id?>"
+                       data-khoahoc_id="<?=$course->id?>">
+                       <i class='fa fa-shopping-cart'></i>
                         Mua khóa học
                     </a>
                 </li>
@@ -139,7 +141,7 @@
                             <div class='course-detail-bottom-right'>
                                 <div class='course-wishlist' style="min-height: 300px;"> <h4>Bạn sẽ nhận được : </h4>
                                     <?php foreach($ves as $ve):?>
-                                        <div class="quyenloi" id="quyenloi-<?=$ve->ten?>">
+                                        <div class="quyenloi" id="quyenloi-<?=format_to_element_id($ve->ten)?>">
                                             <?=$ve->quyenloi?>
                                         </div>
                                     <?php endforeach;?>

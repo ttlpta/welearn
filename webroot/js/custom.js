@@ -61,14 +61,18 @@ $(document).ready(function () {
     });
 
     $(".remove_course").click(function() {
-        var veIdSelector = $('.ve:checked').val();
+        var veIdSelector = format_to_element_id($('.ve:checked').val());
         var veSelData = $('#'+veIdSelector);
         var veId = veSelData.data('ve_id');
 
         $.post("xoa-gio-hang", {ve_id: veId}, function(data, status){
-            window.location.reload();
+            var dataObj = JSON.parse(data);
+            if(dataObj.success)
+                window.location.reload();
+            else 
+                $("#cartModal").modal("hide");
         }).fail(function() {
-            window.location.reload()
+            $("#cartModal").modal("hide");
         });
     });
 
@@ -84,12 +88,21 @@ $(document).ready(function () {
         };
 
         $.post("them-gio-hang", data, function(data, status){
-            var dataObj = JSON.parse(data);
-            if(dataObj.success) {
-                window.location = "../thanh-toan";
-            } else {
-                alert('Có lỗi xảy ra, xin mời đặt mua lại một lần nữa');
-            }
+            window.location = "../thanh-toan";
         });
     })
+
+    $(".buy-button").click(function() {
+        var veId = $(this).data('ve_id');
+        var khoahocId =  $(this).data('khoahoc_id');
+
+        var data = {
+            ve_id : veId,
+            khoahoc_id : khoahocId
+        };
+
+        $.post("them-gio-hang", data, function(data, status){
+            window.location = "../thanh-toan";
+        });
+    });
 });

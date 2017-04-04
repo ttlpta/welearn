@@ -29413,15 +29413,7 @@ $(document).ready(function() {
                         href: window.location.origin + window.location.pathname
                     }, function(e) {})
                 }
-                if (null != window.location.href.match("/detail")) {
-                    var n = e(".course_id").val();
-                    getParameterByName("utm_source");
-                    Spymaster.track({
-                        category: "L2",
-                        behavior: "view",
-                        target: n
-                    })
-                }
+                
                 e("#facebook-share-button").click(t)
             }), tag = e("#sale-expired-time")[0]) {
             stop_time = new Date(Number(tag.value)).getTime();
@@ -29519,14 +29511,7 @@ $(document).ready(function() {
                     data: t,
                     success: function(e) {}
                 })
-            }), $(".buy-button").click(function() {
-                var e = $(".course_id").val();
-                Spymaster.track({
-                    category: "L2Click",
-                    behavior: "click",
-                    target: e
-                })
-            }), $(".btn-submit-report").click(function() {
+            }),$(".btn-submit-report").click(function() {
                 var e = $(".course_id").val(),
                     t = $(".txt-report-content").val(),
                     n = "other";
@@ -30104,46 +30089,6 @@ $(document).ready(function() {
                 }), f.fail(function(e, t, n) {
                     $("#support_fail_modal").modal("show")
                 })
-            }), $(".btn-cod").click(function() {
-                var e = $(".course_id").val();
-                Spymaster.track({
-                    category: "L7b",
-                    behavior: "click",
-                    target: e,
-                    extras: {
-                        payment_method: "cod"
-                    }
-                })
-            }), $(".btn-transfer").click(function() {
-                var e = $(".course_id").val();
-                Spymaster.track({
-                    category: "L7b",
-                    behavior: "click",
-                    target: e,
-                    extras: {
-                        payment_method: "transfer"
-                    }
-                })
-            }), $(".btn-card").click(function() {
-                var e = $(".course_id").val();
-                Spymaster.track({
-                    category: "L7b",
-                    behavior: "click",
-                    target: e,
-                    extras: {
-                        payment_method: "card"
-                    }
-                })
-            }), $(".btn-cih").click(function() {
-                var e = $(".course_id").val();
-                Spymaster.track({
-                    category: "L7b",
-                    behavior: "click",
-                    target: e,
-                    extras: {
-                        payment_method: "cih"
-                    }
-                })
             })
     }),
     function(e) {
@@ -30282,35 +30227,7 @@ $(document).ready(function() {
             return n + i.join("&")
         }
 
-        function t(t, n) {
-            Spymaster.track({
-                category: "native_crosssell",
-                behavior: "impressed",
-                target: t,
-                extras: {}
-            }, {
-                url: e(document.URL, {
-                    cs_code: n,
-                    cs_type: "link"
-                }),
-                referer: document.referrer
-            })
-        }
-
-        function n(t, n, i) {
-            Spymaster.track({
-                category: t,
-                behavior: "impressed",
-                target: i,
-                extras: {}
-            }, {
-                url: e(document.URL, {
-                    cs_code: n,
-                    cs_type: "feature_course"
-                }),
-                referer: document.referrer
-            })
-        }
+        
         $(".cross_sell_course:visible").length > 0 && $(".cross_sell_course:visible").each(function() {
             var e = location.origin + $(this).find("a.lp").attr("href");
             "Uni" == $(this).data("source") ? n("uni_crosssell", $(this).data("code"), e) : n("native_crosssell", $(this).data("code"), e)
@@ -30321,270 +30238,15 @@ $(document).ready(function() {
             var e = location.origin + $(this).find("a.lp").attr("href");
             "Uni" == $(this).data("source") ? n("uni_crosssell", $(this).data("code"), e) : n("native_crosssell", $(this).data("code"), e)
         }), $("#memberModal").length > 0 && $("#memberModal").modal("show");
-        var i = $(".cross_sell_uni_course_c2")[0],
-            r = ($(".cross_sell_uni_course_c3")[0], $(".cross_sell_link")[0]);
-        void 0 != i && (Spymaster.track({
-            category: "uni_crosssell",
-            behavior: "view",
-            target: document.URL,
-            extras: {}
-        }, {
-            url: document.URL,
-            referer: document.referrer
-        }), $(".buy-button").click(function() {
-            var t = {
-                target: "topica_uni",
-                course_id: "uni_course",
-                course_name: "Topica Uni",
-                email: $(this).attr("email"),
-                name: $(this).attr("name"),
-                mobile: $(this).attr("mobile"),
-                source: "feature_course",
-                source_url: e(document.URL, {
-                    cs_referer: document.referrer
-                }),
-                type: "c3_crosssell",
-                strategy: "crosssell"
-            };
-            $.ajax({
-                url: "//marol.edumall.vn/contact/import",
-                type: "post",
-                data: t,
-                success: function() {
-                    alert("C\u1ea3m \u01a1n b\u1ea1n \u0111\xe3 \u0111\u0103ng k\xfd nh\u1eadn t\u01b0 v\u1ea5n. Ch\xfang t\xf4i s\u1ebd g\u1ecdi \u0111i\u1ec7n cho b\u1ea1n v\u1ec1 ch\u01b0\u01a1ng tr\xecnh \u0110\u1ea1i h\u1ecdc tr\u1ef1c tuy\u1ebfn Topica Uni.")
-                }
-            });
-            Spymaster.track({
-                category: "uni_crosssell",
-                behavior: "submit",
-                target: document.URL,
-                extras: t
-            }, {
-                url: document.URL,
-                referer: document.referrer
-            })
-        })), void 0 != $(".es-track") && $(".es-track").click(function() {
-            var t = $(this).attr("course_name"),
-                n = {
-                    target: "es_crosssell",
-                    source_url: e(document.URL, {
-                        cs_referer: document.referrer
-                    }),
-                    type: "es_crosssell",
-                    strategy: "ecosystem",
-                    course: t
-                };
-            Spymaster.track({
-                category: "es_crosssell",
-                behavior: "L2_es",
-                target: document.URL,
-                extras: n
-            }, {
-                url: document.URL,
-                referer: document.referrer
-            }), console.log("success")
-        });
+        
         var o = $(".banner-container");
-        void 0 != o && o.each(function() {
-            var t = "";
-            t = $(this).hasClass("header") ? $(this).find("a.btn").attr("href") : $(this).find("a").attr("href");
-            var n = "",
-                i = $(this).data("code"),
-                r = {
-                    behavior: "impressed",
-                    target: t,
-                    extras: {}
-                };
-            void 0 != t && "" != t && (r.category = $(this).data("category"), n = e(document.URL, {
-                cs_code: i,
-                cs_type: "banner"
-            }), Spymaster.track(r, {
-                url: n,
-                referer: document.referrer
-            }))
-        });
+        
         var a = $(".cross_sell_native_course_c1.payment")[0],
             s = $(".cross_sell_native_course_c1.not_payment")[0],
             l = $(".cross_sell_native_course_c2")[0];
-        if (void 0 != a) {
-            var c = location.origin + $(a).find("a").attr("href");
-            Spymaster.track({
-                category: "native_crosssell",
-                behavior: "impressed",
-                target: c,
-                extras: {}
-            }, {
-                url: e(document.URL, {
-                    cs_code: "PL9N3",
-                    cs_type: "feature_course"
-                }),
-                referer: document.referrer
-            })
-        }
-        if (void 0 != s) {
-            var c = location.origin + $(s).find("a").attr("href");
-            Spymaster.track({
-                category: "native_crosssell",
-                behavior: "impressed",
-                target: c,
-                extras: {}
-            }, {
-                url: e(document.URL, {
-                    cs_code: "EC2Ns",
-                    cs_type: "feature_course"
-                }),
-                referer: document.referrer
-            })
-        }
-        if (void 0 != l && (Spymaster.track({
-                category: "native_crosssell",
-                behavior: "view",
-                target: document.URL,
-                extras: {}
-            }, {
-                url: document.URL,
-                referer: document.referrer
-            }), $(".buy-button").click(function() {
-                var t = {
-                    target: "topica_native",
-                    course_id: "native_course",
-                    course_name: "Topica Native",
-                    email: $(this).attr("email"),
-                    name: $(this).attr("name"),
-                    mobile: $(this).attr("mobile"),
-                    source: "feature_course",
-                    source_url: e(document.URL, {
-                        cs_referer: document.referrer
-                    }),
-                    type: "c3_crosssell",
-                    strategy: "crosssell"
-                };
-                $.ajax({
-                    url: "//marol.edumall.vn/contact/import",
-                    type: "post",
-                    data: t,
-                    success: function() {
-                        alert("C\u1ea3m \u01a1n b\u1ea1n. Ch\xfang t\xf4i s\u1ebd g\u1ecdi \u0111i\u1ec7n t\u01b0 v\u1ea5n cho b\u1ea1n v\u1ec1 ch\u01b0\u01a1ng tr\xecnh ti\u1ebfng anh TOPICA NATIVE")
-                    }
-                });
-                Spymaster.track({
-                    category: "native_crosssell",
-                    behavior: "submit",
-                    target: document.URL,
-                    extras: t
-                }, {
-                    url: document.URL,
-                    referer: document.referrer
-                })
-            })), location.pathname.match(/\/cod\/activate/)) {
-            var u = e(document.URL, {
-                cs_code: "PL8N",
-                cs_type: "voucher"
-            });
-            Spymaster.track({
-                category: "native_crosssell",
-                behavior: "impressed",
-                target: u,
-                extras: {}
-            }, {
-                url: u,
-                referer: document.referrer
-            }), $(".btn-activate").click(function() {
-                if ($("input[name=is_subscribe_native]").prop("checked")) {
-                    var t = $("input[name=cod_code]").val();
-                    Spymaster.track({
-                        category: "native_crosssell",
-                        behavior: "submit",
-                        target: document.URL,
-                        extras: {
-                            cod_code: t
-                        }
-                    }, {
-                        url: e(document.URL, {
-                            cs_code: "PL8N",
-                            cs_type: "voucher"
-                        }),
-                        referer: document.referrer
-                    })
-                }
-            })
-        }
-        if (location.pathname.match(/\/cod1\/activate/)) {
-            var u = e(document.URL, {
-                cs_code: "EL8Up1.Vx.CODx.BOX1",
-                cs_type: "voucher"
-            });
-            Spymaster.track({
-                category: "uni_crosssell",
-                behavior: "impressed",
-                target: u,
-                extras: {}
-            }, {
-                url: u,
-                referer: document.referrer
-            }), $(".btn-activate").click(function() {
-                if ($("input[name=is_subscribe_native]").prop("checked")) {
-                    var t = $("input[name=cod_code]").val();
-                    Spymaster.track({
-                        category: "uni_crosssell",
-                        behavior: "submit",
-                        target: document.URL,
-                        extras: {
-                            cod_code: t
-                        }
-                    }, {
-                        url: e(document.URL, {
-                            cs_code: "EL8Up1.Vx.CODx.BOX1",
-                            cs_type: "voucher"
-                        }),
-                        referer: document.referrer
-                    })
-                }
-            }), $(".btn-learning").click(function() {
-                $("input[name=receive]").prop("checked") && Spymaster.track({
-                    category: "uni_crosssell",
-                    behavior: "submit",
-                    target: document.URL
-                }, {
-                    url: e(document.URL, {
-                        cs_code: "EL8Up1.Vx.CODx.BOX2",
-                        cs_type: "voucher"
-                    }),
-                    referer: document.referrer
-                })
-            })
-        }
-        if (location.pathname.match(/\/cod5\/activate/)) {
-            var u = e(document.URL, {
-                cs_code: "EL8Up1.V1.COD5.BOX1",
-                cs_type: "voucher"
-            });
-            Spymaster.track({
-                category: "uni_crosssell",
-                behavior: "impressed",
-                target: u,
-                extras: {}
-            }, {
-                url: u,
-                referer: document.referrer
-            }), $(".btn-activate").click(function() {
-                var t = $("input[name=cod_code]").val();
-                Spymaster.track({
-                    category: "uni_crosssell",
-                    behavior: "submit",
-                    target: document.URL,
-                    extras: {
-                        cod_code: t
-                    }
-                }, {
-                    url: e(document.URL, {
-                        cs_code: "EL8Up1.V1.COD5.BOX1",
-                        cs_type: "voucher"
-                    }),
-                    referer: document.referrer
-                })
-            })
-        }
+        
+        
+        
         var d = $(".noti-count"),
             p = function(e) {
                 var t = $(".notification-list"),
@@ -30598,59 +30260,8 @@ $(document).ready(function() {
                 var a = n.match(i);
                 return null != a && void 0 != a[1] ? a[1] : null
             };
-        if (0 != d.length && (d = parseInt(d.text()), NaN != d && d > 0)) {
-            var h = p("c0");
-            if (null != h) {
-                var f = location.origin + h;
-                Spymaster.track({
-                    category: "uni_crosssell",
-                    behavior: "targeted",
-                    target: f,
-                    extras: {}
-                }, {
-                    url: e(document.URL, {
-                        cs_code: "EL9U5.UNI",
-                        cs_type: "notification"
-                    }),
-                    referer: document.referrer
-                })
-            }
-        }
-        if ($(".notification-button").click(function() {
-                if ($(this).hasClass("opened")) $(this).removeClass("opened");
-                else {
-                    $(this).addClass("opened");
-                    var t = p("c1");
-                    if (null != t) {
-                        var n = location.origin + t;
-                        Spymaster.track({
-                            category: "uni_crosssell",
-                            behavior: "impressed",
-                            target: n,
-                            extras: {}
-                        }, {
-                            url: e(document.URL, {
-                                cs_code: "EL9U5.UNI",
-                                cs_type: "notification"
-                            }),
-                            referer: document.referrer
-                        })
-                    }
-                }
-            }), $(".receive-information").click(function() {
-                $("input[name=is_subscribe_native]").prop("checked") ? $("input[name=is_subscribe_native]").prop("checked", !1) : $("input[name=is_subscribe_native]").prop("checked", !0)
-            }), void 0 != r) {
-            var m = $(r).find("a.l8"),
-                g = $(r).find("a.c1");
-            if (0 != m.length) {
-                var v = m.attr("href");
-                t(v, "ExxN1.2")
-            }
-            if (0 != g.length) {
-                var v = g.attr("href");
-                t(v, "ExxN1.1")
-            }
-        }
+ 
+   
         $(window).scroll(function() {
             var e = 50;
             $(window).scrollTop() >= e && $("#banner_voucher").addClass("banner-voucher"), $(window).scrollTop() < e && $("#banner_voucher").removeClass("banner-voucher")
