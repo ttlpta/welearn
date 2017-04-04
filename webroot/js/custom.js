@@ -92,7 +92,7 @@ $(document).ready(function () {
         });
     })
 
-    $(".buy-button").click(function() {
+    $(".buy-button").click(function() { 
         var veId = $(this).data('ve_id');
         var khoahocId =  $(this).data('khoahoc_id');
 
