@@ -44,7 +44,6 @@
                                 <p class='price-like clearfix'>
                                     <span class='price'>
                                     <?=$khoahoc->gia?>
-                                    <sup>đ</sup>
                                     </span>
                                 </p>
                             </div>

@@ -34,6 +34,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/khoa-hoc/xoa-gio-hang', ['controller' => 'Course', 'action' => 'deleteFromCard']);
     $routes->connect('/khoa-hoc/:id', ['controller' => 'Course', 'action' => 'detail'], ['id' => '\d+', 'pass' => ['id']]);
     $routes->connect('/thanh-toan', ['controller' => 'Checkout', 'action' => 'index']);
+    $routes->connect('/thanh-toan-thanh-cong', ['controller' => 'Checkout', 'action' => 'success']);
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $routes->connect('/tacgia/:id', ['controller' => 'Author', 'action' => 'detail'], ['id' => '\d+', 'pass' => ['id']]);

@@ -48,6 +48,43 @@ class CourseController extends AppController
 
     public function type($type)
     {
+        $khoahocQuantamnhat = $this->_khoahocTbl->getKhoahocLuotXemNhieuNhat(LIMIT_COURSE_EACHPAGE, $type);
+        $khoahocQuantamnhatFullData = [];
+        foreach($khoahocQuantamnhat as $khoahoc) {
+            $khoahocQuantamnhatFullData[] = $this->_prepareKhoahocData($khoahoc);
+        }
+        $tatCaKhoahoc = $this->_khoahocTbl->findByTheloai($type);
+        $priceOrder = '';
+        if ($this->request->getQuery('price')) {
+            $priceOrder = $this->request->getQuery('price');
+            $khoahocOrderByGia = [];
+            foreach($khoahocQuantamnhatFullData as $khoahoc) {
+                $khoahocOrderByGia[$khoahoc->id] = $khoahoc->gia;
+            }
+
+            ($priceOrder === 'asc') ? arsort($khoahocOrderByGia) : asort($khoahocOrderByGia);
+
+            $khoahocIdOrderByGia = [];
+            foreach($khoahocOrderByGia as $id => $gia) {
+                $khoahocIdOrderByGia[] = $id;
+            }
+
+            $tatCaKhoahoc->order(array('FIELD(id, '.implode(',', $khoahocIdOrderByGia).')'));
+
+        }
+//        ->limit(LIMIT_COURSE_EACHPAGE)->offset(0);
+
+        $tatCaKhoahocFullData = [];
+        foreach($tatCaKhoahoc as $khoahoc) {
+            $tatCaKhoahocFullData[] = $this->_prepareKhoahocData($khoahoc);
+        }
+        $tongKhoahoc = count($khoahocQuantamnhatFullData);
+        $tongSoTrang = ceil($tongKhoahoc/1);
+
+        $this->set('tongSoTrang', $tongSoTrang);
+        $this->set('priceOrder', $priceOrder);
+        $this->set('khoahocQuantamNhat', $khoahocQuantamnhatFullData);
+        $this->set('tatCaKhoahoc', $tatCaKhoahocFullData);
     }
 
     public function detail($courseId)
@@ -135,6 +172,7 @@ class CourseController extends AppController
         
         echo json_encode(array('success' => true));die;
     }
+
     private function _prepareKhoahocData($khoahoc) {
         $minPriceVe = $this->_veTbl->findByKhoahocId($khoahoc->id)->order(['gia_thuong' => 'ASC'])->limit(1)->first();
         $khoahoc->gia = ($minPriceVe) ? gia_daydu($minPriceVe->gia_thuong) : 0;

@@ -6,7 +6,7 @@
                     Thông tin khách hàng
                 </div>
                 <div class='information'>
-                    <form action='https://edumall.vn/cart/thanh-thao-autocad-3d-1475221436/register_buy_course' id='cart_form' method='post'>
+                    <form id='cart_form' method='post'>
                         <?php if($giohang && $giohang['khoahoc']) { ?>
                             <?php foreach($giohang['khoahoc'] as $item):?>
                                 <input type="hidden" name="khoahoc_id" value="<?=$item['id']?>"/>
@@ -24,7 +24,7 @@
                             </select>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control name' name='name' placeholder='Tên đầy đủ' required='required' title='Họ tên không được để trống và lớn hơn 6 ký tự!' type='text'>
+                            <input class='form-control name' name='ten' placeholder='Tên đầy đủ' required='required' title='Họ tên không được để trống và lớn hơn 6 ký tự!' type='text'>
                         </div>
                         <div class='cart_form_item'>
                             <input class='form-control mobile' name='dienthoai' placeholder='Số điện thoại' required='required' title='Số điện thoại không được để trống và chỉ được nhập chữ số!' type='text'>

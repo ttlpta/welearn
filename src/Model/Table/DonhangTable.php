@@ -25,6 +25,9 @@ use Cake\Validation\Validator;
 class DonhangTable extends Table
 {
 
+    public static $STATUS_CHUAGOIDIEN = 0;
+    public static $STATUS_CHOTHANHTOAN = 1;
+    public static $STATUS_DATHANHTOAN = 2;
     /**
      * Initialize method
      *
