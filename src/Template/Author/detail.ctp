@@ -4,8 +4,13 @@
             <div class='container no-padding'>
                 <div class='row no-margin'>
                     <div class='top-text'>
-                        <i class='fa fa-home'></i>
-                        <span>/ Thông tin giảng viên</span>
+                        <span>
+                            <a href='<?=$this->Url->build('/', true)?>' style="color: white">
+                                <i class="material-icons" style="position: relative;top: 4px;font-size: 18px;">home</i>
+                                Trang chủ
+                            </a>
+                            / Thông tin giảng viên
+                        </span>
                     </div>
                     <div class='col-md-3'>
                         <div class='row no-margin profile-detail'>
@@ -47,16 +52,16 @@
                                 <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                                     <div class='course-info'>
                                         <div class='avatar'>
-                                            <img src="<?=$this->Url->build('/'.DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgia->anh, true)?>" />
+                                            <img data-source="<?=$this->Url->build('/'.DIR_UPLOAD_IMAGE_TACGIA.'/'.$tacgia->anh, true)?>" />
                                         </div>
                                     </div>
                                     <div class='course-image no-margin'>
-                                        <img src="<?=$this->Url->build('/'.DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh, true)?>" />
+                                        <img data-source="<?=$this->Url->build('/'.DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh, true)?>" />
                                     </div>
                                     <div class='course-card-content'>
                                         <div class='row ellipsis-2lines course-title'><?= $khoahoc->ten ?> </div>
                                         <div class='row ellipsis-2lines course-description'><?= $tacgia->ten ?> </div>
-                                        <div class='row no-margin course-price'><?= $khoahoc->gia ?>đ</div>
+                                        <div class='row no-margin course-price'><?= $khoahoc->gia ?></div>
                                     </div>
                                 </a>
                             </div>
@@ -66,6 +71,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 </div>
+<?=$this->Html->script('main4')?>

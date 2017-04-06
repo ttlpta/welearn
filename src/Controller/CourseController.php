@@ -26,19 +26,31 @@ class CourseController extends AppController
         $khoahocBestSellers = $this->_khoahocTbl->getKhoahocMuaNhieuNhat(LIMIT_COURSE_EACHPAGE);
         $khoahocBestSellersFullData = [];
         foreach($khoahocBestSellers as $khoahoc) {
-            $khoahocBestSellersFullData[] = $this->_prepareKhoahocData($khoahoc);
+            $khoahocFullData = $this->_prepareKhoahocData($khoahoc);
+            if(!$khoahocFullData)
+                continue;
+
+            $khoahocBestSellersFullData[] = $khoahocFullData;
         }
 
         $khoahocQuantamnhat = $this->_khoahocTbl->getKhoahocLuotXemNhieuNhat(LIMIT_COURSE_EACHPAGE);
         $khoahocQuantamnhatFullData = [];
         foreach($khoahocQuantamnhat as $khoahoc) {
-            $khoahocQuantamnhatFullData[] = $this->_prepareKhoahocData($khoahoc);
+            $khoahocFullData = $this->_prepareKhoahocData($khoahoc);
+            if(!$khoahocFullData)
+                continue;
+                
+            $khoahocQuantamnhatFullData[] = $khoahocFullData;
         }
 
         $khoahocMoinhat = $this->_khoahocTbl->getKhoahocMoiNhat(LIMIT_COURSE_EACHPAGE);
         $khoahocMoinhatFullData = [];
         foreach($khoahocMoinhat as $khoahoc) {
-            $khoahocMoinhatFullData[] = $this->_prepareKhoahocData($khoahoc);
+            $khoahocFullData = $this->_prepareKhoahocData($khoahoc);
+            if(!$khoahocFullData)
+                continue;
+
+            $khoahocMoinhatFullData[] = $khoahocFullData;
         }
 
         $this->set('khoahocMuaNhieuNhat', $khoahocBestSellersFullData);
@@ -51,7 +63,11 @@ class CourseController extends AppController
         $khoahocQuantamnhat = $this->_khoahocTbl->getKhoahocLuotXemNhieuNhat(LIMIT_COURSE_EACHPAGE, $type);
         $khoahocQuantamnhatFullData = [];
         foreach($khoahocQuantamnhat as $khoahoc) {
-            $khoahocQuantamnhatFullData[] = $this->_prepareKhoahocData($khoahoc);
+            $khoahocFullData = $this->_prepareKhoahocData($khoahoc);
+            if(!$khoahocFullData)
+                continue;
+
+            $khoahocQuantamnhatFullData[] = $khoahocFullData;
         }
         $tatCaKhoahoc = $this->_khoahocTbl->findByTheloai($type);
         $priceOrder = '';
@@ -72,16 +88,22 @@ class CourseController extends AppController
             $tatCaKhoahoc->order(array('FIELD(id, '.implode(',', $khoahocIdOrderByGia).')'));
 
         }
-//        ->limit(LIMIT_COURSE_EACHPAGE)->offset(0);
+        $this->paginate = [
+            'limit' => LIMIT_COURSE_EACHPAGE
+        ];
 
+        $tatCaKhoahoc = $this->paginate($tatCaKhoahoc);
         $tatCaKhoahocFullData = [];
         foreach($tatCaKhoahoc as $khoahoc) {
-            $tatCaKhoahocFullData[] = $this->_prepareKhoahocData($khoahoc);
-        }
-        $tongKhoahoc = count($khoahocQuantamnhatFullData);
-        $tongSoTrang = ceil($tongKhoahoc/1);
+            $khoahocFullData = $this->_prepareKhoahocData($khoahoc);
+            if(!$khoahocFullData)
+                continue;
 
-        $this->set('tongSoTrang', $tongSoTrang);
+            $tatCaKhoahocFullData[] = $khoahocFullData;
+        }
+        
+        $title = ($type == KHOAHOC_TREEM) ? 'Khóa học dành cho trẻ em': 'Khóa học dành cho người lớn';
+        $this->set('title', $title);
         $this->set('priceOrder', $priceOrder);
         $this->set('khoahocQuantamNhat', $khoahocQuantamnhatFullData);
         $this->set('tatCaKhoahoc', $tatCaKhoahocFullData);
@@ -90,11 +112,17 @@ class CourseController extends AppController
     public function detail($courseId)
     {
         $course = $this->_khoahocTbl->findById($courseId)->first();
-        $ves = $this->_veTbl->findByKhoahocId($courseId)->order(['gia_thuong' => 'asc'])->all();
-        $veReNhat = $ves->first();
-        $tacgias =  $this->_tacgiaTbl->getManyTacgiaByIdArr(explode(',', $course->tacgia));
+        if($course) {
+            $this->_khoahocTbl->tangLuotXem($courseId);
+            $ves = $this->_veTbl->findByKhoahocId($courseId)->order(['gia_thuong' => 'asc'])->all();
+            $veReNhat = $ves->first();
+            $tacgias =  $this->_tacgiaTbl->getManyTacgiaByIdArr(explode(',', $course->tacgia));
+            
+            $this->set(compact('course', 'ves', 'tacgias', 'veReNhat'));
+        } else {
+            throw new NotFoundException(__('Not found'));
+        }
         
-        $this->set(compact('course', 'ves', 'tacgias', 'veReNhat'));
     }
 
     public function addToCard()
@@ -175,6 +203,9 @@ class CourseController extends AppController
 
     private function _prepareKhoahocData($khoahoc) {
         $minPriceVe = $this->_veTbl->findByKhoahocId($khoahoc->id)->order(['gia_thuong' => 'ASC'])->limit(1)->first();
+        if(!$minPriceVe)
+            return false;
+            
         $khoahoc->gia = ($minPriceVe) ? gia_daydu($minPriceVe->gia_thuong) : 0;
         $tacgiaIdArr = explode(',', $khoahoc->tacgia);
 

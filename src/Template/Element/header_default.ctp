@@ -45,8 +45,7 @@
                                         <div class='course_title'><?=$ve['ten']?> - Vé <b style="text-transform: uppercase"><?=$ve['ve_ten']?></b></div>
                                         <div class='course_price'><?=gia_daydu($ve['gia'])?></div>
                                     </div>
-                                    <div class='remove_course'>
-                                        <input class='course_id' type='hidden' value='56a71be4d8b7314364000017'>
+                                    <div class='remove_course' data-ten_ve="<?=$ve['ve_ten']?>">
                                         <button class='close'>×</button>
                                     </div>
                                 </div>
@@ -61,7 +60,7 @@
                                 </div>
                             </div>
                             <div class='row no-margin purchase'>
-                                <a href='users/sign_in.html'>Đặt mua khoá học</a>
+                                <a href="<?=$this->Url->build('/thanh-toan', true)?>">Đặt mua khoá học</a>
                             </div>
                         </div>
                         <?php } ?>

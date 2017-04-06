@@ -39,7 +39,6 @@
                                         <h5><?=$khoahoc->ten?></h5>
                                     </a>
                                     <a class='teacher-link' href='<?=$this->Url->build('/tacgia/'.$khoahoc->tacgia->id, true)?>'><?=$khoahoc->tacgia->ten?></a>
-
                                 </div>
                                 <p class='price-like clearfix'>
                                     <span class='price'>

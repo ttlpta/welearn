@@ -27,7 +27,11 @@ class HomeController extends AppController
         $khoahocMoinhats = $this->_khoahocTbl->getKhoahocMoiNhat(LIMIT_COURSE_HOMEPAGE);
         $khoahocMoinhasFullData = [];
         foreach($khoahocMoinhats as $khoahoc) {
-            $khoahocMoinhasFullData[] = $this->_prepareKhoahocData($khoahoc);
+            $khoahocFullData = $this->_prepareKhoahocData($khoahoc);
+            if(!$khoahocFullData)
+                continue;
+                
+            $khoahocMoinhasFullData[] = $khoahocFullData;
         }
 
         $khoahocMoinhatByChunks = array_chunk($khoahocMoinhasFullData, 4);
@@ -37,6 +41,10 @@ class HomeController extends AppController
 
     private function _prepareKhoahocData($khoahoc) {
         $minPriceVe = $this->_veTbl->findByKhoahocId($khoahoc->id)->order(['gia_thuong' => 'ASC'])->limit(1)->first();
+        
+        if(!$minPriceVe)
+            return false;
+
         $khoahoc->gia = ($minPriceVe) ? gia_daydu($minPriceVe->gia_thuong) : 0;
         $tacgiaIdArr = explode(',', $khoahoc->tacgia);
 
