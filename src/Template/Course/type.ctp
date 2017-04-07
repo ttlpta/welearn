@@ -73,13 +73,13 @@
                             <div class='row no-margin rel'>
                                 <div class='image-course pull-left' style='background-image: url(<?=$this->Url->build('/'.DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh, true)?>)'></div>
                                 <div class='content-course'>
-                                    <div class='name-course'>Guitar đệm hát trong 30 ngày</div>
+                                    <div class='name-course'><?=$khoahoc->ten?></div>
                                     <div class='about-author'>
-                                        <span>Nguyễn Thượng Hiển</span>
+                                        <span><?=$khoahoc->tacgia->ten?></span>
                                     </div>
                                     <div class='info-course row no-margin'>
                                         <div class='real-price info-item'>
-                                            699,000đ
+                                            <?=$khoahoc->gia?>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                 <div class='row no-margin courses-pagination'>
                     <nav style='text-align: center'><ul class='pagination' style='margin: 0px'>
                             <?php for($i = 1; $i <= $tongSoTrang; $i++) {?>
-                            <li><a href="chu-de-khac4658.html?page=2"><?= $i ?></a></li>
+                            <li class='active'><a href="?page=<?=$i?>"><?= $i ?></a></li>
                             <?php }?>
                         </ul>
                     </nav>
