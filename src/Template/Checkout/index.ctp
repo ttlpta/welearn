@@ -7,16 +7,23 @@
                 </div>
                 <div class='information'>
                     <form id='cart_form' method='post'>
-                        <?php if($giohang && $giohang['khoahoc']) { ?>
-                            <?php foreach($giohang['khoahoc'] as $item):?>
-                                <input type="hidden" name="donhang[<?=$item['id']?>][khoahoc_id]" value="<?=$item['id']?>"/>
-                                <input type="hidden" name="donhang[<?=$item['id']?>][ve_id]" value="<?=$item['ve_id']?>"/>
-                                <input type="hidden" name="donhang[<?=$item['id']?>][soluong]" id="soluong-<?=$item['id']?>" value="1"/>
-                                <input type="hidden" name="donhang[<?=$item['id']?>][gia]" value="<?=$item['gia']?>"/>
-                            <?php endforeach;?>
+                        <?php if ($giohang && $giohang['khoahoc']) { ?>
+                            <?php foreach ($giohang['khoahoc'] as $item): ?>
+                                <input type="hidden" name="donhang[<?= $item['id'] ?>][khoahoc_id]"
+                                       value="<?= $item['id'] ?>"/>
+                                <input type="hidden" name="donhang[<?= $item['id'] ?>][ve_id]"
+                                       value="<?= $item['ve_id'] ?>"/>
+                                <input type="hidden" name="donhang[<?= $item['id'] ?>][soluong]"
+                                       id="soluong-<?= $item['id'] ?>" value="1"/>
+                                <input type="hidden" name="donhang[<?= $item['id'] ?>][gia]"
+                                       value="<?= $item['gia'] ?>"/>
+                            <?php endforeach; ?>
                         <?php } ?>
                         <div class='cart_form_item'>
-                            <select class='form-control browser-default danhxung' id='select' name='danhxung' required='required'>
+                            <select class='form-control browser-default danhxung' id='select' name='danhxung'
+                                    oninvalid="this.setCustomValidity('Danh xưng không được để trống!')"
+                                    oninput="setCustomValidity('')"
+                                    required='required' title="Danh xưng không được để trống">
                                 <option disabled='' selected='' value=''>Chọn danh xưng</option>
                                 <option value='0'>Mr</option>
                                 <option value='1'>Mrs</option>
@@ -24,20 +31,43 @@
                             </select>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control name' name='ten' placeholder='Tên đầy đủ' required='required' title='Họ tên không được để trống và lớn hơn 6 ký tự!' type='text'>
+                            <input class='form-control name' name='ten' placeholder='Tên đầy đủ' required='required'
+                                   oninvalid="this.setCustomValidity('Họ tên không được để trống và lớn hơn 6 ký tự!')"
+                                   oninput="setCustomValidity('')"
+                                   title='Họ tên không được để trống và lớn hơn 6 ký tự!' type='text'>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control mobile' name='dienthoai' placeholder='Số điện thoại' required='required' title='Số điện thoại không được để trống và chỉ được nhập chữ số!' type='text'>
+                            <input class='form-control mobile' name='dienthoai' placeholder='Số điện thoại'
+                                   required='required'
+                                   oninvalid="this.setCustomValidity('Số điện thoại không được để trống và chỉ được nhập chữ số!')"
+                                   oninput="setCustomValidity('')"
+                                   title='Số điện thoại không được để trống và chỉ được nhập chữ số!' type='number'>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control email' name='email' placeholder='Email' required='required' title='Email không được để trống!' type='email'>
+                            <input class='form-control email' name='email' placeholder='Email' required='required'
+                                   oninvalid="
+                                        if(this.validity.typeMismatch){
+                                            this.setCustomValidity('Không đúng định dạng email')
+                                        } else {
+                                            this.setCustomValidity('Email không được để trống!')
+                                        }
+                                   "
+
+                                   oninput="setCustomValidity('')"
+                                   title='Email không được để trống!' type='email'>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control address' name='namsinh' placeholder='Năm sinh' required='required' title='Bạn phải nhập năm sinh!' type='text'>
+                            <input class='form-control address' name='namsinh' placeholder='Năm sinh'
+                                   oninvalid="this.setCustomValidity('Bạn phải nhập năm sinh!')"
+                                   oninput="setCustomValidity('')"
+                                   required='required' title='Bạn phải nhập năm sinh!' type='text'>
                         </div>
                         <div class='cart_form_item'>
                             <div class='form-group'>
-                                <select class='form-control browser-default city' id='select' name='khuvuc' required='required' title='Bạn phải chọn tỉnh/ thành phố!'>
+                                <select class='form-control browser-default city' id='select' name='khuvuc'
+                                        oninvalid="this.setCustomValidity('Bạn phải chọn tỉnh/ thành phố!')"
+                                        oninput="setCustomValidity('')"
+                                        required='required' title='Bạn phải chọn tỉnh/ thành phố!'>
                                     <option disabled='' selected='' value=''>Chọn Tỉnh / Thành phố</option>
                                     <option value='Hà Nội'>Hà Nội</option>
                                     <option value='TP Hồ Chí Minh'>TP Hồ Chí Minh</option>
@@ -108,20 +138,29 @@
                             </div>
                         </div>
                         <div class='cart_form_item'>
-                            <textarea name="lydobiet" class='form-control' placeholder='Lý do bạn biết đến chúng tôi' required='required'></textarea>
+                            <textarea name="lydobiet" class='form-control' placeholder='Lý do bạn biết đến chúng tôi'
+                                      oninvalid="this.setCustomValidity('Lý do bạn biết đến chúng tôi!')"
+                                      oninput="setCustomValidity('')"
+                                      required='required'></textarea>
                         </div>
                         <div class='cart_form_item'>
-                            <select class='form-control browser-default' id='select' name='datungthamgia' required='required'>
-                                <option disabled='' selected='' value=''>Bạn đã từng tham gia khóa học của chúng tôi?</option>
+                            <select class='form-control browser-default' id='select' name='datungthamgia'
+                                    oninvalid="this.setCustomValidity('Không được để trống!')"
+                                    oninput="setCustomValidity('')"
+                                    required='required' title="Không được để trống">
+                                <option disabled='' selected='' value=''>Bạn đã từng tham gia khóa học của chúng tôi?
+                                </option>
                                 <option value='0'>Chưa</option>
                                 <option value='1'>Đã từng tham gia</option>
                             </select>
                         </div>
                         <div class='cart_form_item'>
-                            <input class='form-control address' name='nguoigioithieu' placeholder='Người giới thiệu' required='required' title='Tên người giới thiệu bạn tới chương trình học của chúng tôi' type='text'>
+                            <input class='form-control address' name='nguoigioithieu' placeholder='Người giới thiệu'
+                                   title='Tên người giới thiệu bạn tới chương trình học của chúng tôi' type='text'>
                         </div>
                         <div class='cart_form_submit'>
-                            <input class='btn btn-success btn-raised btn-lg btn_purchase_cod btn_purchase_cod_organic' type='submit' value='Đặt mua khóa học'>
+                            <input class='btn btn-success btn-raised btn-lg btn_purchase_cod btn_purchase_cod_organic'
+                                   type='submit' value='Đặt mua khóa học'>
                         </div>
                     </form>
                 </div>
@@ -129,43 +168,50 @@
             <div class='cart_detail_box-right'>
                 <div class='purchase_information'>
                     <div class='title'>Thông tin thanh toán</div>
-                    <?php if($giohang && $giohang['khoahoc']) { ?>
-                        <?php foreach($giohang['khoahoc'] as $item):?>
-                        <div class='purchase_information_item'>
-                            <div class='action_area'>
-                                <div class="remove_course" style="height: 15px;" data-ve_id="<?=$item['ve_id']?>">
-                                    <button class="close">×</button>
+                    <?php if ($giohang && $giohang['khoahoc']) { ?>
+                        <?php foreach ($giohang['khoahoc'] as $item): ?>
+                            <div class='purchase_information_item'>
+                                <div class='action_area'>
+                                    <div class="remove_course" style="height: 15px;" data-ve_id="<?= $item['ve_id'] ?>">
+                                        <button class="close">×</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class='course_info no-margin'>
-                                <div class='course_name no-padding'><a href="<?=$this->Url->build('/khoa-hoc/'.$item['id'], true)?>"><?=$item['ten']?></a> - Vé <b style="text-transform: uppercase"><?=$item['ve_ten']?></b>
-                                    <input type="hidden" id="total_cost_item-<?=$item['id']?>" class="total_cost_item" value="<?=$item['gia']?>"/>
+                                <div class='course_info no-margin'>
+                                    <div class='course_name no-padding'><a
+                                            href="<?= $this->Url->build('/khoa-hoc/' . $item['id'], true) ?>"><?= $item['ten'] ?></a>
+                                        - Vé <b style="text-transform: uppercase"><?= $item['ve_ten'] ?></b>
+                                        <input type="hidden" id="total_cost_item-<?= $item['id'] ?>"
+                                               class="total_cost_item" value="<?= $item['gia'] ?>"/>
                                     <span style="float:right"><b>x</b>
-                                        <input style="max-width: 40px" type="number" class="soluong" data-gia="<?=$item['gia']?>" data-khoahoc_id="<?=$item['id']?>" value="1"/>
+                                        <input style="max-width: 40px" type="number" class="soluong"
+                                               data-gia="<?= $item['gia'] ?>" data-khoahoc_id="<?= $item['id'] ?>"
+                                               value="1"/>
                                     </span>
-                                </div>
-                                <div class='course_price no-padding'>
-                                    <span class="price"><?=gia_daydu($item['gia'])?></span>
+                                    </div>
+                                    <div class='course_price no-padding'>
+                                        <span class="price"><?= gia_daydu($item['gia']) ?></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php endforeach;?>
-                    <?php } else {?>
+                        <?php endforeach; ?>
+                    <?php } else { ?>
                         <div class='purchase_information_item'>
                             <div class='action_area'></div>
                             <div class='course_info no-margin'>
-                                <h4>Bạn chưa có khóa học nào trong giỏ hàng. <a href="../tat-ca-khoa-hoc">Quay lại</a> các khóa học của chúng tôi nào</h4>
+                                <h4>Bạn chưa có khóa học nào trong giỏ hàng. <a href="../tat-ca-khoa-hoc">Quay lại</a>
+                                    các khóa học của chúng tôi nào</h4>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
                 <div class='total_cost no-margin'>
                     <div class='total_cost_text'>Thành tiền</div>
-                    <div class='total_cost_number'><?= ($giohang) ? gia_daydu($giohang['tong_tien_khoahoc_dadat']): 0 ?></div>
+                    <div
+                        class='total_cost_number'><?= ($giohang) ? gia_daydu($giohang['tong_tien_khoahoc_dadat']) : 0 ?></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?=$this->Html->script('main2')?>
-<?=$this->Html->script('checkout')?>
+<?= $this->Html->script('main2') ?>
+<?= $this->Html->script('checkout') ?>

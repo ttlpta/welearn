@@ -32,7 +32,7 @@
             <label for="mieuta">Nội dung</label>
             <textarea name="noidung" id="editor" ><?=$khoahoc->noidung?></textarea>
         </div>
-        <?=$this->Form->control('luotxem', ['options' => ['Đóng', 'Mở']])?>
+        <?=$this->Form->control('trangthai', ['options' => ['Đóng', 'Mở']])?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

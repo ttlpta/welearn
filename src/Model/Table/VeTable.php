@@ -25,7 +25,8 @@ use Cake\Validation\Validator;
  */
 class VeTable extends Table
 {
-
+    public static $STATUS_NGUNGBAN = 0;
+    public static $STATUS_BAN = 1;
     /**
      * Initialize method
      *

@@ -25,6 +25,8 @@ use Cake\Database\Expression\QueryExpression;
  */
 class KhoahocTable extends Table
 {
+    public static $STATUS_DONG = 0;
+    public static $STATUS_MO = 1;
     /**
      * Initialize method
      *
@@ -124,6 +126,7 @@ class KhoahocTable extends Table
         if($khoahocIds) {
             $condition = [
                 'id IN' => $khoahocIds,
+                'trangthai' => $this::$STATUS_MO,
             ];
             if(!is_null($type)) {
                 $condition = $condition + ['theloai' => $type];
@@ -140,14 +143,15 @@ class KhoahocTable extends Table
     }
 
     public function getKhoahocLuotXemNhieuNhat($limit, $type = null) {
-        $khoahocs = (!is_null($type)) ? $this->findByTheloai($type)->limit($limit) : $this->find('all')->limit($limit);
+        $khoahocs = (!is_null($type)) ? $this->findByTheloaiAndTrangthai($type, $this::$STATUS_MO)->limit($limit)
+            : $this->findByTrangthai($this::$STATUS_MO)->limit($limit);
 
         return $khoahocs;
     }
 
     public function getKhoahocMoiNhat($limit, $type = null) {
-        $khoahocs = (!is_null($type)) ? $this->findByTheloai($type)->order(['created' => 'DESC'])->limit($limit)
-            : $this->find('all')->order(['created' => 'DESC'])->limit($limit);
+        $khoahocs = (!is_null($type)) ? $this->findByTheloaiAndTrangthai($type, $this::$STATUS_MO)->order(['created' => 'DESC'])->limit($limit)
+            : $this->findByTrangthai($this::$STATUS_MO)->order(['created' => 'DESC'])->limit($limit);
 
         return $khoahocs;
     }
@@ -158,7 +162,7 @@ class KhoahocTable extends Table
             $searchTacgia = ['OR' => [['tacgia LIKE' => $tacgiaId],
                 ['tacgia LIKE' =>  '%,'.$tacgiaId], ['tacgia LIKE' =>  $tacgiaId.',%'], ['tacgia LIKE' =>  '%,'.$tacgiaId.',%']]];
 
-            return $this->find('all')->where($searchTacgia);
+            return $this->findByTrangthai($this::$STATUS_MO)->where($searchTacgia);
         }
 
         return false;

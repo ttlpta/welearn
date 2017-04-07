@@ -45,7 +45,7 @@
     <h3><?= __('Ve') ?></h3>
     <?=$this->Html->link(
         'Thêm Vé',
-        ['prefix' => 'admin', 'controller' => 'Ve', 'action' => 'add'])?>
+        ['prefix' => 'admin', 'controller' => 'Ve', 'action' => 'add'], ['class' => 'button'])?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

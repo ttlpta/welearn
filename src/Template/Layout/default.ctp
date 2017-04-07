@@ -24,6 +24,7 @@
 
     <?= $this->Html->script('fontawesome') ?>
     <?= $this->Html->script('main3'); ?>
+    <?= $this->Html->script('checkout'); ?>
 </head>
 <body class='courses_page home_page page-instructor_profile'>
 <?= $this->element('header_default') ?>

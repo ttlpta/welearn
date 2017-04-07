@@ -6,6 +6,7 @@ use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
+use App\Model\Table\VeTable;
 
 class CourseController extends AppController
 {
@@ -114,7 +115,7 @@ class CourseController extends AppController
         $course = $this->_khoahocTbl->findById($courseId)->first();
         if($course) {
             $this->_khoahocTbl->tangLuotXem($courseId);
-            $ves = $this->_veTbl->findByKhoahocId($courseId)->order(['gia_thuong' => 'asc'])->all();
+            $ves = $this->_veTbl->findByKhoahocIdAndTrangthai($courseId, VeTable::$STATUS_BAN)->order(['gia_thuong' => 'asc'])->all();
             $veReNhat = $ves->first();
             $tacgias =  $this->_tacgiaTbl->getManyTacgiaByIdArr(explode(',', $course->tacgia));
             
