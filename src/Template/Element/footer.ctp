@@ -4,28 +4,17 @@
             <div class='top-footer'>
                 <div class='row'>
                     <div class='col-sm-3 block-footer'>
-                        <a href='http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=22565'>
-                            <?=$this->Html->image('logo-bottom-min.png', ['alt' => 'Tuyet chieu ban hang so mot'])?>
-                        </a>
                     </div>
                     <div class='col-sm-3 block-footer'>
                         <ul class='footer-link'>
                             <li>
-                                <a href='about.html'>Giới thiệu về Edumall</a>
+                                <a href='about.html'>Giới thiệu về Babylons</a>
                             </li>
                             <li>
                                 <a href='faq.html'>Câu hỏi thường gặp</a>
                             </li>
                             <li>
                                 <a href='terms.html'>Điều khoản sử dụng</a>
-                            </li>
-                            <li>
-                                <a class='tuyenthay'
-                                   href='http://tuyendunggiangvien.edumall.vn/?utm_source=edumall&amp;utm_pos=welcome_foot'
-                                   target='_blank'>Hợp tác giảng dạy</a>
-                            </li>
-                            <li>
-                                <a href='mobile.html'>Mobile App</a>
                             </li>
                         </ul>
                     </div>
