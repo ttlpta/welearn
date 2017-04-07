@@ -9,10 +9,10 @@
                     <form id='cart_form' method='post'>
                         <?php if($giohang && $giohang['khoahoc']) { ?>
                             <?php foreach($giohang['khoahoc'] as $item):?>
-                                <input type="hidden" name="khoahoc_id" value="<?=$item['id']?>"/>
-                                <input type="hidden" name="ve_id" value="<?=$item['ve_id']?>"/>
-                                <input type="hidden" name="soluong" id="soluong-<?=$item['id']?>" value="1"/>
-                                <input type="hidden" name="gia" value="<?=$item['gia']?>"/>
+                                <input type="hidden" name="donhang[<?=$item['id']?>][khoahoc_id]" value="<?=$item['id']?>"/>
+                                <input type="hidden" name="donhang[<?=$item['id']?>][ve_id]" value="<?=$item['ve_id']?>"/>
+                                <input type="hidden" name="donhang[<?=$item['id']?>][soluong]" id="soluong-<?=$item['id']?>" value="1"/>
+                                <input type="hidden" name="donhang[<?=$item['id']?>][gia]" value="<?=$item['gia']?>"/>
                             <?php endforeach;?>
                         <?php } ?>
                         <div class='cart_form_item'>
@@ -132,9 +132,13 @@
                     <?php if($giohang && $giohang['khoahoc']) { ?>
                         <?php foreach($giohang['khoahoc'] as $item):?>
                         <div class='purchase_information_item'>
-                            <div class='action_area'></div>
+                            <div class='action_area'>
+                                <div class="remove_course" style="height: 15px;" data-ve_id="<?=$item['ve_id']?>">
+                                    <button class="close">×</button>
+                                </div>
+                            </div>
                             <div class='course_info no-margin'>
-                                <div class='course_name no-padding'><?=$item['ten']?> - Vé <b style="text-transform: uppercase"><?=$item['ve_ten']?></b>
+                                <div class='course_name no-padding'><a href="<?=$this->Url->build('/khoa-hoc/'.$item['id'], true)?>"><?=$item['ten']?></a> - Vé <b style="text-transform: uppercase"><?=$item['ve_ten']?></b>
                                     <input type="hidden" id="total_cost_item-<?=$item['id']?>" class="total_cost_item" value="<?=$item['gia']?>"/>
                                     <span style="float:right"><b>x</b>
                                         <input style="max-width: 40px" type="number" class="soluong" data-gia="<?=$item['gia']?>" data-khoahoc_id="<?=$item['id']?>" value="1"/>
@@ -150,7 +154,7 @@
                         <div class='purchase_information_item'>
                             <div class='action_area'></div>
                             <div class='course_info no-margin'>
-                                <h4>Bạn chưa có khóa học nào trong giỏ hàng. <a href="../tac-ca-khoa-hoc">Quay lại</a> các khóa học của chúng tôi nào</h4>
+                                <h4>Bạn chưa có khóa học nào trong giỏ hàng. <a href="../tat-ca-khoa-hoc">Quay lại</a> các khóa học của chúng tôi nào</h4>
                             </div>
                         </div>
                     <?php } ?>

@@ -22,8 +22,13 @@ class AuthorController extends AppController
         $khoahocTbl = TableRegistry::get('Khoahoc');
         $veTbl = TableRegistry::get('Ve');
         $khoahocs = $khoahocTbl->getKhoahocByTacgiaId($authorId)->toArray();
-        foreach($khoahocs as $khoahoc){
+        foreach($khoahocs as $key => $khoahoc){
             $minPriceVe = $veTbl->findByKhoahocId($khoahoc['id'])->order(['gia_thuong' => 'ASC'])->limit(1)->first();
+            if(!$minPriceVe) {
+                unset($khoahocs[$key]);
+                continue;
+            }
+                
             $khoahoc['gia'] = ($minPriceVe) ? gia_daydu($minPriceVe->gia_thuong) : 0;
         }
 

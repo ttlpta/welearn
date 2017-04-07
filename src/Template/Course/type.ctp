@@ -4,17 +4,17 @@
         <div class='row container'>
             <ul class='no-padding breadcrumb'>
                 <li>
-                    <a href='index.html'>
+                    <a href='<?=$this->Url->build('/', true)?>'>
                         <i class='fa fa-home'></i>
                     </a>
                 </li>
                 <li class='breadcrumb-home'>
-                    <a href='index.html'>Trang chủ</a>
+                    <a href='<?=$this->Url->build('/', true)?>'>Trang chủ</a>
                 </li>
-                <li>Chủ đề khác</li>
+                <li><?=$title?></li>
             </ul>
             <div class='row no-margin category-header-name'>
-                <h2>Chủ đề khác</h2>
+                <h2><?=$title?></h2>
             </div>
         </div>
     </div>
@@ -132,10 +132,11 @@
                     <?php endforeach?>
                 </div>
                 <div class='row no-margin courses-pagination'>
-                    <nav style='text-align: center'><ul class='pagination' style='margin: 0px'>
-                            <?php for($i = 1; $i <= $tongSoTrang; $i++) {?>
-                            <li class='active'><a href="?page=<?=$i?>"><?= $i ?></a></li>
-                            <?php }?>
+                    <nav style='text-align: center'>
+                        <ul class='pagination' style='margin: 0px'>
+                            <?= $this->Paginator->prev('Trang trước') ?>
+                            <?= $this->Paginator->numbers() ?>
+                            <?= $this->Paginator->next('Trang sau') ?>
                         </ul>
                     </nav>
                 </div>

@@ -15,7 +15,7 @@ $(document).ready(function () {
             $('.course-price #giaChinhThuc').text(numberWithCommas(veRenhatGiaKhuyenMai));
             $('.course-price .linethrough #giaCu').text(numberWithCommas(veRenhatGiaThuong));
         } else {
-            $('.course-price #giaChinhThuc').text(veRenhatGiaThuong);
+            $('.course-price #giaChinhThuc').text(numberWithCommas(veRenhatGiaThuong));
             $('.course-price .linethrough').hide();
         }
         $('.course-wishlist .quyenloi').hide();
@@ -61,10 +61,14 @@ $(document).ready(function () {
     });
 
     $(".remove_course").click(function() {
-        var veIdSelector = format_to_element_id($('.ve:checked').val());
-        var veSelData = $('#'+veIdSelector);
-        var veId = veSelData.data('ve_id');
-
+        var veId;
+        if($(this).data('ve_id')) {
+            veId = $(this).data('ve_id');
+        } else {
+            var veIdSelector = format_to_element_id($('.ve:checked').val());
+            var veSelData = $('#'+veIdSelector);
+            veId = veSelData.data('ve_id');
+        }
         $.post("xoa-gio-hang", {ve_id: veId}, function(data, status){
             var dataObj = JSON.parse(data);
             if(dataObj.success)
@@ -90,7 +94,7 @@ $(document).ready(function () {
         $.post("them-gio-hang", data, function(data, status){
             window.location = "../thanh-toan";
         });
-    })
+    });
 
     $(".buy-button").click(function() { 
         var veId = $(this).data('ve_id');
@@ -105,4 +109,8 @@ $(document).ready(function () {
             window.location = "../thanh-toan";
         });
     });
+
+    $('#cartModal').on('hidden.bs.modal', function () {
+        window.location.reload();
+    })
 });

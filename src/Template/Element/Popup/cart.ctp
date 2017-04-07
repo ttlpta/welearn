@@ -40,7 +40,7 @@
                         </div>
                         <div class='purchase row no-margin'>
                             <div class='col-xs-12 no-padding'>
-                                <a class='btn btn-default btn-purchase' href='../users/sign_in.html'>
+                                <a class='btn btn-default btn-purchase' href='<?=$this->Url->build('/thanh-toan', true)?>'>
                                     <i class='fa fa-shopping-cart'></i>
                                     Thanh toán
                                 </a>

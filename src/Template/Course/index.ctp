@@ -1,5 +1,23 @@
 <div class='container-wrapper' style='overflow: hidden;'>
     <main class='home'>
+        <div class='row no-margin category-header' style='background-color: background-color: #3a4f54;background: linear-gradient(-90deg, #577780, #36494e);'>
+            <div class='row container'>
+                <ul class='no-padding breadcrumb'>
+                    <li>
+                        <a href='<?=$this->Url->build('/', true)?>'>
+                            <i class='fa fa-home'></i>
+                        </a>
+                    </li>
+                    <li class='breadcrumb-home'>
+                        <a href='<?=$this->Url->build('/', true)?>'>Trang chủ</a>
+                    </li>
+                    <li>Các khóa học đang diễn ra</li>
+                </ul>
+                <div class='row no-margin category-header-name'>
+                    <h2>Các khóa học đang diễn ra</h2>
+                </div>
+            </div>
+        </div>
         <div class='container'>
             <div class='row' id='wrapCourseItems'>
                 <div class='rec-div-holder' id='edumall.courses.middle.top'></div>
@@ -16,21 +34,21 @@
                     <div class='list-course-card'>
                         <?php foreach($khoahocMuaNhieuNhat as $khoahoc): ?>
                         <div class='course-card image-lazier'>
-                            <a href='/khoa-hoc'>
+                            <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                                 <div class='course-info'>
                                     <div class='avatar'>
-                                        <img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$khoahoc->tacgia->anh?>" />
+                                        <img data-source="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$khoahoc->tacgia->anh?>" />
                                     </div>
                                 </div>
                                 <div class='course-image no-margin'>
-                                    <?= $this->Html->image('anhtn01-noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.png', ['alt' => 'anh tieu su tran nam anh']) ?>
+                                    <img data-source="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh?>" />
                                 </div>
                                 <div class='course-card-content'>
                                     <div class='row ellipsis-2lines course-title'><?=$khoahoc->ten?></div>
                                     <div class='row ellipsis-2lines course-description'><?=$khoahoc->mieutangan?></div>
                                     <div class='row no-margin course-rating '><a href="#"><?=$khoahoc->tacgia->ten?></a></div>
                                     <div class='row no-margin course-price'>
-                                        <span class="price"><?=$khoahoc->gia?><sup>đ</sup></span>
+                                        <span class="price"><?=$khoahoc->gia?></span>
                                     </div>
                                 </div>
                             </a>
@@ -51,21 +69,21 @@
                     <div class='list-course-card'>
                         <?php foreach($khoahocQuantamNhat as $khoahoc): ?>
                             <div class='course-card image-lazier'>
-                                <a href='/khoa-hoc'>
+                                <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                                     <div class='course-info'>
                                         <div class='avatar'>
-                                            <img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$khoahoc->tacgia->anh?>" />
+                                            <img data-source="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$khoahoc->tacgia->anh?>" />
                                         </div>
                                     </div>
                                     <div class='course-image no-margin'>
-                                        <?= $this->Html->image('anhtn01-noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.png', ['alt' => 'anh tieu su tran nam anh']) ?>
+                                        <img data-source="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh?>" />
                                     </div>
                                     <div class='course-card-content'>
                                         <div class='row ellipsis-2lines course-title'><?=$khoahoc->ten?></div>
                                         <div class='row ellipsis-2lines course-description'><?=$khoahoc->mieutangan?></div>
                                         <div class='row no-margin course-rating '><a href="#"><?=$khoahoc->tacgia->ten?></a></div>
                                         <div class='row no-margin course-price'>
-                                            <span class="price"><?=$khoahoc->gia?><sup>đ</sup></span>
+                                            <span class="price"><?=$khoahoc->gia?></span>
                                         </div>
                                     </div>
                                 </a>
@@ -82,21 +100,21 @@
                     <div class='list-course-card-no-collapse'></div>
                     <?php foreach($khoahocMoinhat as $khoahoc): ?>
                     <div class='course-card image-lazier'>
-                        <a href='/khoa-hoc'>
+                        <a href='<?=$this->Url->build('/khoa-hoc/'.$khoahoc->id, true)?>'>
                             <div class='course-info'>
                                 <div class='avatar'>
-                                    <img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$khoahoc->tacgia->anh?>" />
+                                    <img data-source="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_TACGIA.'/'.$khoahoc->tacgia->anh?>" />
                                 </div>
                             </div>
                             <div class='course-image no-margin'>
-                                <?= $this->Html->image('anhtn01-noi-thoa-thich-8-tieng-moi-ngay-ma-khong-lo-mat-giong.png', ['alt' => 'anh tieu su tran nam anh']) ?>
+                                <img data-source="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh?>" />
                             </div>
                             <div class='course-card-content'>
                                 <div class='row ellipsis-2lines course-title'><?=$khoahoc->ten?></div>
                                 <div class='row ellipsis-2lines course-description'><?=$khoahoc->mieutangan?></div>
                                 <div class='row no-margin course-rating '><a href="#"><?=$khoahoc->tacgia->ten?></a></div>
                                 <div class='row no-margin course-price'>
-                                    <span class="price"><?=$khoahoc->gia?><sup>đ</sup></span>
+                                    <span class="price"><?=$khoahoc->gia?></span>
                                 </div>
                             </div>
                         </a>
@@ -107,3 +125,4 @@
         </div>
     </main>
 </div>
+<?=$this->Html->script('main4')?>

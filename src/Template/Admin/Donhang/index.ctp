@@ -55,31 +55,48 @@
                 <th scope="col"><?= $this->Paginator->sort('soluong') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col" class="actions"><?= 'Chi tiết' ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($donhang as $donhang): ?>
-            <tr>
-                <td>
-                <?= $donhang->has('khachhang') ? 
-                    $this->Html->link(
-                    danhxung_khachhang($donhang->khachhang->danhxung).'. '.$donhang->khachhang->ten, 
-                    ['controller' => 'Khachhang', 'action' => 'view', 
-                    $donhang->khachhang->id], ['target' => '_blank']) : '' ?>
-                </td>
-                <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->dienthoai, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id], ['target' => '_blank']) : '' ?></td>
-                <td><?= $donhang->has('khachhang') ? $this->Html->link($donhang->khachhang->email, ['controller' => 'Khachhang', 'action' => 'view', $donhang->khachhang->id], ['target' => '_blank']) : '' ?></td>
-                <td><?= $donhang->has('ve') ? $this->Html->link($donhang->ve->ten, ['controller' => 'Ve', 'action' => 'view', $donhang->ve->id ], ['target' => '_blank']) : '' ?></td>
-                <td><?= $this->Number->format($donhang->soluong) ?></td>
-                <td><?= status_donhang($donhang->trangthai) ?></td>
-                <td><?= h($donhang->created) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $donhang->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $donhang->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $donhang->id], ['confirm' => __('Are you sure you want to delete # {0}?', $donhang->id)]) ?>
-                </td>
-            </tr>
+                <tr>
+                    <?php
+                        $ve = $donhang['ve'][0];
+                        $rowpan = count($donhang['ve']);
+                        unset($donhang['ve'][0]);
+                    ?>
+                    <td rowspan="<?=$rowpan?>">
+                    <?= $this->Html->link(
+                        danhxung_khachhang($donhang['danhxung']).'. '.$donhang['ten'],
+                        ['controller' => 'Khachhang', 'action' => 'view',
+                        $donhang['id']], ['target' => '_blank']) ?>
+                    </td>
+                    <td rowspan="<?=$rowpan?>"><?=$this->Html->link($donhang['dienthoai'], ['controller' => 'Khachhang', 'action' => 'view', $donhang['id']], ['target' => '_blank'])?></td>
+                    <td rowspan="<?=$rowpan?>"><?= $this->Html->link($donhang['email'], ['controller' => 'Khachhang', 'action' => 'view', $donhang['id']], ['target' => '_blank'])?></td>
+                    <td><?= $this->Html->link($ve['ve_ten'], ['controller' => 'Ve', 'action' => 'view', $ve['ve_id']], ['target' => '_blank']) ?></td>
+                    <td><?= $this->Number->format($ve['soluong']) ?></td>
+                    <td><?= status_donhang($ve['trangthai']) ?></td>
+                    <td><?= h($ve['created']) ?></td>
+                    <td rowspan="<?=$rowpan?>"><?= $this->Html->link(__('View'), ['action' => 'view', $ve['id']]) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $ve['id']]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $ve['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $ve['id'])]) ?>
+                    </td>
+                </tr>
+                <?php foreach($donhang['ve'] as $ve):?>
+                    <tr>
+                        <td><?= $this->Html->link($ve['ve_ten'], ['controller' => 'Ve', 'action' => 'view', $ve['ve_id']], ['target' => '_blank']) ?></td>
+                        <td><?= $this->Number->format($ve['soluong']) ?></td>
+                        <td><?= status_donhang($ve['trangthai']) ?></td>
+                        <td><?= h($ve['created']) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $ve['id']]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $ve['id']], ['confirm' => __('Are you sure you want to delete # {0}?', $ve['id'])]) ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
             <?php endforeach; ?>
         </tbody>
     </table>

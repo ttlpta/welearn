@@ -35,8 +35,31 @@ class DonhangController extends AdminController
         $this->paginate = [
             'contain' => ['Khachhang', 'Ve']
         ];
-        $donhang = $this->paginate($query);
-        $this->set(compact('donhang'));
+        $donhangs = $this->paginate($query);
+        $donhangRemake = [];
+        $ve = [];
+        foreach($donhangs as $donhang) {
+            $ve[$donhang->khachhang->id][] = array(
+                'id' => $donhang->id,
+                've_ten' => $donhang->ve->ten,
+                've_id' => $donhang->ve->id,
+                'soluong' => $donhang->soluong,
+                'trangthai' => $donhang->trangthai,
+                'created' => $donhang->created
+            );
+        }
+
+        foreach($donhangs as $donhang) {
+            $donhangRemake[$donhang->khachhang->id] = array(
+                'id' => $donhang->khachhang->id,
+                'danhxung' => $donhang->khachhang->danhxung,
+                'ten' => $donhang->khachhang->ten,
+                'dienthoai' => $donhang->khachhang->dienthoai,
+                'email' => $donhang->khachhang->email,
+                've' => $ve[$donhang->khachhang->id],
+            );
+        }
+        $this->set('donhang', $donhangRemake);
         $this->set('_serialize', ['donhang']);
     }
 
@@ -52,9 +75,34 @@ class DonhangController extends AdminController
         $donhang = $this->Donhang->get($id, [
             'contain' => ['Khachhang', 'Ve']
         ]);
+
+        $donhangByKhachhangIds = $this->Donhang->findByKhachhangId($donhang->khachhang->id)->contain(['Khachhang', 'Ve']);
+
+        $khoahocIds = [];
+        $tongTien = 0;
+        foreach($donhangByKhachhangIds as $donhang) {
+            $khoahocIds[] = $donhang->khoahoc_id;
+            $tongTien += $donhang->tongtien;
+
+            if ($this->request->is('post') && $donhang->id && $trangthai = $this->request->getData('trangthai')) {
+                $donhang = $this->Donhang->get($donhang->id);
+                $donhang->trangthai = $trangthai;
+
+                $this->Donhang->save($donhang);
+            }
+        }
+
         $khoahocTbl = TableRegistry::get('Khoahoc');
-        $khoahoc = $khoahocTbl->find()->select(['id', 'ten'])->where(['id' => $donhang->ve->khoahoc_id])->first();
-        $this->set('khoahoc', $khoahoc);
+        $khoahocs = $khoahocTbl->find()->select(['id', 'ten'])->where(['id IN' => $khoahocIds])->toArray();
+
+        $khoahocById = [];
+        foreach($khoahocs as $khoahoc) {
+            $khoahocById[$khoahoc->id] = $khoahoc->ten;
+        }
+
+        $this->set('tongTien', $tongTien);
+        $this->set('donhangByKhachhangIds', $donhangByKhachhangIds);
+        $this->set('khoahocs', $khoahocById);
         $this->set('donhang', $donhang);
         $this->set('_serialize', ['donhang']);
     }

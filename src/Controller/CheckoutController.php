@@ -37,19 +37,28 @@ class CheckoutController extends AppController
 
             $khachhang = $this->_khachhangTbl->newEntity($khachhangEntity);
             if ($this->_khachhangTbl->save($khachhang)) {
-                $donhangEntity = array(
-                    'khachhang_id' => $khachhang->id,
-                    've_id' => $requestData['ve_id'],
-                    'soluong' => $requestData['soluong'],
-                    'trangthai' => DonhangTable::$STATUS_CHUAGOIDIEN,
-                    'khoahoc_id' => $requestData['khoahoc_id'],
-                    'tongtien' => $requestData['gia'] * $requestData['soluong'],
-                );
+                $donhangs = $this->request->getData('donhang');
+                $donhangEntities = [];
+                foreach($donhangs as $donhang) {
+                    if(!$donhang['soluong'])
+                        continue;
 
-                $donhang = $this->_donhangTbl->newEntity($donhangEntity);
-                if ($this->_donhangTbl->save($donhang)) {
-                    $this->request->session()->delete('giohang');
-                    return $this->redirect('thanh-toan-thanh-cong');
+                    $donhangEntities[] = array(
+                        'khachhang_id' => $khachhang->id,
+                        've_id' => $donhang['ve_id'],
+                        'soluong' => $donhang['soluong'],
+                        'trangthai' => DonhangTable::$STATUS_CHUAGOIDIEN,
+                        'khoahoc_id' => $donhang['khoahoc_id'],
+                        'tongtien' => $donhang['gia'] * $donhang['soluong'],
+                    );
+                }
+
+                if($donhangEntities) {
+                    $donhangEntities = $this->_donhangTbl->newEntities($donhangEntities);
+                    if ($this->_donhangTbl->saveMany($donhangEntities)) {
+                        $this->request->session()->delete('giohang');
+                        return $this->redirect('thanh-toan-thanh-cong');
+                    }
                 }
             }
         }

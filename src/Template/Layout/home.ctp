@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=vietnamese' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
     <!--Main-css-->
+    <link rel="shortcut icon" type="image/x-icon" href="<?=$this->Url->build('/'.DIR_WEROOT_IMAGE.'/favicon.ico', true)?>"/>
     <?=$this->Html->css('main');?> 
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -21,7 +22,6 @@
         echo $this->fetch('css');
         echo $this->fetch('script');
     ?>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
 </head>
 <body class='home_page'>
     <?= $this->element('header') ?>

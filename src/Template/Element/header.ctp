@@ -45,7 +45,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a class='button' href='<?=$this->Url->build('/', true).'tac-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
+                            <a class='button' href='<?=$this->Url->build('/', true).'tat-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a class='button' href='<?=$this->Url->build('/', true).'tac-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
+                            <a class='button' href='<?=$this->Url->build('/', true).'tat-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <a class='button' href='<?=$this->Url->build('/', true).'tac-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
+                            <a class='button' href='<?=$this->Url->build('/', true).'tat-ca-khoa-hoc'?>'>Khám phá BabyLons</a>
                         </div>
                 </div>
             </div>

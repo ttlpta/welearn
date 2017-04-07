@@ -6,6 +6,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
+use Cake\Database\Expression\QueryExpression;
 
 /**
  * Khoahoc Model
@@ -24,7 +25,6 @@ use Cake\Validation\Validator;
  */
 class KhoahocTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -162,5 +162,11 @@ class KhoahocTable extends Table
         }
 
         return false;
+    }
+
+    public function tangLuotXem($id) {
+        $expression = new QueryExpression('luotxem = luotxem + 1');
+        $this->updateAll([$expression], ['id' => $id]);
+
     }
 }

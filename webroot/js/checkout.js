@@ -19,4 +19,13 @@ $(document).ready(function () {
 
         $('.total_cost_number').text(numberWithCommas(totalCost));
     }));
+
+    $(".remove_course").click(function() {
+        var veId = $(this).data('ve_id');
+        $.post("khoa-hoc/xoa-gio-hang", {ve_id: veId}, function(data, status){
+            var dataObj = JSON.parse(data);
+            if(dataObj.success)
+                window.location.reload();
+        });
+    });
 });

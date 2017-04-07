@@ -27,7 +27,7 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
-    $routes->connect('/tac-ca-khoa-hoc', ['controller' => 'Course', 'action' => 'index']);
+    $routes->connect('/tat-ca-khoa-hoc', ['controller' => 'Course', 'action' => 'index']);
     $routes->connect('/khoa-hoc-danh-cho-nguoi-lon', ['controller' => 'Course', 'action' => 'type', 1]);
     $routes->connect('/khoa-hoc-danh-cho-tre-em', ['controller' => 'Course', 'action' => 'type', 0]);
     $routes->connect('/khoa-hoc/them-gio-hang', ['controller' => 'Course', 'action' => 'addToCard']);
