@@ -54,7 +54,8 @@
                 <th scope="col"><?= $this->Paginator->sort('gia_thuong') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('gia_khuyenmai') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('diadiem') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('thoigian') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('thoigian_batdau') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('thoigian_ketthuc') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -67,7 +68,8 @@
                 <td><?= $this->Number->format($ve->gia_thuong) ?></td>
                 <td><?= $this->Number->format($ve->gia_khuyenmai) ?></td>
                 <td><?= h($ve->diadiem) ?></td>
-                <td><?= h($ve->thoigian) ?></td>
+                <td><?= h($ve->thoigian_batdau) ?></td>
+                <td><?= h($ve->thoigian_ketthuc) ?></td>
                 <td><?= status_ban($ve->trangthai) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $ve->id]) ?>

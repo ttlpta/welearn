@@ -28,8 +28,8 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('ten') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('anh') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ten', 'Tên') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('anh', 'Ảnh') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>

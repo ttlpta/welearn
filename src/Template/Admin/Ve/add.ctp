@@ -14,16 +14,17 @@
             echo $this->Form->control('gia_thuong', ['label' => 'Giá thường -- (Đơn vị nghìn đồng)']);
             echo $this->Form->control('gia_khuyenmai', ['label' => 'Giá khuyến mại -- (Đơn vị nghìn đồng)']);
         ?>
-        <textarea name="quyenloi" id="editor"></textarea>
+         <div class="input text">
+            <label for="quyenloi">Quyền lợi</label>
+            <textarea name="quyenloi" id="editor"></textarea>
+        </div>
         <?php
             // echo $this->Form->control('soluong');
             echo $this->Form->control('diadiem');
-            echo $this->Form->control('thoigian');
+            echo $this->Form->control('thoigian_batdau');
+            echo $this->Form->control('thoigian_ketthuc');
+            echo $this->Form->control('trangthai', ['options' => ['Ngừng bán', 'Bán']]);
         ?>
-        <select name="trangthai">
-            <option value="0">Ngừng bán</option>
-            <option value="1">Bán</option>
-        </select>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

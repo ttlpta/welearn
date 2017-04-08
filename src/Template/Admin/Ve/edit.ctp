@@ -14,10 +14,14 @@
             echo $this->Form->control('gia_thuong');
             echo $this->Form->control('gia_khuyenmai');
         ?>
-        <textarea name="quyenloi" id="editor"><?=$ve->quyenloi?></textarea>
+        <div class="input text">
+            <label for="quyenloi">Quyền lợi</label>
+            <textarea name="quyenloi" id="editor"><?=$ve->quyenloi?></textarea>
+        </div>
         <?php
             echo $this->Form->control('diadiem');
-            echo $this->Form->control('thoigian');
+            echo $this->Form->control('thoigian_batdau');
+            echo $this->Form->control('thoigian_ketthuc');
             echo $this->Form->control('trangthai', ['options' => ['Ngừng bán', 'Bán']]);
         ?>
     </fieldset>

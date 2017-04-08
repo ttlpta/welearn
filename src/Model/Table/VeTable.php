@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\I18n\Time;
 
 /**
  * Ve Model
@@ -116,9 +117,18 @@ class VeTable extends Table
             ->notEmpty('diadiem');
 
         $validator
-            ->dateTime('thoigian')
-            ->requirePresence('thoigian', 'create')
-            ->notEmpty('thoigian');
+            ->dateTime('thoigian_batdau')
+            ->requirePresence('thoigian_batdau', 'create')
+            ->notEmpty('thoigian_batdau');
+
+        $validator
+            ->dateTime('thoigian_ketthuc')
+            ->requirePresence('thoigian_ketthuc', 'create')
+            ->notEmpty('thoigian_ketthuc')
+            ->add('thoigian_ketthuc', 'validThoigianKetthuc', [
+                'rule' => array($this, 'isValidThoigianKetthuc'),
+                'message' => __('Thời gian kết thúc phải lớn thời gian bắt đầu'),
+            ]);
 
         return $validator;
     }
@@ -146,6 +156,18 @@ class VeTable extends Table
     {
         if(isset($context['data']['gia_thuong']) && $context['data']['gia_thuong'] > 0)
             return $value < $context['data']['gia_thuong'];
+
+        return false;
+    }
+
+    function isValidThoigianKetthuc($value, array $context)
+    {
+        $ketthuc = $value['year'].'-'.$value['month'].'-'.$value['day'].' '.$value['hour'].':'.$value['minute'];
+        if(isset($context['data']['thoigian_batdau']) && $batdauArr = $context['data']['thoigian_batdau']) {
+            $batdau = $batdauArr['year'].'-'.$batdauArr['month'].'-'.$batdauArr['day'].' '.$batdauArr['hour'].':'.$batdauArr['minute'];
+           
+            return strtotime($batdau) < strtotime($ketthuc);
+        }
 
         return false;
     }

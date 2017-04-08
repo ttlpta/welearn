@@ -4,13 +4,13 @@ $(document).ready(function () {
     }
 
     $('.soluong').bind( "keyup change", (function(){
-        var khoahocId = $(this).data('khoahoc_id');
+        var veId = $(this).data('ve_id');
         var gia = $(this).data('gia');
         var soLuong = +$(this).val();
-        $('#soluong-'+khoahocId).val($(this).val());
+        $('#soluong-'+veId).val($(this).val());
         var tongGiaMoi = soLuong*gia;
-        $('.course_price .price').text(numberWithCommas(tongGiaMoi));
-        $('#total_cost_item-'+khoahocId).val(tongGiaMoi);
+        $('.course_price .price-'+veId).text(numberWithCommas(tongGiaMoi));
+        $('#total_cost_item-'+veId).val(tongGiaMoi);
 
         var totalCost = 0;
         $(".total_cost_item").each(function( index ) {
@@ -22,7 +22,8 @@ $(document).ready(function () {
 
     $(".remove_course").click(function() {
         var veId = $(this).data('ve_id');
-        $.post("/khoa-hoc/xoa-gio-hang", {ve_id: veId}, function(data, status){
+        console.log(window.location.href);
+        $.post("../khoa-hoc/xoa-gio-hang", {ve_id: veId}, function(data, status){
             var dataObj = JSON.parse(data);
             if(dataObj.success)
                 window.location.reload();

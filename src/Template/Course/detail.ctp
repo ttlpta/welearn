@@ -118,16 +118,19 @@
                                     <div class='course-price-text no-margin bold' style="font-size: 20px;">
                                         <?php foreach ($ves as $ve): ?>
                                             <input type="radio" name="ve" class="ve"
-                                                   value="<?= $ve->ten ?>" <?= ($veReNhat->id == $ve->id) ? 'checked' : '' ?>/>
-                                            <input type="hidden" id="<?= format_to_element_id($ve->ten) ?>"
+                                                   value="<?= $ve->id ?>" <?= ($veReNhat->id == $ve->id) ? 'checked' : '' ?>/>
+                                            <input type="hidden" id="ve-<?= $ve->id?>"
                                                    data-ve_id="<?= $ve->id ?>"
                                                    data-khoahoc_id="<?= $course->id ?>"
                                                    data-giathuong="<?= $ve->gia_thuong ?>"
                                                    data-giakhuyenmai="<?= $ve->gia_khuyenmai ?>"/>
                                             <label style="text-transform: uppercase;"><?= $ve->ten ?></label>&nbsp;
-                                            <span
-                                                style="font-size: 14px;font-weight: 400;">(Địa điểm : <?= $ve->diadiem ?>
-                                                - Thời gian : <?= $ve->thoigian ?>)</span>
+                                            <span style="font-size: 12px;font-weight: 200;">(Địa điểm : <b><?= $ve->diadiem ?></b>)</span>
+                                            <br />
+                                            <span style="font-size: 14px;font-weight: 400;">
+                                                
+                                                - Bắt đầu từ : <b><?= $ve->thoigian_batdau ?></b> đến <b><?= $ve->thoigian_ketthuc ?></b>
+                                                </span>
                                             <br/>
                                         <?php endforeach ?>
                                     </div>
@@ -157,7 +160,7 @@
                             <div class='course-detail-bottom-right'>
                                 <div class='course-wishlist' style="min-height: 300px;"><h4>Bạn sẽ nhận được : </h4>
                                     <?php foreach ($ves as $ve): ?>
-                                        <div class="quyenloi" id="quyenloi-<?= format_to_element_id($ve->ten) ?>">
+                                        <div class="quyenloi" id="quyenloi-<?= $ve->id ?>">
                                             <?= $ve->quyenloi ?>
                                         </div>
                                     <?php endforeach; ?>

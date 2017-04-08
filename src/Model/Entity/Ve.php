@@ -15,7 +15,8 @@ use Cake\ORM\Entity;
  * @property int $trangthai
  * @property int $soluong
  * @property string $diadiem
- * @property \Cake\I18n\Time $thoigian
+ * @property \Cake\I18n\Time $thoigian_batdau
+ * @property \Cake\I18n\Time $thoigian_ketthuc
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
  *

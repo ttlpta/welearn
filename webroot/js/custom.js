@@ -6,12 +6,12 @@ $(document).ready(function () {
     });
 
     function renderGia($gia) {
-        var veRenhatId = format_to_element_id($gia.val());
-        var veRenhatSel = $('#'+veRenhatId);
+        var veRenhatId = $gia.val();
+        var veRenhatSel = selectVeReNhat(veRenhatId);
         var veRenhatGiaThuong = veRenhatSel.data('giathuong');
         var veRenhatGiaKhuyenMai = veRenhatSel.data('giakhuyenmai');
         if (veRenhatGiaKhuyenMai) {
-
+            $('.course-price .linethrough').show();
             $('.course-price #giaChinhThuc').text(numberWithCommas(veRenhatGiaKhuyenMai));
             $('.course-price .linethrough #giaCu').text(numberWithCommas(veRenhatGiaThuong));
         } else {
@@ -26,13 +26,13 @@ $(document).ready(function () {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+',000';
     }
 
-    function format_to_element_id(x) {
-        return x.replace(/ /g,"_");
+    function selectVeReNhat(id) {
+        return $('#ve-'+id);
     }
 
     $('.cart-button').click(function(){
-        var veSelectorId = format_to_element_id($('.ve:checked').val());
-        var veRenhatSel = $('#'+veSelectorId);
+        var veSelectorId = $('.ve:checked').val();
+        var veRenhatSel = selectVeReNhat(veSelectorId);
         var veId = veRenhatSel.data('ve_id');
         var khoahocId = veRenhatSel.data('khoahoc_id');
 
@@ -65,8 +65,8 @@ $(document).ready(function () {
         if($(this).data('ve_id')) {
             veId = $(this).data('ve_id');
         } else {
-            var veIdSelector = format_to_element_id($('.ve:checked').val());
-            var veSelData = $('#'+veIdSelector);
+            var veIdSelector = $('.ve:checked').val();
+            var veSelData = selectVeReNhat(veIdSelector);
             veId = veSelData.data('ve_id');
         }
         $.post("xoa-gio-hang", {ve_id: veId}, function(data, status){
@@ -81,8 +81,8 @@ $(document).ready(function () {
     });
 
     $(".purchase-submit").click(function() {
-        var veSelectorId = format_to_element_id($('.ve:checked').val());
-        var veRenhatSel = $('#'+veSelectorId);
+        var veSelectorId = $('.ve:checked').val();
+        var veRenhatSel = selectVeReNhat(veSelectorId);
         var veId = veRenhatSel.data('ve_id');
         var khoahocId = veRenhatSel.data('khoahoc_id');
 

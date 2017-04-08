@@ -52,11 +52,11 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('ten') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('luotxem') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tacgia') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('theloai') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ten', 'Tên khóa học') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('luotxem', 'Lượt xem') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('tacgia', 'Danh sách tác giả') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('trangthai', 'Trạng thái') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('theloai', 'Thể loại') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('updated') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>

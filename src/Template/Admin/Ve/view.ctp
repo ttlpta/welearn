@@ -41,8 +41,12 @@
             <td><?= status_ban($ve->trangthai) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Thoigian') ?></th>
-            <td><?= h($ve->thoigian) ?></td>
+            <th scope="row"><?= __('ThoigianBatdau') ?></th>
+            <td><?= h($ve->thoigian_batdau) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('ThoigianKethuc') ?></th>
+            <td><?= h($ve->thoigian_kethuc) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>

@@ -14,7 +14,7 @@
                                 <input type="hidden" name="donhang[<?= $item['id'] ?>][ve_id]"
                                        value="<?= $item['ve_id'] ?>"/>
                                 <input type="hidden" name="donhang[<?= $item['id'] ?>][soluong]"
-                                       id="soluong-<?= $item['id'] ?>" value="1"/>
+                                       id="soluong-<?= $item['ve_id'] ?>" value="1"/>
                                 <input type="hidden" name="donhang[<?= $item['id'] ?>][gia]"
                                        value="<?= $item['gia'] ?>"/>
                             <?php endforeach; ?>
@@ -180,16 +180,16 @@
                                     <div class='course_name no-padding'><a
                                             href="<?= $this->Url->build('/khoa-hoc/' . $item['id'], true) ?>"><?= $item['ten'] ?></a>
                                         - Vé <b style="text-transform: uppercase"><?= $item['ve_ten'] ?></b>
-                                        <input type="hidden" id="total_cost_item-<?= $item['id'] ?>"
+                                        <input type="hidden" id="total_cost_item-<?= $item['ve_id'] ?>"
                                                class="total_cost_item" value="<?= $item['gia'] ?>"/>
                                     <span style="float:right"><b>x</b>
                                         <input style="max-width: 40px" type="number" class="soluong"
-                                               data-gia="<?= $item['gia'] ?>" data-khoahoc_id="<?= $item['id'] ?>"
+                                               data-gia="<?= $item['gia'] ?>" data-ve_id="<?= $item['ve_id'] ?>"
                                                value="1"/>
                                     </span>
                                     </div>
                                     <div class='course_price no-padding'>
-                                        <span class="price"><?= gia_daydu($item['gia']) ?></span>
+                                        <span class="price-<?=$item['ve_id']?>"><?= gia_daydu($item['gia']) ?></span>
                                     </div>
                                 </div>
                             </div>

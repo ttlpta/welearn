@@ -7,17 +7,17 @@
 <div class="khoahoc form large-9 medium-8 columns content">
     <?= $this->Form->create($khoahoc, ['type' => 'file']) ?>
     <fieldset>
-        <legend><?= __('Edit Khoahoc') ?></legend>
+        <legend><?= 'Sửa khóa học'?></legend>
         <?php
-            echo $this->Form->control('ten');
-            echo $this->Form->control('mieutangan');
-            echo $this->Form->control('luotxem');
+            echo $this->Form->control('ten', ['label' => 'Tên']);
+            echo $this->Form->control('mieutangan', ['label' => 'Miêu tả ngắn']);
+            echo $this->Form->control('luotxem', ['label' => 'Lượt xem']);
         ?>
         <img src="<?=$this->Url->build('/', true).DIR_UPLOAD_IMAGE_KHOAHOC.'/'.$khoahoc->anh?>" style="width: 670px; height: 380px"/>
         <?php
-            echo $this->Form->control('Ảnh', ['type' => 'file', 'name' => 'anh']);
+            echo $this->Form->control('Ảnh', ['type' => 'file', 'name' => 'anh', 'label' => 'Ảnh đại diện']);
             echo $this->Form->control('video_youtube');
-            echo $this->Form->control('theloai', ['options' => ['Trẻ em', 'Người lớn']]);
+            echo $this->Form->control('theloai', ['options' => ['Trẻ em', 'Người lớn'], 'label' => 'Thể loại']);
         ?>
         <div class="input required">
             <label for="tacgia">Tác giả</label>
@@ -32,7 +32,7 @@
             <label for="mieuta">Nội dung</label>
             <textarea name="noidung" id="editor" ><?=$khoahoc->noidung?></textarea>
         </div>
-        <?=$this->Form->control('trangthai', ['options' => ['Đóng', 'Mở']])?>
+        <?=$this->Form->control('trangthai', ['options' => ['Đóng', 'Mở'], 'label' => 'Trạng thái'])?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
