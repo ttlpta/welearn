@@ -21,18 +21,18 @@ DROP TABLE IF EXISTS `khachhang`;
 CREATE TABLE `khachhang` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `danhxung` int(1) NOT NULL,
-  `ten` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
-  `dienthoai` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
-  `email` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
-  `namsinh` varchar(10) COLLATE utf8_vietnamese_ci NOT NULL,
-  `khuvuc` varchar(10) COLLATE utf8_vietnamese_ci NOT NULL,
-  `lydobiet` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `ten` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `dienthoai` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
+  `namsinh` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `khuvuc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `lydobiet` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `datungthamgia` int(1) NOT NULL,
-  `nguoigioithieu` varchar(155) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `nguoigioithieu` varchar(155) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of khachhang

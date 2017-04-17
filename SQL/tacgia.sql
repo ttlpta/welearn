@@ -20,13 +20,13 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `tacgia`;
 CREATE TABLE `tacgia` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `ten` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT '',
-  `anh` varchar(555) COLLATE utf8_vietnamese_ci NOT NULL,
-  `mieuta` varchar(555) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `ten` varchar(55) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `anh` varchar(555) COLLATE utf8_unicode_ci NOT NULL,
+  `mieuta` varchar(555) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tacgia

@@ -20,19 +20,19 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `khoahoc`;
 CREATE TABLE `khoahoc` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `ten` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT '',
-  `mieutangan` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `ten` varchar(55) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `mieutangan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `luotxem` int(10) NOT NULL DEFAULT '0',
-  `tacgia` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
-  `anh` varchar(555) COLLATE utf8_vietnamese_ci NOT NULL,
-  `video_youtube` varchar(555) COLLATE utf8_vietnamese_ci NOT NULL,
-  `noidung` varchar(755) COLLATE utf8_vietnamese_ci NOT NULL,
+  `tacgia` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `anh` varchar(555) COLLATE utf8_unicode_ci NOT NULL,
+  `video_youtube` varchar(555) COLLATE utf8_unicode_ci NOT NULL,
+  `noidung` varchar(755) COLLATE utf8_unicode_ci NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
   `theloai` int(1) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of khoahoc

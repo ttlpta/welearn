@@ -20,19 +20,19 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `ve`;
 CREATE TABLE `ve` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `ten` varchar(55) COLLATE utf8_vietnamese_ci NOT NULL,
+  `ten` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `khoahoc_id` int(3) NOT NULL,
   `gia_thuong` int(10) NOT NULL,
   `gia_khuyenmai` int(10) DEFAULT NULL,
-  `quyenloi` varchar(2000) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `quyenloi` varchar(2000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `trangthai` int(1) NOT NULL,
   `soluong` int(5) NOT NULL,
-  `diadiem` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
+  `diadiem` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `thoigian` datetime NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of ve
