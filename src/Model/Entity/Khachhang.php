@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string $lydobiet
  * @property int $datungthamgia
  * @property string $nguoigioithieu
+ * @property string $khoahoctungthamgia
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $updated
  *

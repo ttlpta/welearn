@@ -32,11 +32,12 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('danhxung') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('ten') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('dienthoai') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('khuvuc') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('danhxung', 'Danh xưng') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ten', 'Tên') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('dienthoai', 'Số điện thoại') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email', 'Email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khuvuc', 'Khu vực') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khoahoctungthamgia', 'Khóa học đã tham gia') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -49,6 +50,7 @@
                 <td><?= h($khachhang->dienthoai) ?></td>
                 <td><?= h($khachhang->email) ?></td>
                 <td><?= h($khachhang->khuvuc) ?></td>
+                <td><?= h($khachhang->khoahoctungthamgia) ?></td>
                 <td><?= h($khachhang->created) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $khachhang->id]) ?>

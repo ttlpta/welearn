@@ -23,7 +23,7 @@ CREATE TABLE `donhang` (
   `khachhang_id` int(10) NOT NULL,
   `ve_id` int(10) NOT NULL,
   `soluong` int(10) NOT NULL,
-  `note` varchar(555) COLLATE utf8_vietnamese_ci NOT NULL,
+  `note` varchar(555) COLLATE utf8_unicode_ci NOT NULL,
   `trangthai` int(1) NOT NULL COMMENT 'Chưa liên lạc, Chờ thanh toán, Đã Thanh toán',
   `khoahoc_id` int(1) NOT NULL,
   `tongtien` int(20) DEFAULT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `donhang` (
   KEY `Khach hang` (`khachhang_id`),
   CONSTRAINT `Khach hang` FOREIGN KEY (`khachhang_id`) REFERENCES `khachhang` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Ve` FOREIGN KEY (`ve_id`) REFERENCES `ve` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of donhang

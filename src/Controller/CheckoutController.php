@@ -32,6 +32,7 @@ class CheckoutController extends AppController
                 'khuvuc' => $requestData['khuvuc'],
                 'lydobiet' => $requestData['lydobiet'],
                 'datungthamgia' => $requestData['datungthamgia'],
+                'khoahoctungthamgia' => $requestData['khoahoctungthamgia'],
                 'nguoigioithieu' => $requestData['nguoigioithieu'],
             );
 

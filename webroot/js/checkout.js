@@ -29,4 +29,8 @@ $(document).ready(function () {
                 window.location.reload();
         });
     });
+
+    $(".cart_form_item #select").change(function(){
+        (+$(this).val()) ? $('.cart_form_item.khoahoctungthamgia').show() : $('.cart_form_item.khoahoctungthamgia').hide();
+    });
 });

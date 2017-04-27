@@ -154,6 +154,10 @@
                                 <option value='1'>Đã từng tham gia</option>
                             </select>
                         </div>
+                        <div class='cart_form_item khoahoctungthamgia' style="display:none">
+                            <input class='form-control address' name='khoahoctungthamgia' placeholder='Các khóa học bạn từng tham gia'
+                                   title='Các khóa học bạn từng tham gia' type='text'>
+                        </div>
                         <div class='cart_form_item'>
                             <input class='form-control address' name='nguoigioithieu' placeholder='Người giới thiệu'
                                    title='Tên người giới thiệu bạn tới chương trình học của chúng tôi' type='text'>

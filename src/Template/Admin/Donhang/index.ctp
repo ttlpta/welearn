@@ -48,25 +48,26 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('khachhang_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('khachhang_sdt') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('khachhang_email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('ve_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('soluong') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('trangthai') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khachhang_id', 'Khách hàng') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khachhang_sdt', 'Số điện thoại') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('khachhang_email', 'Email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ve_id', 'Vé') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('soluong', 'Số lượng') ?></th>
+                <th scope="col"><?= 'Tên khóa học' ?></th>
+                <th scope="col"><?= $this->Paginator->sort('trangthai', 'Trạng thái') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col" class="actions"><?= 'Chi tiết' ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($donhang as $donhang): ?>
+            <?php foreach ($donhang as $donhang):?>
+                <?php
+                    $ve = $donhang['ve'][0];
+                    $rowpan = count($donhang['ve']);
+                    unset($donhang['ve'][0]);
+                ?>
                 <tr>
-                    <?php
-                        $ve = $donhang['ve'][0];
-                        $rowpan = count($donhang['ve']);
-                        unset($donhang['ve'][0]);
-                    ?>
                     <td rowspan="<?=$rowpan?>">
                     <?= $this->Html->link(
                         danhxung_khachhang($donhang['danhxung']).'. '.$donhang['ten'],
@@ -77,7 +78,8 @@
                     <td rowspan="<?=$rowpan?>"><?= $this->Html->link($donhang['email'], ['controller' => 'Khachhang', 'action' => 'view', $donhang['id']], ['target' => '_blank'])?></td>
                     <td><?= $this->Html->link($ve['ve_ten'], ['controller' => 'Ve', 'action' => 'view', $ve['ve_id']], ['target' => '_blank']) ?></td>
                     <td><?= $this->Number->format($ve['soluong']) ?></td>
-                    <td><?= status_donhang($ve['trangthai']) ?></td>
+                    <td><?= h($khoahocById[$ve['khoahoc_id']]) ?></td>
+                    <td <?=(!$ve['trangthai'])? 'style="background-color:#ffe2e2"' : '' ?>><?= status_donhang($ve['trangthai']) ?></td>
                     <td><?= h($ve['created']) ?></td>
                     <td rowspan="<?=$rowpan?>"><?= $this->Html->link(__('View'), ['action' => 'view', $ve['id']]) ?></td>
                     <td class="actions">
@@ -89,7 +91,8 @@
                     <tr>
                         <td><?= $this->Html->link($ve['ve_ten'], ['controller' => 'Ve', 'action' => 'view', $ve['ve_id']], ['target' => '_blank']) ?></td>
                         <td><?= $this->Number->format($ve['soluong']) ?></td>
-                        <td><?= status_donhang($ve['trangthai']) ?></td>
+                        <td><?= h($khoahocById[$ve['khoahoc_id']]) ?></td>
+                        <td <?=(!$ve['trangthai'])? 'style="background-color:#ffe2e2"' : '' ?>><?= status_donhang($ve['trangthai']) ?></td>
                         <td><?= h($ve['created']) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $ve['id']]) ?>

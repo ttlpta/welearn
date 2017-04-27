@@ -29,7 +29,7 @@ class DonhangController extends AdminController
 
             $query = $this->Donhang->find('all')->where($this->_preparedDataToSearch($search));
         } else {
-            $query = $this->Donhang;
+            $query = $this->Donhang->find('all', ['order' => ['donhang.created' => 'desc']]);
         }
 
         $this->paginate = [
@@ -42,6 +42,7 @@ class DonhangController extends AdminController
             $ve[$donhang->khachhang->id][] = array(
                 'id' => $donhang->id,
                 've_ten' => $donhang->ve->ten,
+                'khoahoc_id' => $donhang->khoahoc_id,
                 've_id' => $donhang->ve->id,
                 'soluong' => $donhang->soluong,
                 'trangthai' => $donhang->trangthai,
@@ -49,17 +50,29 @@ class DonhangController extends AdminController
             );
         }
 
+        $khoahocIds = [];
         foreach($donhangs as $donhang) {
+            $khoahocIds[] = $donhang->khoahoc_id;
             $donhangRemake[$donhang->khachhang->id] = array(
                 'id' => $donhang->khachhang->id,
                 'danhxung' => $donhang->khachhang->danhxung,
                 'ten' => $donhang->khachhang->ten,
                 'dienthoai' => $donhang->khachhang->dienthoai,
                 'email' => $donhang->khachhang->email,
+                'created' => $donhang->created,
                 've' => $ve[$donhang->khachhang->id],
             );
         }
+        $khoahocTbl = TableRegistry::get('Khoahoc');
+        $khoahocs = $khoahocTbl->find()->select(['id', 'ten'])->where(['id IN' => $khoahocIds])->toArray();
+
+        $khoahocById = [];
+        foreach($khoahocs as $khoahoc) {
+            $khoahocById[$khoahoc->id] = $khoahoc->ten;
+        }
+
         $this->set('donhang', $donhangRemake);
+        $this->set('khoahocById', $khoahocById);
         $this->set('_serialize', ['donhang']);
     }
 
@@ -117,6 +130,29 @@ class DonhangController extends AdminController
         $donhang = $this->Donhang->newEntity();
         if ($this->request->is('post')) {
             $requestData = $this->request->getData();
+            if(isset($requestData['khachhang-moi']) && $requestData['khachhang-moi']) {
+                $khachhangTbl = TableRegistry::get('Khachhang');
+                $khachhangEntity = array(
+                    'ten' => $requestData['ten'],
+                    'danhxung' => $requestData['danhxung'],
+                    'dienthoai' => $requestData['dienthoai'],
+                    'email' => $requestData['email'],
+                    'namsinh' => $requestData['namsinh'],
+                    'lydobiet' => $requestData['lydobiet'],
+                    'khuvuc' => $requestData['khuvuc'],
+                    'datungthamgia' => $requestData['datungthamgia'],
+                    'khoahoctungthamgia' => $requestData['khoahoctungthamgia'],
+                    'nguoigioithieu' => $requestData['nguoigioithieu'],
+                );
+
+                $khachhang = $khachhangTbl->newEntity($khachhangEntity);
+                if ($khachhangTbl->save($khachhang)) {
+                    $requestData['khachhang_id'] = $khachhang->id;
+                } else {
+                    $this->Flash->error(__('The donhang could not be saved. Please, try again.'));
+                    return $this->redirect(['action' => 'add']);
+                }
+            }
             $khoahocIdByVe = $this->Donhang->Ve->findById($this->request->getData('ve_id'))->select('khoahoc_id')->first();
             $requestData['khoahoc_id'] = $khoahocIdByVe->khoahoc_id;
             $donhang = $this->Donhang->patchEntity($donhang, $requestData);
@@ -138,7 +174,8 @@ class DonhangController extends AdminController
         $ve = $this->Donhang->Ve->find('list', [
             'keyField' => 'id',
             'valueField' => function ($ve) {
-                return $ve->ten;
+                $gia = ($ve->gia_khuyenmai) ? $ve->gia_khuyenmai : $ve->gia_thuong;
+                return $ve->ten.' ----  Giá: '. gia_daydu($gia);
             }
         ]);
         $this->set(compact('donhang', 'khachhang', 've'));
