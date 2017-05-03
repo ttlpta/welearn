@@ -23,7 +23,9 @@ function status_donhang($status)
     $statusName = array(
         0 => 'Chưa gọi điện',
         1 => 'Chờ thanh toán',
-        2 => 'Đã thanh toán'
+        2 => 'Đã thanh toán',
+        3 => 'Hủy mua',
+        4 => 'Đã đặt cọc',
     );
     
     return (isset($statusName[$status]) ? $statusName[$status] : 'Status lạ');

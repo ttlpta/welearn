@@ -107,6 +107,72 @@
                 <i aria-hidden='true' class='fa fa-angle-right'></i>
             </a>
         </div>
+        <div class='navigation'>
+            <div class='container container-carousel'>
+                <nav class='navbar navbar-default main-navbar'>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class='navbar-collapse'>
+                        <ul class='nav navbar-nav list-category'>
+                            <li class='dropdown'>
+                                <a aria-expanded='false' aria-haspopup='true' class='dropdown-toggle'
+                                   data-toggle='dropdown' href='#' role='button'>
+<span class='icon-bar'>
+<i aria-hidden='true' class='fa fa-bars'></i>
+</span>
+                                    <span class='hidden-sm hidden-xs'>Chủ đề khóa học</span>
+<span class='icon-down hidden-sm hidden-xs'>
+<i aria-hidden='true' class='fa fa-angle-down'></i>
+</span>
+                                </a>
+                                <ul class='dropdown-menu dropdown-content'>
+                                    <li>
+                                        <div class='row speical-row'>
+                                            <div class='col-sm-6 col-md-4 object'>
+                                                <h5>Các khóa học nổi bật</h5>
+
+                                                <p>
+                                                    <a href='courses.html'>Sắp bắt đầu</a>
+                                                </p>
+
+                                                <p>
+                                                    <a href='courses.html'>Mới nhất</a>
+                                                </p>
+
+                                                <p>
+                                                    <a href='courses.html'>Được xem nhiều nhất</a>
+                                                </p>
+
+                                                <p>
+                                                    <a href='courses.html'>Được đánh giá cao nhất</a>
+                                                </p>
+
+                                                <p class='button-all'>
+                                                    <a href='courses.html'>Khám phá ngay</a>
+                                                </p>
+                                            </div>
+                                            <div class='col-sm-6 col-md-8 topic'>
+                                                <div class='row'>
+                                                    <h5>Chủ đề</h5>
+
+                                                    <div class='col-md-6'>
+                                                    <?php foreach($categories as $catId => $catName):?>
+                                                        <p>
+                                                            <a href='<?=$this->Url->build('/course/type/'.$catId, true)?>'><?=$catName?></a>
+                                                        </p>
+                                                    <?php endforeach;?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+        </div>
         <!-- END NAVIGATION -->
     </div>
 </header>

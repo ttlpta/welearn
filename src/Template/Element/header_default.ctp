@@ -4,7 +4,18 @@
     <div class='container-fluid'>
         <div class='header-col header-col-left'>
             <div class='hd-categories pull-left'>
-                <div class='btn-group cats-dropdown'></div>
+                <div class='btn-group cats-dropdown'>
+                    <div aria-expanded='false' aria-haspopup='true' class='dropdown-toggle active-nav-2 active-nav-with-text' data-dropdown-container='.slider-sidebar-wrapper.slider-sidebar-mobile' data-fixed='false' data-toggle='dropdown'>
+                        <i class='fa fa-bars'></i><span class='active-nav-text'>Danh sách chủ đề</span>
+                    </div>
+                    <ul class='dropdown-menu sidebar-category'>
+                        <?php foreach($categories as $catId => $catName):?>
+                        <li class='btn btn-flat category-item'>
+                            <a href='<?=$this->Url->build('/course/type/'.$catId)?>'><?=$catName?></a>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class='header-col header-col-mid'>

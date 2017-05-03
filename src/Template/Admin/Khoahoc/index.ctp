@@ -24,8 +24,9 @@
                 <label for="theloai">Thể loại</label>
                 <select name="theloai">
                     <option value=""></option>
-                    <option value="0">Trẻ em</option>
-                    <option value="1">Người lớn</option>
+                    <?php foreach($categories as $catId => $catName):?>
+                        <option value="<?=$catId?>"><?=$catName?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
             <div class="input">
@@ -69,7 +70,7 @@
                 <td><?= $this->Number->format($khoahoc->luotxem) ?></td>
                 <td><?= h($khoahoc->tacgia) ?></td>
                 <td><?= status($khoahoc->trangthai) ?></td>
-                <td><?= theloai_khoahoc($khoahoc->theloai) ?></td>
+                <td><?= $khoahoc->category->name ?></td>
                 <td><?= h($khoahoc->created) ?></td>
                 <td><?= h($khoahoc->updated) ?></td>
                 <td class="actions">

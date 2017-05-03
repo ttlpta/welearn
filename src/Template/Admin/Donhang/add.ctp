@@ -146,6 +146,8 @@
                 <option value="0">Chưa gọi điện</option>
                 <option value="1">Chờ thanh toán</option>
                 <option value="2">Đã thanh toán</option>
+                <option value="3">Hủy mua</option>
+                <option value="4">Đã đặt cọc</option>
             </select>
         </div>
     </fieldset>

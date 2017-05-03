@@ -59,6 +59,11 @@ class KhoahocTable extends Table
         $this->hasMany('Ve', [
             'foreignKey' => 'khoahoc_id'
         ]);
+
+        $this->hasOne('Categories', [
+            'bindingKey' => 'theloai',
+            'foreignKey' => 'id'
+        ]);
     }
 
     /**
@@ -143,9 +148,21 @@ class KhoahocTable extends Table
     }
 
     public function getKhoahocLuotXemNhieuNhat($limit, $type = null) {
-        $khoahocs = (!is_null($type)) ? $this->findByTheloaiAndTrangthai($type, $this::$STATUS_MO)->limit($limit)
-            : $this->findByTrangthai($this::$STATUS_MO)->limit($limit);
 
+        if(!is_null($type)) {
+            if(is_array($type)) {
+                $khoahocs = $this->find('all')->where(array(
+                    'theloai IN' => $type,
+                    'trangthai' => $this::$STATUS_MO,
+                ));
+            } else {
+                $khoahocs = $this->findByTheloaiAndTrangthai($type, $this::$STATUS_MO);
+            }
+        } else {
+            $khoahocs = $this->findByTrangthai($this::$STATUS_MO);
+        }
+
+        $khoahocs = $khoahocs->limit($limit);
         return $khoahocs;
     }
 

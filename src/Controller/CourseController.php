@@ -61,6 +61,14 @@ class CourseController extends AppController
 
     public function type($type)
     {
+        if($type == 1 || $type == 2) {
+            $descendants = $this->_danhmuc->find('children', ['for' => $type]);
+            $type = [$type];
+            foreach ($descendants as $category) {
+                $type[] = $category->id;
+            }            
+        }
+
         $khoahocQuantamnhat = $this->_khoahocTbl->getKhoahocLuotXemNhieuNhat(LIMIT_COURSE_EACHPAGE, $type);
         $khoahocQuantamnhatFullData = [];
         foreach($khoahocQuantamnhat as $khoahoc) {
@@ -70,7 +78,8 @@ class CourseController extends AppController
 
             $khoahocQuantamnhatFullData[] = $khoahocFullData;
         }
-        $tatCaKhoahoc = $this->_khoahocTbl->findByTheloai($type);
+        $tatCaKhoahoc = (is_array($type)) ? $this->_khoahocTbl->find('all')->where(['theloai IN' => $type]) 
+                            : $this->_khoahocTbl->findByTheloai($type);
         $priceOrder = '';
         if ($this->request->getQuery('price')) {
             $priceOrder = $this->request->getQuery('price');

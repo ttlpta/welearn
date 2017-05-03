@@ -17,7 +17,7 @@
         <?php
             echo $this->Form->control('Ảnh', ['type' => 'file', 'name' => 'anh', 'label' => 'Ảnh đại diện']);
             echo $this->Form->control('video_youtube');
-            echo $this->Form->control('theloai', ['options' => ['Trẻ em', 'Người lớn'], 'label' => 'Thể loại']);
+            echo $this->Form->control('theloai', ['options' => $categories, 'label' => 'Thể loại']);
         ?>
         <div class="input required">
             <label for="tacgia">Tác giả</label>

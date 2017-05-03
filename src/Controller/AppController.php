@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
+use Cake\ORM\TableRegistry;
 /**
  * Application Controller
  *
@@ -27,6 +28,7 @@ use Cake\I18n\I18n;
  */
 class AppController extends Controller
 {
+    protected $_danhmuc;
     /**
      * Initialization hook method.
      *
@@ -53,6 +55,7 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+        parent::beforeRender($event);
         if (!array_key_exists('_serialize', $this->viewVars) &&
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
@@ -60,7 +63,15 @@ class AppController extends Controller
         }
 
         $giohang = ($this->request->session()->read('giohang')) ? $this->request->session()->read('giohang') : array();
-
+       
         $this->set(compact('giohang'));
+    }
+
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $this->_danhmuc = TableRegistry::get('Categories');
+        $categories = $this->_danhmuc->find('treeList', ['spacer' => ''])->toArray();
+
+        $this->set(compact('giohang', 'categories'));
     }
 }

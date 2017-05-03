@@ -12,10 +12,12 @@ use Cake\ORM\TableRegistry;
 class KhoahocController extends AdminController
 {
     private $_tacgiaTbl;
+    private $_donhangTbl;
     public function initialize()
     {
         parent::initialize();
         $this->_tacgiaTbl = TableRegistry::get('Tacgia');
+        $this->_danhmucTbl = TableRegistry::get('Categories');
     }
     /**
      * Index method
@@ -42,6 +44,10 @@ class KhoahocController extends AdminController
         } else {
             $query = $this->Khoahoc;
         }
+
+        $this->paginate = [
+            'contain' => ['Categories']
+        ];
         $khoahocWithIdTacgias = $this->paginate($query);
         $khoahocWithTenTacgias = [];
         foreach($khoahocWithIdTacgias as $khoahoc){
@@ -57,6 +63,8 @@ class KhoahocController extends AdminController
             $khoahocWithTenTacgias[] = $khoahoc;
         }
         $tacgias = $this->_getAllTacgia();
+        $categories = $this->_danhmucTbl->find('treeList')->toArray();
+        $this->set(compact('categories'));
         $this->set(compact('tacgias'));
         $this->set('khoahoc', $khoahocWithTenTacgias);
     }
@@ -73,7 +81,9 @@ class KhoahocController extends AdminController
         $khoahoc = $this->Khoahoc->get($id, [
             'contain' => ['Ve']
         ]);
-
+        
+        $donhangTbl = TableRegistry::get('Donhang'); 
+        $donhangs = $donhangTbl->findAllByKhoahocId($id)->contain(['Khachhang']);
         $tacgiaIdArr = explode(',', $khoahoc->tacgia);
         $tacgiaNameArr =  $this->_tacgiaTbl->find('all',[
             'conditions' => [
@@ -82,8 +92,8 @@ class KhoahocController extends AdminController
         ])->select(['ten'])->extract('ten')->toArray();
 
         $khoahoc->tacgia = implode(',', $tacgiaNameArr);
-
         $this->set('khoahoc', $khoahoc);
+        $this->set('donhangs', $donhangs);
         $this->set('_serialize', ['khoahoc']);
     }
 
@@ -113,8 +123,8 @@ class KhoahocController extends AdminController
             }
         }
         $tacgias = $this->_getAllTacgia();
-        $this->set(compact('tacgias'));
-        $this->set(compact('khoahoc'));
+        $categories = $this->_danhmucTbl->find('treeList')->toArray();
+        $this->set(compact('tacgias', 'khoahoc', 'categories'));
         $this->set('_serialize', ['khoahoc']);
     }
 
@@ -148,6 +158,8 @@ class KhoahocController extends AdminController
             }
         }
         $tacgias = $this->_getAllTacgia();
+        $categories = $this->_danhmucTbl->find('treeList')->toArray();
+        $this->set(compact('categories'));
         $this->set(compact('khoahoc'));
         $this->set(compact('tacgias'));
         $this->set('_serialize', ['khoahoc']);

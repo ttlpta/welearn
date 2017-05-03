@@ -88,7 +88,6 @@ class DonhangController extends AdminController
         $donhang = $this->Donhang->get($id, [
             'contain' => ['Khachhang', 'Ve']
         ]);
-
         $donhangByKhachhangIds = $this->Donhang->findByKhachhangId($donhang->khachhang->id)->contain(['Khachhang', 'Ve']);
 
         $khoahocIds = [];
@@ -96,12 +95,14 @@ class DonhangController extends AdminController
         foreach($donhangByKhachhangIds as $donhang) {
             $khoahocIds[] = $donhang->khoahoc_id;
             $tongTien += $donhang->tongtien;
+            if ($this->request->is('post') && $donhang->id ) {
+                $donhangEntity = $this->Donhang->get($donhang->id);
+                $donhangEntity->trangthai = $this->request->getData('trangthai');
+                $donhangEntity->note = $this->request->getData('note');
 
-            if ($this->request->is('post') && $donhang->id && $trangthai = $this->request->getData('trangthai')) {
-                $donhang = $this->Donhang->get($donhang->id);
-                $donhang->trangthai = $trangthai;
-
-                $this->Donhang->save($donhang);
+                if($this->Donhang->save($donhangEntity)){
+                    $donhangByKhachhangIds = $this->Donhang->findByKhachhangId($donhang->khachhang->id)->contain(['Khachhang', 'Ve']);
+                }
             }
         }
 
@@ -153,8 +154,10 @@ class DonhangController extends AdminController
                     return $this->redirect(['action' => 'add']);
                 }
             }
-            $khoahocIdByVe = $this->Donhang->Ve->findById($this->request->getData('ve_id'))->select('khoahoc_id')->first();
+            $khoahocIdByVe = $this->Donhang->Ve->findById($this->request->getData('ve_id'))->select(['khoahoc_id', 'gia_thuong', 'gia_khuyenmai'])->first();
+            $gia = ($khoahocIdByVe->gia_khuyenmai) ? $khoahocIdByVe->gia_khuyenmai : $khoahocIdByVe->gia_thuong;
             $requestData['khoahoc_id'] = $khoahocIdByVe->khoahoc_id;
+            $requestData['tongtien'] = $gia * $requestData['soluong'];
             $donhang = $this->Donhang->patchEntity($donhang, $requestData);
             if ($this->Donhang->save($donhang)) {
                 $this->Flash->success(__('The donhang has been saved.'));

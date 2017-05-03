@@ -51,6 +51,29 @@
         </tr>
     </table>
     <div class="related">
+        <h4><?= 'Các đơn hàng của khóa học' ?></h4>
+        <?php if (!empty($donhangs)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th scope="col"><?= 'Tên khách hàng' ?></th>
+                <th scope="col"><?= 'Lưu ý' ?></th>
+                <th scope="col"><?= 'Trạng thái' ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($donhangs as $donhang): ?>
+            <tr>
+                <td><?= h(danhxung_khachhang($donhang->khachhang->danhxung).'. '.$donhang->khachhang->ten) ?></td>
+                <td><?= h($donhang->note) ?></td>
+                <td><?= h(status_donhang($donhang->trangthai)) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Donhang', 'action' => 'view', $donhang->id]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
+    <div class="related">
         <h4><?= 'Các vé bán của khóa học' ?></h4>
         <?php if (!empty($khoahoc->ve)): ?>
         <table cellpadding="0" cellspacing="0">
