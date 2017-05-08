@@ -1,50 +1,64 @@
-<footer class='container-fluid' id='footer'>
+<footer class='container-fluid footer-wrap' id='footer'>
     <div class='row'>
         <div class='container'>
             <div class='top-footer'>
                 <div class='row'>
-                    <div class='col-sm-3 block-footer'>
+                    <div class='col-sm-5 block-footer'>
+                        <p>
+                            <b>Vui lòng gọi hoặc nhắn tin Hotline</b><br />
+                             - Hà Nội <i aria-hidden='true' class='fa fa-phone'></i><span>04 6652 2750/ 0973 934 577</span><br />
+                             - TPHCM <i aria-hidden='true' class='fa fa-phone'></i><span>08 6258 5931/ 0902 879 147</span><br />
+                            Gọi Hotline trong trang web riêng của mỗi chương trình<br />
+                        </p>
+                        <br />
+                        <p><b>Hoặc email tới</b></p>
+                        <p><i aria-hidden='true' class='fa fa-envelope'></i> contact@babylons.com.vn</p>
+                        <br />
+                        <p><b>Chăm sóc khách hàng/ đánh giá cảm nhận của khách hàng vui lòng email tới</b> </p>
+                        <p><i aria-hidden='true' class='fa fa-envelope'></i> customer@babylons.com.vn</p>
+                        <br />
+                        <p><b>Hợp tác kinh doanh vui lòng email tới</b> </p>
+                        <p><i aria-hidden='true' class='fa fa-envelope'></i> lien.nguyen@babylons.com.vn</p>
+                    </div>
+                    <div class='col-sm-4 block-footer social'>
+                        <p>
+                            <b>Tại Hà Nội</b><br />
+                            P302, Phú Gia Residence, 3 Nguyễn Huy Tưởng, Quận Thanh Xuân<br />
+                            <i aria-hidden='true' class='fa fa-phone'></i> (04) 6652 2750<br />
+                            <i aria-hidden='true' class='fa fa-envelope'></i> contact@babylons.com.vn
+                        </p>
+                        <p>
+                            <b>Tại TP Hồ Chí Minh</b><br />
+                            P301, Block C, The Manor 2, 91 Nguyễn Hữu Cảnh, Quận Bình Thạnh<br />
+                            <i aria-hidden='true' class='fa fa-phone'></i> (08) 6258 5931<br />
+                            <i aria-hidden='true' class='fa fa-envelope'></i> info.hcm@babylons.com.vn
+                        </p>
+                        <p>
+                            <b>Thời gian làm việc</b><br />
+                            Thứ 2 đến thứ 6: Sáng 08h30 - 12h00 / Chiều 13h30 - 18h00<br />
+                            Thứ 7: 8h30 - 12h00<br />
+                        </p>
                     </div>
                     <div class='col-sm-3 block-footer'>
                         <ul class='footer-link'>
                             <li>
-                                <a href='about.html'>Giới thiệu về Babylons</a>
+                                <a href='/taitro'>TÀI TRỢ HỘI THẢO</a>
                             </li>
                             <li>
-                                <a href='faq.html'>Câu hỏi thường gặp</a>
+                                <a href='/sachhay'>SÁCH HAY</a>
                             </li>
                             <li>
-                                <a href='terms.html'>Điều khoản sử dụng</a>
+                                <a href='/hoptac'>TRỞ THÀNH ĐỐI TÁC SALE</a>
+                            </li>
+                            <li>
+                                <a href='/hinhanh'>GALLERY - THƯ VIỆN ẢNH</a>
                             </li>
                         </ul>
-                    </div>
-                    <div class='col-sm-3 block-footer contact'>
-                        <p>
-                            <i aria-hidden='true' class='fa fa-phone'></i>
-                            <span>1800.6816 (Miễn phí)</span>
-                        </p>
-
-                        <p>(7h00 - 22h00 các ngày trong tuần)</p>
-
-                        <p>
-                            <i aria-hidden='true' class='fa fa-envelope'></i>
-                            <span>cskh@edumall.vn</span>
-                        </p>
-                    </div>
-                    <div class='col-sm-3 block-footer social'>
-                        <p>
-                            <a href='https://www.facebook.com/Edumall.vn'>
-                                <i aria-hidden='true' class='fa fa-facebook-square'></i>
-                            </a>
-                            <a href='https://www.youtube.com/channel/UCB_VcFxP7DeZR8Xfpqf9x5A'>
-                                <i aria-hidden='true' class='fa fa-youtube-square'></i>
-                            </a>
-                        </p>
                     </div>
                 </div>
             </div>
             <div class='bot-footer'>
-                <p>© 2016 Edumall. All rights reserved</p>
+                <p>Copyright © 2016 - Babylons | All rights reserved.</p>
             </div>
         </div>
     </div>
@@ -92,23 +106,4 @@
 
         $('.featured-courses-sm .courses a').unbind('click');
     });
-</script>
-<noscript id='asyncronize-font'>
-    <link href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'
-          type='text/css'>
-</noscript>
-<script>
-    var loadAsyncronizeFont = function () {
-        var addFontNode = document.getElementById("asyncronize-font");
-        var replacement = document.createElement("div");
-        replacement.innerHTML = addFontNode.textContent;
-        document.body.appendChild(replacement)
-        addFontNode.parentElement.removeChild(addFontNode);
-    };
-    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-            webkitRequestAnimationFrame || msRequestAnimationFrame;
-    if (raf) raf(function () {
-        window.setTimeout(loadAsyncronizeFont, 0);
-    });
-    else window.addEventListener('load', loadAsyncronizeFont);
 </script>

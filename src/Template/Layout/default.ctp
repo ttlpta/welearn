@@ -29,6 +29,6 @@
 <body class='courses_page home_page page-instructor_profile'>
 <?= $this->element('header_default') ?>
 <?= $this->fetch('content') ?>
-<?= $this->element('footer_default') ?>
+<?= $this->element('footer') ?>
 </body>
 </html>

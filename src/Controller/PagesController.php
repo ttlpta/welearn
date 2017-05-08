@@ -66,4 +66,10 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function taitro(){}
+    public function lydo(){}
+    public function sachhay(){}
+    public function hinhanh(){}
+    public function hoptac(){}
 }

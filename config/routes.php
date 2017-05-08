@@ -37,6 +37,11 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/thanh-toan-thanh-cong', ['controller' => 'Checkout', 'action' => 'success']);
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/hinhanh', ['controller' => 'Pages', 'action' => 'hinhanh']);
+    $routes->connect('/hoptac', ['controller' => 'Pages', 'action' => 'hoptac']);
+    $routes->connect('/lydo', ['controller' => 'Pages', 'action' => 'lydo']);
+    $routes->connect('/sachhay', ['controller' => 'Pages', 'action' => 'sachhay']);
+    $routes->connect('/taitro', ['controller' => 'Pages', 'action' => 'taitro']);
     $routes->connect('/tacgia/:id', ['controller' => 'Author', 'action' => 'detail'], ['id' => '\d+', 'pass' => ['id']]);
     $routes->connect('/admin/*', ['prefix' => 'admin','controller' => 'Quanly', 'action' => 'index']);
 

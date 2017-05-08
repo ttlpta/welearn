@@ -242,4 +242,11 @@ class DonhangController extends AdminController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function xls() {
+        $output_type = 'D';
+        $this->viewBuilder()->setLayout('xls');
+        $file = 'my_spreadsheet.xlsx';
+        $this->set(compact('output_type', 'file'));
+    }
 }
