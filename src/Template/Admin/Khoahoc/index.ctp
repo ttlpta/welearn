@@ -76,7 +76,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $khoahoc->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $khoahoc->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $khoahoc->id], ['confirm' => __('Are you sure you want to delete # {0}?', $khoahoc->id)]) ?>
+                    <?= ($khoahoc->cotheXoa) ? $this->Form->postLink(__('Delete'), ['action' => 'delete', $khoahoc->id], ['confirm' => __('Are you sure you want to delete # {0}?', $khoahoc->id)]) : '' ?>
                 </td>
             </tr>
             <?php endforeach; ?>

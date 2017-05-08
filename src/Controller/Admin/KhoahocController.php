@@ -18,6 +18,8 @@ class KhoahocController extends AdminController
         parent::initialize();
         $this->_tacgiaTbl = TableRegistry::get('Tacgia');
         $this->_danhmucTbl = TableRegistry::get('Categories');
+        $this->_quanlyTbl = TableRegistry::get('Quanly');
+        $this->_loginUser = $this->Auth->user();
     }
     /**
      * Index method
@@ -51,6 +53,9 @@ class KhoahocController extends AdminController
         $khoahocWithIdTacgias = $this->paginate($query);
         $khoahocWithTenTacgias = [];
         foreach($khoahocWithIdTacgias as $khoahoc){
+            $cotheXoa = ($this->_loginUser['role'] == 1 || ($this->_loginUser['role'] == 2 && $this->_loginUser['id'] == $khoahoc->manager_id));
+            $khoahoc->cotheXoa = $cotheXoa;
+            
             $tacgiaIdArr = explode(',', $khoahoc->tacgia);
             $tacgiaNameArr =  $this->_tacgiaTbl->find('all',[
                 'conditions' => [
@@ -81,7 +86,6 @@ class KhoahocController extends AdminController
         $khoahoc = $this->Khoahoc->get($id, [
             'contain' => ['Ve']
         ]);
-        
         $donhangTbl = TableRegistry::get('Donhang'); 
         $donhangs = $donhangTbl->findAllByKhoahocId($id)->contain(['Khachhang']);
         $tacgiaIdArr = explode(',', $khoahoc->tacgia);
@@ -105,6 +109,9 @@ class KhoahocController extends AdminController
     public function add()
     {
         $khoahoc = $this->Khoahoc->newEntity();
+        if($this->_loginUser['role'] != 1){
+            $this->redirect(['action' => 'index']);
+        }
 
         if ($this->request->is('post')) {
             $khoahocData = $this->request->getData();
@@ -124,7 +131,8 @@ class KhoahocController extends AdminController
         }
         $tacgias = $this->_getAllTacgia();
         $categories = $this->_danhmucTbl->find('treeList')->toArray();
-        $this->set(compact('tacgias', 'khoahoc', 'categories'));
+        $quanly = $this->_getAllQuanly();
+        $this->set(compact('tacgias', 'khoahoc', 'categories', 'quanly'));
         $this->set('_serialize', ['khoahoc']);
     }
 
@@ -159,9 +167,11 @@ class KhoahocController extends AdminController
         }
         $tacgias = $this->_getAllTacgia();
         $categories = $this->_danhmucTbl->find('treeList')->toArray();
+        $quanly = $this->_getAllQuanly();
         $this->set(compact('categories'));
         $this->set(compact('khoahoc'));
         $this->set(compact('tacgias'));
+        $this->set(compact('quanly'));
         $this->set('_serialize', ['khoahoc']);
     }
 
@@ -188,5 +198,18 @@ class KhoahocController extends AdminController
     private function _getAllTacgia()
     {
         return $this->_tacgiaTbl->find();
+    }
+
+    private function _getAllQuanly() 
+    {
+        $loginUser = $this->_loginUser;
+
+        return $this->_quanlyTbl->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($quanly) use ($loginUser) {
+                $option = ($quanly->id == $loginUser['id']) ? 'Chỉ mình tôi' :  $quanly->username.' ---- Role: '.role_quanly_str($quanly->role);
+                return $option;
+            }
+        ]);
     }
 }

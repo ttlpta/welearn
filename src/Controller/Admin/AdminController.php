@@ -15,6 +15,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Application Controller
@@ -59,6 +60,12 @@ class AdminController extends AppController
             ],
             'unauthorizedRedirect' => $this->referer() // If unauthorized, return them to page they were just on
         ]);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->set('loginUser', $this->Auth->user());
     }
 
     protected function _renameImage($oldName)
